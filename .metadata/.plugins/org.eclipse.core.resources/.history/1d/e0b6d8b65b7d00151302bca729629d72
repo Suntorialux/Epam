@@ -1,0 +1,53 @@
+import java.util.Arrays;
+
+import by.gsu.epamlab.AbstractPurchase;
+import by.gsu.epamlab.Commodity;
+import by.gsu.epamlab.PercentDiscountPurchase;
+import by.gsu.epamlab.PriceDiscountPurchase;
+import by.gsu.epamlab.TransportExpensesPurchase;
+
+public class Runner {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+        final Commodity COMMODITY=new Commodity("Milk",7500);
+
+        AbstractPurchase[] purchases={  new PriceDiscountPurchase(COMMODITY, 11, 300),
+        								new PriceDiscountPurchase(COMMODITY, 12, 500),
+        								new PercentDiscountPurchase(COMMODITY, 10, 5.5),
+        								new PercentDiscountPurchase(COMMODITY, 18, 7.5),
+        								new TransportExpensesPurchase(COMMODITY, 4, 200),
+        								new TransportExpensesPurchase(COMMODITY, 8, 600)
+        };
+
+        printPurchases(purchases);
+        Arrays.sort(purchases);
+        System.out.println("___________");
+        printPurchases(purchases);
+    
+        System.out.println("Minimum cost=" + purchases[purchases.length - 1].getCost());
+
+        AbstractPurchase purchaseForEqual=new PriceDiscountPurchase(new Commodity(null,53000),1,0);
+
+        int reqPurchase=Arrays.binarySearch(purchases,purchaseForEqual);
+
+        System.out.println("Purchase with cost=53000 is " 
+    			+ (reqPurchase < 0 ? "not found" : purchases[reqPurchase])); 
+           
+     
+    }
+    private static void printPurchases(AbstractPurchase[] purchases)
+    {
+        for (AbstractPurchase purchase:purchases)
+        {
+            System.out.println(purchase);
+        }
+    }
+		
+		
+		
+	
+
+}

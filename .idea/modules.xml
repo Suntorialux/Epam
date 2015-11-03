@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/RemoteSystemsTempFiles/RemoteSystemsTempFiles.iml" filepath="$PROJECT_DIR$/RemoteSystemsTempFiles/RemoteSystemsTempFiles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/classes1/classes1.iml" filepath="$PROJECT_DIR$/classes1/classes1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/classes2/classes2.iml" filepath="$PROJECT_DIR$/classes2/classes2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/classes2_2/classes2_2.iml" filepath="$PROJECT_DIR$/classes2_2/classes2_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/classes3/classes3.iml" filepath="$PROJECT_DIR$/classes3/classes3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/classes3_2/classes3_2.iml" filepath="$PROJECT_DIR$/classes3_2/classes3_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inheritance1/inheritance1.iml" filepath="$PROJECT_DIR$/inheritance1/inheritance1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inheritance2/inheritance2.iml" filepath="$PROJECT_DIR$/inheritance2/inheritance2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/strings1/strings1.iml" filepath="$PROJECT_DIR$/strings1/strings1.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,61 @@
+package by.gsu.epamlab;
+
+public abstract class AbstractPurchase implements Comparable<AbstractPurchase> {
+
+	private Commodity commodity;
+	private int numberUnits;
+	
+	public AbstractPurchase() {
+		this(null,0);
+		// TODO Auto-generated constructor stub
+	}
+
+	public AbstractPurchase(Commodity commodity, int numberUnits) {
+		this.commodity = commodity;
+		this.numberUnits = numberUnits;
+	}
+
+	public Commodity getCommodity() {
+		return commodity;
+	}
+
+	public void setCommodity(Commodity commodity) {
+		this.commodity = commodity;
+	}
+
+	public int getNumberUnits() {
+		return numberUnits;
+	}
+
+	public void setNumberUnits(int numberUnits) {
+		this.numberUnits = numberUnits;
+	}
+	
+	public abstract int getCost(); 
+	
+	protected String fieldsToString () {
+		return commodity+";"+numberUnits;
+	}
+	
+	@Override
+	public String toString() {
+		return fieldsToString()+";"+getCost();
+	}
+
+	@Override
+	public int compareTo(AbstractPurchase abstractPurchase) {
+		// TODO Auto-generated method stub
+		return this.getCost()-abstractPurchase.getCost();
+	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+}

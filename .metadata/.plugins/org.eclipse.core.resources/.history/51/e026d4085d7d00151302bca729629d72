@@ -1,0 +1,64 @@
+import java.util.Arrays;
+
+import by.gsu.epamlab.AbstractPurchase;
+import by.gsu.epamlab.Commodity;
+import by.gsu.epamlab.PercentDiscountAbstractPurchase;
+import by.gsu.epamlab.PriceDiscountAbstractPurchase;
+import by.gsu.epamlab.TransportExpensesPurchase;
+
+public class Runner {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// 1. Create the unique commodity for purchasing.
+		
+        final Commodity COMMODITY=new Commodity("Milk",7500);
+        
+        // 2. Create an array for 6 objects (2 instances of every subclass).
+
+        AbstractPurchase[] purchases={  new PriceDiscountAbstractPurchase(COMMODITY, 11, 300),
+        								new PriceDiscountAbstractPurchase(COMMODITY, 12, 500),
+        								new PercentDiscountAbstractPurchase(COMMODITY, 10, 5.5),
+        								new PercentDiscountAbstractPurchase(COMMODITY, 18, 7.5),
+        								new TransportExpensesPurchase(COMMODITY, 4, 200),
+        								new TransportExpensesPurchase(COMMODITY, 8, 600)
+        };
+        
+        // 3. Print the array content to the console (one element per line).
+
+        printPurchases(purchases);
+        
+        // 4. Sort an array by the cost in descending order by the method sort( ) of the class Arrays.
+        
+        Arrays.sort(purchases);
+        
+        // 5. Print the array content to the console (one element per line).
+        
+        System.out.println("---------------------"); 
+        printPurchases(purchases);
+        
+        // 6. Print the minimum cost of purchase.
+    
+        System.out.println("Minimum cost=" + purchases[purchases.length - 1].getCost());
+        
+        // 7. Find some purchase with cost equaled to 53000 by the method binarySearch( ) of the class Arrays and print it.
+
+        AbstractPurchase purchaseForEqual=new PriceDiscountAbstractPurchase(new Commodity(null,53000),1,0);
+
+        int reqPurchase=Arrays.binarySearch(purchases,purchaseForEqual);
+
+        System.out.println("Purchase with cost=53000 is " 
+    			+ (reqPurchase < 0 ? "not found" : purchases[reqPurchase])); 
+           
+     
+    }
+	
+    private static void printPurchases(AbstractPurchase[] purchases)
+    {
+        for (AbstractPurchase purchase:purchases)
+        {
+            System.out.println(purchase);
+        }
+    }
+}

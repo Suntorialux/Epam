@@ -1,0 +1,38 @@
+package by.gsu.epamlab;
+
+public class PriceDiscountAbstractPurchase extends AbstractPurchase {
+	
+	private int priceDiscount;
+
+	public PriceDiscountAbstractPurchase() {
+		super();
+		this.priceDiscount=0;
+		// TODO Auto-generated constructor stub
+	}
+
+	public PriceDiscountAbstractPurchase(Commodity commodity, int numberUnits, int priceDiscount) {
+		super(commodity, numberUnits);
+		this.priceDiscount = priceDiscount;
+	}
+
+	public int getPriceDiscount() {
+		return priceDiscount;
+	}
+
+	public void setPriceDiscount(int priceDiscount) {
+		this.priceDiscount = priceDiscount;
+	}
+
+    @Override
+    public int getCost() {
+        int cost=(commodity.getPrice()-priceDiscount)*numberUnits;
+        cost=cost/1000*1000;
+        return cost;
+    }
+
+	@Override
+	protected String fieldsToString() {
+		// TODO Auto-generated method stub
+		return super.fieldsToString()+";"+priceDiscount;
+	}
+}

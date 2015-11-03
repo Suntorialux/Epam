@@ -1,0 +1,7 @@
+1446027383712	Rename type 'PercentDiscountPurchase'
+1446027405590	Rename type 'PriceDiscountPurchase'
+1446027423936	Rename type 'TransportExpensesPurchase'
+1446060353097	Rename local variable 'COMMODITY'
+1446060381204	Rename type 'TransportExpensesAbstractPurchase'
+1446060394532	Rename type 'PercentDiscountAbstractPurchase'
+1446060406176	Rename type 'PriceDiscountAbstractPurchase'

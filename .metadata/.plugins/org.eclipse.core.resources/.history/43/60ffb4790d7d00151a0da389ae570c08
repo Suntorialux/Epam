@@ -1,0 +1,48 @@
+package by.gsu.epamlab;
+
+public class PercentDiscountPurchase extends AbstractPurchase{
+	
+	private final static int BARRIER_DISCOUNT=15;
+	private double percentDiscount;
+	
+	public PercentDiscountPurchase() {
+		super();
+		this.percentDiscount=0;
+		// TODO Auto-generated constructor stub
+	}
+
+	public PercentDiscountPurchase(Commodity commodity, int numberUnits, double percentDiscount) {
+		super(commodity, numberUnits);
+		this.percentDiscount = percentDiscount;
+	}
+
+	public double getPercentDiscount() {
+		return percentDiscount;
+	}
+
+	public void setPercentDiscount(double percentDiscount) {
+		this.percentDiscount = percentDiscount;
+	}
+	
+	 @Override
+	    public int getCost() {
+	    	int number=super.getNumberUnits();
+	    	Commodity commodity = super.getCommodity();
+	    	int cost = number*commodity.getPrice();
+	    	if(number>BARRIER_DISCOUNT)
+	           cost*=(100-percentDiscount)/100;
+	        return cost;
+	    }
+	 
+	   @Override
+		protected String fieldsToString() {
+			// TODO Auto-generated method stub
+			return super.fieldsToString()+";"+percentDiscount;
+		}
+	    
+	
+	
+	
+	
+
+}

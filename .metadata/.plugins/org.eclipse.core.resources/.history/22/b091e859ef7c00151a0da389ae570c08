@@ -1,0 +1,56 @@
+import by.gsu.epamlab.Purchase;
+import by.gsu.epamlab.PurchasesFactory;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+
+public class Runner {
+
+     public static void main(String[] args) {
+    	
+    	final String FILE_PATH="src/in.txt";
+    	int purchaseNumber=6;
+        Scanner sc = null;
+        Purchase [] purchases = new Purchase[purchaseNumber];
+        boolean areEqual = true;
+        try {
+            sc = new Scanner(new FileReader(FILE_PATH));
+            
+            int maxCost=0;
+            Purchase maxPurchase=null;
+            boolean flag=true;
+            
+            for (int index = 0; index < purchases.length; index++) {
+                purchases[index]= PurchasesFactory.getPurchaseFromFactory(sc);
+                System.out.println(purchases[index]);
+                if(purchases[index].getCost()>maxCost) {
+                	maxCost=purchases[index].getCost();
+                	maxPurchase=purchases[index];
+                }
+                if (areEqual){
+                	areEqual = purchases[index].equals(purchases[0]); 
+                }
+              
+                
+            }
+            System.out.println("The purchase with maximum cost " + maxPurchase); 
+            System.out.println("All purchases are equal is " + areEqual); 
+
+
+
+        } catch (FileNotFoundException e) {
+            System.err.println("Input file is not found");
+        } finally {
+            if(sc != null) {
+                sc.close();
+            }
+
+        }
+
+
+
+    }
+
+}
