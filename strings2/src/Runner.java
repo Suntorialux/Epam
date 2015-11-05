@@ -11,7 +11,6 @@ public class Runner {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-
 		final String FILE_NAME="in";
 		final String VALUE="value";
 		final String ERROR_LINE="Error-line = ";
