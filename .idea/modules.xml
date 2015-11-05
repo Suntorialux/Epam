@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/inheritance1/inheritance1.iml" filepath="$PROJECT_DIR$/inheritance1/inheritance1.iml" />
       <module fileurl="file://$PROJECT_DIR$/inheritance2/inheritance2.iml" filepath="$PROJECT_DIR$/inheritance2/inheritance2.iml" />
       <module fileurl="file://$PROJECT_DIR$/strings1/strings1.iml" filepath="$PROJECT_DIR$/strings1/strings1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/strings2/strings2.iml" filepath="$PROJECT_DIR$/strings2/strings2.iml" />
     </modules>
   </component>
 </project>

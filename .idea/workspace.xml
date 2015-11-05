@@ -1,7 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8fc3a757-2b23-4793-82f8-eb2d9044386b" name="Default" comment="" />
+    <list default="true" id="42b22565-fc71-4fbf-9d32-434f0d05944d" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\10\206971c4a97d0015139dab116aa2e7ae" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\10\304a9cb6977c00151c429d1db764a8fc" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\10\30d6b39e5b7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\10\d06c16ed007d00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\13\00244d76547d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\18\00049972047d00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\1b\70f8c031f57c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\1d\e0b6d8b65b7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\20\f0564af5007d00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\22\b091e859ef7c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\23\f0b1a1f6f27c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\24\80af5576547d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\25\a07c9a52507d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\29\b0a08d7bf17c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\2a\20ff60f05c7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\2d\f06484f6fd7c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\2e\e08323ec597d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\2f\9095cfd3a97d0015139dab116aa2e7ae" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\30\002538ed557d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\31\e01c4efff17c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\32\202e44b4ff7c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\35\10a581a95b7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\36\00ce2a555c7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\3\c0b2decca97d0015139dab116aa2e7ae" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\3e\b0b5f0b3a97d0015139dab116aa2e7ae" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\3f\e0ff5c0a547d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\41\40bb94d5537d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\43\60ffb4790d7d00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\43\80aa9cd5537d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\45\d0015c8bf67c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\4\f0bac04efa7c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\4f\80f1e2fd5c7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\50\a04457fff17c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\51\e026d4085d7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\53\305ec79e5b7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\53\f01bb89e5b7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\5b\e0e1610a547d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\68\4073ddfd5c7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\69\500c91f4f07c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\6a\b0fa7e7bf17c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\6b\201d1e52027d00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\6b\20e34f76547d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\6b\803c2451f17c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\74\80f4a99cef7c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\74\909efc02f57c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\76\70538f81ef7c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\79\10589b2bf97c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\7\2099e6c4a97d0015139dab116aa2e7ae" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\86\2014a2fb5a7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\86\c0bad8085d7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\86\e06da89cef7c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\88\2011d3c4a97d0015139dab116aa2e7ae" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\8\308180f4567d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\95\e02028c1017d00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\98\00ba92f4f07c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\98\00dd5900f17c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\9a\c0bdc89e5b7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\9e\9077d4d3a97d0015139dab116aa2e7ae" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\9f\20ecb051f17c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\a2\206f4a73037d00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\a3\7047a6d5537d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\a3\70d1e2cca97d0015139dab116aa2e7ae" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\a4\608b650a547d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\a7\502ba0f6f27c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\a\10b58951f17c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\b1\90212329f87c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\b8\4090e08af67c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\ba\0018d3d3a97d0015139dab116aa2e7ae" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\ba\10c7847bf17c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\bc\3046f874037d00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\be\b050230af07c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\bf\b0a7b0d5537d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\c2\001c6da9f57c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\c5\004aa4f6f27c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\c\e047bf9e5b7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\ca\f04485ac577d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\cd\b0be887bf17c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\ce\301020ea007d00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\ce\508235f05c7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\cf\406d8c81ef7c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\cf\5028e38af67c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\d1\a062a086037d00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\d4\4072e58af67c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\d9\4082d7085d7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\d9\f0db05ef5c7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\e1\0031e4cca97d0015139dab116aa2e7ae" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\e5\40dc0e69527d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\e9\f0d5aff2007d00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\ea\a011a24d547d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\eb\c012e24d527d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\ed\e054420df97c00151a0da389ae570c08" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\f1\d025e6fd5c7d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\f2\0016eae9567d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\f9\d02bb027547d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.history\fb\e006a16c567d00151302bca729629d72" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.markers.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\RemoteSystemsTempFiles\.syncinfo.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\classes1\.markers.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\classes1\.syncinfo.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\classes2\.markers.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\classes2\.syncinfo.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\classes2_2\.markers.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\classes2_2\.syncinfo.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\classes3\.markers.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\classes3\.syncinfo.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\classes3_2\.markers.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\classes3_2\.syncinfo.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\inheritance1\.indexes\7\history.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\inheritance1\.indexes\e4\57\9\ea\history.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\inheritance1\.indexes\e4\history.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\inheritance1\.markers.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\inheritance1\.syncinfo.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\inheritance2\.indexes\af\history.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\inheritance2\.indexes\e4\57\9\ea\history.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\inheritance2\.indexes\e4\history.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\inheritance2\.markers.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\inheritance2\.syncinfo.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\strings1\.markers.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\strings1\.syncinfo.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.root\.markers.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\.root\18.tree" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.core.resources\18.snap" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.epp.logging.aeri.ui\history\write.lock" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\1140841982.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\1389697986.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\1405940092.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\1501172594.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\1846500785.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\2258076031.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\2619072759.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\2881167831.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\2884189329.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\3156511736.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\3565748907.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\3926268792.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\702867120.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\835412612.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.core\904948993.index" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\0.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\1.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\2.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\3.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\4.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\5.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images\6.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.metadata\.plugins\org.eclipse.team.cvs.core\.running" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.recommenders\index\http___download_eclipse_org_recommenders_models_mars_\_e.fdt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.recommenders\index\http___download_eclipse_org_recommenders_models_mars_\_e.fdx" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.recommenders\index\http___download_eclipse_org_recommenders_models_mars_\_e.fnm" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.recommenders\index\http___download_eclipse_org_recommenders_models_mars_\_e.frq" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.recommenders\index\http___download_eclipse_org_recommenders_models_mars_\_e.nrm" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.recommenders\index\http___download_eclipse_org_recommenders_models_mars_\_e.prx" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.recommenders\index\http___download_eclipse_org_recommenders_models_mars_\_e.tii" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.recommenders\index\http___download_eclipse_org_recommenders_models_mars_\_e.tis" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Андрей\workspace\.recommenders\index\http___download_eclipse_org_recommenders_models_mars_\segments_f" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/classes1/.markers" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/classes1/.markers" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/classes2/.markers" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/classes2/.markers" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/classes2_2/.markers" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/classes2_2/.markers" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/classes3/.markers" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/classes3/.markers" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/classes3_2/.markers" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/classes3_2/.markers" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/inheritance2/.markers" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/inheritance2/.markers" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/1509034731.index" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/1509034731.index" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes2/bin/by/gsu/epamlab/Material.class" afterPath="$PROJECT_DIR$/classes2/bin/by/gsu/epamlab/Material.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes2_2/bin/by/gsu/epamlab/Material.class" afterPath="$PROJECT_DIR$/classes2_2/bin/by/gsu/epamlab/Material.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes2/bin/Runner.class" afterPath="$PROJECT_DIR$/classes2/bin/Runner.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes2_2/bin/Runner.class" afterPath="$PROJECT_DIR$/classes2_2/bin/Runner.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes2/bin/by/gsu/epamlab/Subject.class" afterPath="$PROJECT_DIR$/classes2/bin/by/gsu/epamlab/Subject.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes2_2/bin/by/gsu/epamlab/Subject.class" afterPath="$PROJECT_DIR$/classes2_2/bin/by/gsu/epamlab/Subject.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/strings1/.indexes/e4/history.index" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/strings1/.indexes/e4/history.index" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/segments.gen" afterPath="$PROJECT_DIR$/.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/segments.gen" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.log" afterPath="$PROJECT_DIR$/.metadata/.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strings1/src/Runner.java" afterPath="$PROJECT_DIR$/strings1/src/Runner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.pde.core/.cache/clean-cache.properties" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.pde.core/.cache/clean-cache.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.e4.ui.importer/dialog_settings.xml" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.e4.ui.importer/dialog_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/strings1/src/in.csv" afterPath="$PROJECT_DIR$/strings1/src/in.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.wst.sse.core/task-tags.properties" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.wst.sse.core/task-tags.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/version.ini" afterPath="$PROJECT_DIR$/.metadata/version.ini" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="workspace.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/classes1/bin/" />
@@ -13,6 +203,7 @@
     <ignored path="$PROJECT_DIR$/inheritance2/bin/" />
     <ignored path="$PROJECT_DIR$/RemoteSystemsTempFiles/bin/" />
     <ignored path="$PROJECT_DIR$/strings1/bin/" />
+    <ignored path="$PROJECT_DIR$/strings2/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,10 +222,22 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="Runner.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/strings1/src/Runner.java">
+        <entry file="file://$PROJECT_DIR$/strings2/src/Runner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45468053">
-              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.426506">
+              <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="in.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/strings2/src/in.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -48,6 +251,21 @@
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/strings2/src/in.properties" />
+        <option value="$PROJECT_DIR$/strings2/src/Runner.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="NamedScopeManager">
@@ -82,6 +300,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -92,17 +313,36 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="recentsLimit" value="5" />
+    <property name="dynamic.classpath" value="false" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Андрей\workspace\strings2\src" />
+      <recent name="C:\Users\Андрей\workspace\strings1\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Runner">
+    <configuration default="false" name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="Runner" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="strings2" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -250,6 +490,14 @@
       <listeners />
       <method />
     </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.Runner" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.Runner" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -257,18 +505,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8fc3a757-2b23-4793-82f8-eb2d9044386b" name="Default" comment="" />
-      <created>1446582382406</created>
+      <changelist id="42b22565-fc71-4fbf-9d32-434f0d05944d" name="Default" comment="" />
+      <created>1446743346018</created>
       <option name="number" value="Default" />
-      <updated>1446582382406</updated>
+      <updated>1446743346018</updated>
     </task>
-    <task id="LOCAL-00001" summary="111">
-      <created>1446582520773</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1446582520773</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -277,12 +518,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952926" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32952926" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963716" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -290,33 +532,50 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="111" />
-    <option name="LAST_COMMIT_MESSAGE" value="111" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/strings1/src/Runner.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_71/src.zip!/java/util/regex/Matcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45468053">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.3325792">
+          <caret line="484" column="0" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/strings2/src/in.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/strings2/src/Runner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.426506">
+          <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

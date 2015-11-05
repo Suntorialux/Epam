@@ -9,9 +9,6 @@
 	<section name="OverrideMethodDialog">
 		<item value="true" key="showtypes"/>
 	</section>
-	<section name="BuildPathsPropertyPage">
-		<item value="2" key="pageIndex"/>
-	</section>
 	<section name="JarPackageWizard">
 		<item value="false" key="JarPackageWizardPage.INCLUDE_DIRECTORY_ENTRIES"/>
 		<item value="true" key="JarManifestWizardPage.GENERATE_MANIFEST"/>
@@ -24,8 +21,8 @@
 		<item value="true" key="jarOptionsWizardPage.EXPORT_ERRORS"/>
 		<item value="false" key="JarPackageWizardPage.EXPORT_CLASS_FILES"/>
 		<item value="false" key="jarOptionsWizardPage.SAVE_DESCRIPTION"/>
-		<item value="true" key="JarPackageWizardPage.EXPORT_JAVA_FILES"/>
 		<item value="false" key="JarManifestWizardPage.SAVE_MANIFEST"/>
+		<item value="true" key="JarPackageWizardPage.EXPORT_JAVA_FILES"/>
 		<item value="false" key="JarPackageWizardPage.EXPORT_OUTPUT_FOLDER"/>
 		<item value="true" key="JarPackageWizardPage.COMPRESS"/>
 		<item value="true" key="jarOptionsWizardPage.BUILD_IF_NEEDED"/>
@@ -41,39 +38,45 @@
 			<item value="C:\Users\Андрей\Documents\classes1.jar"/>
 		</list>
 	</section>
+	<section name="BuildPathsPropertyPage">
+		<item value="2" key="pageIndex"/>
+	</section>
 	<section name="DialogBounds_SuperInterfaceSelectionDialog">
 		<item value="373" key="DIALOG_WIDTH"/>
 		<item value="-6" key="DIALOG_Y_ORIGIN"/>
-		<item value="85" key="DIALOG_X_ORIGIN"/>
 		<item value="548" key="DIALOG_HEIGHT"/>
+		<item value="85" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="ClasspathContainerSelectionPage">
+		<item value="3" key="index"/>
 	</section>
 	<section name="SourceActionDialog.methods">
 		<item value="false" key="SkipNull"/>
-		<item value="1" key="VisibilityModifier"/>
+		<item value="10" key="LimitValue"/>
+		<item value="0" key="ToStringTemplateSelected"/>
+		<item value="0" key="StringStyle"/>
 		<item value="false" key="Comments"/>
-		<item value="2" key="InsertPosition.v2"/>
+		<item value="1" key="VisibilityModifier"/>
 		<item value="false" key="LimitElements"/>
+		<item value="2" key="InsertPosition.v2"/>
 		<item value="true" key="InstanceOf"/>
 		<item value="false" key="SynchronizedModifier"/>
-		<item value="false" key="FinalModifier"/>
-		<item value="true" key="IgnoreDefault"/>
-		<item value="10" key="LimitValue"/>
-		<item value="0" key="StringStyle"/>
-		<item value="0" key="ToStringTemplateSelected"/>
 		<item value="false" key="Blocks"/>
+		<item value="true" key="IgnoreDefault"/>
+		<item value="false" key="FinalModifier"/>
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.typehierarchy.QuickHierarchy">
 		<item value="350" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_WIDTH"/>
-		<item value="false" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_USE_PERSISTED_LOCATION"/>
 		<item value="306" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_HEIGHT"/>
+		<item value="false" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_USE_PERSISTED_LOCATION"/>
 		<item value="true" key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_USE_PERSISTED_SIZE"/>
 	</section>
 	<section name="DialogBounds_AddUnimplementedConstructorsDialog">
 		<item value="520" key="DIALOG_WIDTH"/>
 		<item value="21" key="DIALOG_Y_ORIGIN"/>
-		<item value="468" key="DIALOG_X_ORIGIN"/>
 		<item value="626" key="DIALOG_HEIGHT"/>
+		<item value="468" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
@@ -91,8 +94,8 @@
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
 		<item value="529" key="DIALOG_WIDTH"/>
 		<item value="8" key="DIALOG_Y_ORIGIN"/>
-		<item value="464" key="DIALOG_X_ORIGIN"/>
 		<item value="695" key="DIALOG_HEIGHT"/>
+		<item value="464" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="RenameInformationPopup">
@@ -104,35 +107,35 @@
 	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
 		<item value="520" key="DIALOG_WIDTH"/>
 		<item value="8" key="DIALOG_Y_ORIGIN"/>
-		<item value="468" key="DIALOG_X_ORIGIN"/>
 		<item value="677" key="DIALOG_HEIGHT"/>
+		<item value="468" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="DialogBounds_GenerateHashCodeEqualsDialog">
 		<item value="516" key="DIALOG_WIDTH"/>
 		<item value="57" key="DIALOG_Y_ORIGIN"/>
-		<item value="470" key="DIALOG_X_ORIGIN"/>
 		<item value="572" key="DIALOG_HEIGHT"/>
+		<item value="470" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="DialogBounds_OverrideMethodDialog">
 		<item value="527" key="DIALOG_WIDTH"/>
 		<item value="128" key="DIALOG_Y_ORIGIN"/>
-		<item value="465" key="DIALOG_X_ORIGIN"/>
 		<item value="466" key="DIALOG_HEIGHT"/>
+		<item value="465" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="SourceActionDialog.constructors">
-		<item value="1" key="VisibilityModifier"/>
 		<item value="false" key="Comments"/>
+		<item value="1" key="VisibilityModifier"/>
 		<item value="false" key="SynchronizedModifier"/>
 		<item value="false" key="FinalModifier"/>
 	</section>
 	<section name="DialogBounds_GenerateToStringDialog">
 		<item value="516" key="DIALOG_WIDTH"/>
 		<item value="8" key="DIALOG_Y_ORIGIN"/>
-		<item value="470" key="DIALOG_X_ORIGIN"/>
 		<item value="690" key="DIALOG_HEIGHT"/>
+		<item value="470" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="GenerateConstructorUsingFieldsSelectionDialog">
@@ -170,22 +173,22 @@
 		<section name="DialogBoundsSettings">
 			<item value="600" key="DIALOG_WIDTH"/>
 			<item value="0" key="DIALOG_Y_ORIGIN"/>
-			<item value="500" key="DIALOG_HEIGHT"/>
 			<item value="-29" key="DIALOG_X_ORIGIN"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
 			<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		</section>
-	</section>
-	<section name="completion_proposal_size">
 	</section>
 	<section name="ExtractMethodWizard">
 		<item value="false" key="ThrowRuntimeExceptions"/>
 		<item value="false" key="GenerateJavadoc"/>
 		<item value="1" key="AccessModifier"/>
 	</section>
-	<section name="org.eclipse.ltk.ui.refactoring.settings">
+	<section name="completion_proposal_size">
 	</section>
 	<section name="NewClassWizardPage">
 		<item value="false" key="create_constructor"/>
 		<item value="true" key="create_unimplemented"/>
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
 	</section>
 </section>

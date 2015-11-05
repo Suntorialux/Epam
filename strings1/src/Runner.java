@@ -20,21 +20,18 @@ public class Runner {
 		
 		final String INPUT_CSV = "src/in.csv";
 		final String SEPARATOR = ";";
-		final String PLUS = " + ";
-		final String MINUS = " - ";
+		final String PLUS_STRING = " + ";
+		final String MINUS_STRING = " - ";
 		final String BEGIN_RESULTS = "result(";
 		final String BEGIN_ERROR="error-lines = ";
-		
-		
-		
-		
-		Scanner sc= null;
+		final String END_RESULT = ") = ";
+		final char MINUS = '-';
+				
+		Scanner sc=null;
 		StringBuilder resultString = new StringBuilder();
 		double resultNumber = 0;
 		int errorNumber = 0;
-		
-		
-				
+						
 		try {
 			sc=new Scanner(new FileReader(INPUT_CSV));
 			
@@ -44,17 +41,21 @@ public class Runner {
 				try {
 					int index = Integer.parseInt(elements[0]);
 					double number = Double.parseDouble(elements[index]);
-					resultString.append(number>0?PLUS:MINUS).append(Math.abs(number));
+					resultString.append(number>=0?PLUS_STRING:MINUS_STRING).append(Math.abs(number));
 					resultNumber+=number;	
-				} catch (IndexOutOfBoundsException|NumberFormatException e2) {
+				} catch (IndexOutOfBoundsException|NumberFormatException e) {
 					errorNumber++;
 				}
 			}
-			if (resultString.charAt(1)=='-') 
-				resultString.replace(0, 3, "-");
-			else resultString.delete(0, 3);
 			
-			resultString.insert(0,BEGIN_RESULTS).append(") = ").append(resultNumber);
+			if(resultString.length()!=0) {
+				char sign = resultString.charAt(1);
+				if (sign==MINUS) 
+					resultString.replace(0, MINUS_STRING.length(), Character.toString(MINUS));
+				else resultString.delete(0, PLUS_STRING.length());
+			}
+			
+			resultString.insert(0,BEGIN_RESULTS).append(END_RESULT).append(resultNumber);
 			
 			System.out.println(resultString);
 			System.out.println(BEGIN_ERROR+errorNumber);
@@ -65,9 +66,6 @@ public class Runner {
 			if(sc!=null)
 				sc.close();
 		}
-		///commit
-
-				
 		
 
 	}
