@@ -2,14 +2,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
-/**
- * 
- */
 
-/**
- * @author Андрей
- *
- */
 public class Runner {
 
 	/**
