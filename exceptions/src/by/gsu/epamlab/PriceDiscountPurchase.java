@@ -1,26 +1,30 @@
 package by.gsu.epamlab;
 
+import exceptions.NonpositiveArgumentException;
+
 public class PriceDiscountPurchase extends Purchase{
-	 private int priceDiscount;
+	
+		private int priceDiscount;
 
 	    public PriceDiscountPurchase() {
 	    	super();
 	        this.priceDiscount = 0;
 	    }
 
-	    public PriceDiscountPurchase(String commodityName, int price, int numberUnits, int priceDiscount) {
+	    public PriceDiscountPurchase(String commodityName, int price, int numberUnits, int priceDiscount) throws NonpositiveArgumentException {
 	        super(commodityName, price, numberUnits);
-	        if(priceDiscount>price) throw new IllegalArgumentException();
-	        if(commodityName.equals("")) throw new IllegalArgumentException();
-	        this.priceDiscount = priceDiscount;
+	        setPriceDiscount(priceDiscount);
 	    }
 	    
 	    public int getPriceDiscount() {
 	        return priceDiscount;
 	    }
 
-	    public void setPriceDiscount(int priceDiscount) {
-	        this.priceDiscount = priceDiscount;
+	    public void setPriceDiscount(int priceDiscount) throws IllegalArgumentException {
+	    	if(priceDiscount>super.getCost()) {
+	    		throw new IllegalArgumentException(Constants.ERROR_WRONG_DISCOUNT);
+	    	}
+	    	this.priceDiscount = priceDiscount;
 	    }
 
 	    @Override
@@ -30,7 +34,7 @@ public class PriceDiscountPurchase extends Purchase{
 	    }
 
 		@Override
-		protected String fieldsToString() {
+		public String fieldsToString() {
 			// TODO Auto-generated method stub
 			return super.fieldsToString()+";"+priceDiscount;
 		}

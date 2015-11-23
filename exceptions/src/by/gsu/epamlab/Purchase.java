@@ -1,8 +1,10 @@
 package by.gsu.epamlab;
 
+import exceptions.NonpositiveArgumentException;
+
 public class Purchase {
 	
-	private String commodityName;
+	private String name;
 	private int price;
 	private int numberUnits;
 
@@ -10,27 +12,34 @@ public class Purchase {
 		this(null,0,0);
 	}
 
-	public Purchase(String commodityName, int price, int numberUnits) {
-		if (price<=0) throw new IllegalArgumentException();
-		if (commodityName.equals("")) throw new IllegalArgumentException();
-		this.commodityName = commodityName;
-		this.price = price;
-		this.numberUnits = numberUnits;
+	public Purchase(String name, int price, int numberUnits) throws NonpositiveArgumentException, IllegalArgumentException {
+		setName(name);
+		setPrice(price);
+		setNumberUnits(numberUnits);
 	}
 
-	public String getCommodityName() {
-		return commodityName;
+	public String getName() {
+		return name;
 	}
 
-	public void setCommodityName(String commodityName) {
-		this.commodityName = commodityName;
+	public void setName(String name) throws IllegalArgumentException {
+		if("".equals(name)) {
+			throw new IllegalArgumentException(Constants.ERROR_EMPTY_NAME);
+		}
+		if(name==null) {
+			throw new IllegalArgumentException(Constants.ERROR_NULL_NAME);
+		}
+		this.name=name;
 	}
 
 	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(int price) throws NonpositiveArgumentException {
+		if (price<=0) {
+			throw new NonpositiveArgumentException(price,Constants.NAME_FIELD_PRICE);
+		}
 		this.price = price;
 	}
 
@@ -38,7 +47,10 @@ public class Purchase {
 		return numberUnits;
 	}
 
-	public void setNumberUnits(int numberUnits) {
+	public void setNumberUnits(int numberUnits) throws NonpositiveArgumentException {
+		if (numberUnits<=0) {
+			throw new NonpositiveArgumentException(numberUnits,Constants.NAME_FIELD_NUMBER);
+		}
 		this.numberUnits = numberUnits;
 	}
 
@@ -46,16 +58,12 @@ public class Purchase {
 		return price*numberUnits;
 	}
 
-	protected String fieldsToString () {
-		return commodityName+";"+price+";"+numberUnits;
+	public String fieldsToString () {
+		return name+";"+price+";"+numberUnits;
 	}
 
 	@Override
 	public String toString() {
 		return fieldsToString()+";"+getCost();
 	}
-	
-	
-	
-	
 }
