@@ -31,17 +31,13 @@ public class PurchaseComparatorBuilder {
 	            try {
 	                comparatorClass = Class.forName(fullNameComparator);
 	                Object obj=comparatorClass.newInstance();
-	                if(comparatorName.equals(Constants.NAME_COMPARATOR_V1))
-	                {
+	                if(comparatorName.equals(Constants.NAME_COMPARATOR_V1))  {
 	                    purchaseComparator =(PurchaseComparatorV1)obj;
-	                }
-	                else
-	                {
+	                } else {
 	                    purchaseComparator =(PurchaseComparatorV2)obj;
 	                }
 
-	            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e)
-	            {
+	            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
 	                e.printStackTrace();
 	            }
 	        }
