@@ -60,9 +60,12 @@ public class Runner {
 
 		print(mapFirstPurchase);
 
-		System.out.print(Constants.FIRST_WEEKDAY+findWeekday(mapFirstPurchase, Constants.BREAD_1550));
-		System.out.print(Constants.LAST_WEEKDAY+findWeekday(mapLastPurchase, Constants.BREAD_1550));
-		System.out.print(Constants.FIRST_WEEKDAY+findWeekday(mapFirstPurchase, Constants.BREAD_1700));
+		System.out.print(Constants.FIRST_WEEKDAY);
+		findWeekday(mapFirstPurchase, Constants.BREAD_1550);
+		System.out.print(Constants.LAST_WEEKDAY);
+		findWeekday(mapLastPurchase, Constants.BREAD_1550);
+		System.out.print(Constants.FIRST_WEEKDAY);
+		findWeekday(mapFirstPurchase, Constants.BREAD_1700);
 			
 		delete(mapLastPurchase, Constants.MEAT);
 		delete(mapFirstPurchase, WeekDay.FRIDAY);
@@ -75,11 +78,11 @@ public class Runner {
 		
 	}
 
-	private static String findWeekday(Map<Purchase, WeekDay> map, Purchase purchase) {
+	private static void findWeekday(Map<Purchase, WeekDay> map, Purchase purchase) {
 		StringBuilder result = new StringBuilder();
 		result.append(purchase.getCommodityName()).append(Constants.WITH_PRICE).append(purchase.getPrice())
 			.append(Constants.SPACE).append(map.containsKey(purchase)?map.get(purchase):Constants.NOT_FOUND_POSITION).append(Constants.NEW_LINE);
-		return result.toString();
+		System.out.println(result.toString());
 	}
 
 	private static void delete(Map<Purchase, WeekDay> map, Object o) {
