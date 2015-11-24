@@ -1,7 +1,5 @@
 package by.gsu.epamlab;
 
-import java.util.Scanner;
-
 public class PriceDiscountPurchase extends Purchase {
 
     private int priceDiscount;
@@ -11,22 +9,20 @@ public class PriceDiscountPurchase extends Purchase {
         this.priceDiscount = 0;
     }
 
-    public PriceDiscountPurchase(String commodityName, int price, int numberUnits, int priceDiscount) {
-        super(commodityName, price, numberUnits);
-        this.priceDiscount = priceDiscount;
-    }
-
-    public PriceDiscountPurchase(Scanner scanner) {
-        super(scanner);
-        this.priceDiscount = scanner.nextInt();
+    public PriceDiscountPurchase(String name, int price, int numberUnits, int priceDiscount) {
+        super(name, price, numberUnits);
+        setPriceDiscount(priceDiscount);
     }
 
     public int getPriceDiscount() {
         return priceDiscount;
     }
 
-    public void setPriceDiscount(int priceDiscount) {
-        this.priceDiscount = priceDiscount;
+    public void setPriceDiscount(int priceDiscount) throws IllegalArgumentException {
+    	if(priceDiscount>super.getCost()) {
+    		throw new IllegalArgumentException(Constants.ERROR_WRONG_DISCOUNT);
+    	}
+    	this.priceDiscount = priceDiscount;
     }
 
     @Override
@@ -38,6 +34,6 @@ public class PriceDiscountPurchase extends Purchase {
 	@Override
 	protected String fieldsToString() {
 		// TODO Auto-generated method stub
-		return super.fieldsToString()+";"+priceDiscount;
+		return super.fieldsToString()+Constants.DELIMETR+priceDiscount;
 	}
 }

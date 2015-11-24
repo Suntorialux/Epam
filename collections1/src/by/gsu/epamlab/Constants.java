@@ -24,18 +24,13 @@ public class Constants {
 	public static final int GENERAL_PURCHASE = 3;
 	public static final int PRICE_DISCOUNT_PURCHASE = 4; 
 	
-	public final static String PRINT_FORMAT_TITLE="%12s%12s%8s%12s%12s%n";
-	public final static String PRINT_FORMAT_PURCHASE="%12s%12s%8s%24s%n";
-	public final static String PRINT_FORMAT_TOTAL="%12s%44d%n";
-	public final static String TOTAL_COST="Total cost =";
-	public final static String COLUMN_NAME="Name;Price;Number;Discount;Cost";
-	public final static String NAME_CLASS_PURCHASE="Purchase";
-	public final static String NAME_CLASS_PRICE_DISCOUNT_PURCHASE="PriceDiscountPurchase";
+	
+	public final static String TOTAL_COST="Total cost ";
 	
 	
 	public final static String NAME_COMPARATOR_V1 = "PurchaseComparatorV1";
 	public final static String INITIAL_NAME_COMPARATOR = "Comparators.";
-	public final static String FILE_EXTENSION =".csv";
+	public final static String FILE_NAME ="src/in.csv";
 	public final static String ELEMENT = "element";
 	public final static String FOUND_POSITION = "is found at position ";
 	public final static String NOT_FOUND_POSITION = "is not found";
@@ -55,6 +50,7 @@ public class Constants {
 	public final static String PURCHASE_IS = "Purchase is ";
 	public final static String MEAT = "meat";
 	public final static String SPACE=" ";
+	public final static String EQUALLY=" = ";
 	
 	
 }

@@ -27,6 +27,18 @@ public class PurchaseList {
 	        purchases.add(purchase);
 	    }
 
+	    public int getTotalCost() {
+			 if (purchases==null) {
+				 throw new NullPointerException(Constants.ERROR_NULL_PURCHASE);
+			 }
+			 int totalCost=0;
+			 for(Purchase purchase:purchases) {
+				 totalCost+=purchase.getCost();
+			 }
+			 return totalCost;
+		 }
+	    
+	    
 	    @Override
 	    public String toString()
 	    {

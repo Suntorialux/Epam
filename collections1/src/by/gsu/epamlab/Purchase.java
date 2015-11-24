@@ -1,48 +1,51 @@
 package by.gsu.epamlab;
 
-import java.util.Scanner;
+import exceptions.NonpositiveArgumentException;
 
 public class Purchase {
 	
-	private String commodityName;
+	private String name;
 	private int price;
 	private int numberUnits;
 
 	public Purchase() {
-		this(null,0,0);
 	}
 	
-	public Purchase(String commodityName, int price) {
+	public Purchase(String name, int price) {
 		super();
-		this.commodityName = commodityName;
+		this.name = name;
 		this.price = price;
 	}
 
-	public Purchase(String commodityName, int price, int numberUnits) {
-		this.commodityName = commodityName;
-		this.price = price;
-		this.numberUnits = numberUnits;
+	public Purchase(String name, int price, int numberUnits) throws NonpositiveArgumentException, IllegalArgumentException {
+		setName(name);
+		setPrice(price);
+		setNumberUnits(numberUnits);
 	}
 
-	public Purchase(Scanner scanner) {
-		this.commodityName=scanner.next();
-		this.price=scanner.nextInt();
-		this.numberUnits=scanner.nextInt();
+	public String getName() {
+		return name;
 	}
 
-	public String getCommodityName() {
-		return commodityName;
+    public void setName(String name) throws IllegalArgumentException {
+		if(name==null) {
+			throw new IllegalArgumentException(Constants.ERROR_NULL_NAME);
+		}
+		if(name.isEmpty()) {
+			throw new IllegalArgumentException(Constants.ERROR_EMPTY_NAME);
+		}
+		this.name=name;
 	}
 
-	public void setCommodityName(String commodityName) {
-		this.commodityName = commodityName;
-	}
 
 	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(int price) throws NonpositiveArgumentException {
+		if (price<=0) {
+			throw new NonpositiveArgumentException(price,Constants.NAME_FIELD_PRICE);
+		}
 		this.price = price;
 	}
 
@@ -50,7 +53,10 @@ public class Purchase {
 		return numberUnits;
 	}
 
-	public void setNumberUnits(int numberUnits) {
+	public void setNumberUnits(int numberUnits) throws NonpositiveArgumentException {
+		if (numberUnits<=0) {
+			throw new NonpositiveArgumentException(numberUnits,Constants.NAME_FIELD_NUMBER);
+		}
 		this.numberUnits = numberUnits;
 	}
 
@@ -59,19 +65,19 @@ public class Purchase {
 	}
 
 	protected String fieldsToString () {
-		return commodityName+";"+price+";"+numberUnits;
+		return name+Constants.DELIMETR+price+Constants.DELIMETR+numberUnits;
 	}
 
 	@Override
 	public String toString() {
-		return fieldsToString()+";"+getCost();
+		return fieldsToString()+Constants.DELIMETR+getCost();
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((commodityName == null) ? 0 : commodityName.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + price;
 		return result;
 	}
@@ -85,10 +91,10 @@ public class Purchase {
 		if (!(obj instanceof Purchase))
 			return false;
 		Purchase other = (Purchase) obj;
-		if (commodityName == null) {
-			if (other.commodityName != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!commodityName.equals(other.commodityName))
+		} else if (!name.equals(other.name))
 			return false;
 		if (price != other.price)
 			return false;
