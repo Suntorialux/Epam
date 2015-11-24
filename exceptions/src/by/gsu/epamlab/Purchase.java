@@ -23,11 +23,12 @@ public class Purchase {
 	}
 
 	public void setName(String name) throws IllegalArgumentException {
-		if("".equals(name)) {
-			throw new IllegalArgumentException(Constants.ERROR_EMPTY_NAME);
-		}
+		
 		if(name==null) {
 			throw new IllegalArgumentException(Constants.ERROR_NULL_NAME);
+		}
+		if(name.isEmpty()) {
+			throw new IllegalArgumentException(Constants.ERROR_EMPTY_NAME);
 		}
 		this.name=name;
 	}
@@ -59,11 +60,11 @@ public class Purchase {
 	}
 
 	public String fieldsToString () {
-		return name+";"+price+";"+numberUnits;
+		return name+Constants.DELIMETR+price+Constants.DELIMETR+numberUnits;
 	}
 
 	@Override
 	public String toString() {
-		return fieldsToString()+";"+getCost();
+		return fieldsToString()+Constants.DELIMETR+getCost();
 	}
 }

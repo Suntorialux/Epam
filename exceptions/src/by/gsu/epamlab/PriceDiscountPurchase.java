@@ -36,7 +36,7 @@ public class PriceDiscountPurchase extends Purchase{
 		@Override
 		public String fieldsToString() {
 			// TODO Auto-generated method stub
-			return super.fieldsToString()+";"+priceDiscount;
+			return super.fieldsToString()+Constants.DELIMETR+priceDiscount;
 		}
 
 }

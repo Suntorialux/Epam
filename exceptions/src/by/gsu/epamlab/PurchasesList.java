@@ -92,6 +92,7 @@ public class PurchasesList {
 		if (purchases==null) {
 		 throw new NullPointerException(Constants.ERROR_NULL_PURCHASE);
 		}
+		sort();
 		int index=Collections.binarySearch(getPurchases(), purchase, PurchaseComparatorBuilder.getPurchaseComparator());
 		StringBuilder result = new StringBuilder();
 		result.append(Constants.ELEMENT).append(Constants.NEW_LINE).append(purchase.fieldsToString())
