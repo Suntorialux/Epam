@@ -47,7 +47,14 @@ public class Constants {
 	public final static int INDEX_TEN=10;
 	public final static int INDEX_MINUS_FIVE=-5;
 	
-	
+	public final static Purchase BREAD_1550 = new Purchase("bread", 1550); 
+	public final static Purchase BREAD_1700 = new Purchase("bread", 1700);
+	public final static String WITH_PRICE = " with price ";
+	public final static String LAST_WEEKDAY = "Last weekday for ";
+	public final static String FIRST_WEEKDAY = "First weekday for ";
+	public final static String PURCHASE_IS = "Purchase is ";
+	public final static String MEAT = "meat";
+	public final static String SPACE=" ";
 	
 	
 }

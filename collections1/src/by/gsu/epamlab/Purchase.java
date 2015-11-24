@@ -11,6 +11,12 @@ public class Purchase {
 	public Purchase() {
 		this(null,0,0);
 	}
+	
+	public Purchase(String commodityName, int price) {
+		super();
+		this.commodityName = commodityName;
+		this.price = price;
+	}
 
 	public Purchase(String commodityName, int price, int numberUnits) {
 		this.commodityName = commodityName;
@@ -62,6 +68,15 @@ public class Purchase {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((commodityName == null) ? 0 : commodityName.hashCode());
+		result = prime * result + price;
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -79,4 +94,9 @@ public class Purchase {
 			return false;
 		return true;
 	}
+
+	
+
+	
+	
 }
