@@ -1,5 +1,7 @@
 package by.gsu.epamlab;
 
+import java.util.Map.Entry;
+
 public class Constants {
 	
 	public static final String DELIMETR=";";
@@ -38,9 +40,7 @@ public class Constants {
 	public final static int INDEX_FIRST_ELEMENT=0;
 	public final static int INDEX_FIRST=1;
 	public final static int INDEX_SECOND=2;
-	public final static int INDEX_THREE=3;
-	public final static int INDEX_TEN=10;
-	public final static int INDEX_MINUS_FIVE=-5;
+
 	
 	public final static Purchase BREAD_1550 = new Purchase("bread", 1550); 
 	public final static Purchase BREAD_1700 = new Purchase("bread", 1700);
@@ -52,5 +52,22 @@ public class Constants {
 	public final static String SPACE=" ";
 	public final static String EQUALLY=" = ";
 	
+	public final static EntryChecker CHECK_MEAT = new EntryChecker() {
+		
+		@Override
+		public boolean check(Entry<Purchase, WeekDay> entry) {
+			// TODO Auto-generated method stub
+			return entry.getKey().getName().equals(Constants.MEAT);
+		}
+	};
+	
+	public final static EntryChecker CHECK_FRIDAY = new EntryChecker() {
+		
+		@Override
+		public boolean check(Entry<Purchase, WeekDay> entry) {
+			// TODO Auto-generated method stub
+			return entry.getValue()==WeekDay.FRIDAY;
+		}
+	};
 	
 }

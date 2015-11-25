@@ -77,29 +77,11 @@ public class Runner {
 				
 			//remove all entries from the first map where the purchase name is meat;
 
-			EntryChecker checkMeat = new EntryChecker() {
-				
-				@Override
-				public boolean check(Entry<Purchase, WeekDay> entry) {
-					// TODO Auto-generated method stub
-					return entry.getKey().getName().equals("meat");
-				}
-			};
-
-			removeEntries(mapLastPurchase, checkMeat);
+			removeEntries(mapLastPurchase, Constants.CHECK_MEAT);
 			
 			//remove all entries from the second map for FRIDAY;
 			
-			EntryChecker checkFriday = new EntryChecker() {
-				
-				@Override
-				public boolean check(Entry<Purchase, WeekDay> entry) {
-					// TODO Auto-generated method stub
-					return entry.getValue()==WeekDay.FRIDAY;
-				}
-			};
-			
-			removeEntries(mapFirstPurchase, checkFriday);
+			removeEntries(mapFirstPurchase, Constants.CHECK_FRIDAY);
 			
 			//print the map by for–each cycle;
 			
@@ -124,6 +106,8 @@ public class Runner {
 		
 	}
 
+	// It is a method that calculates the total cost of purchases for one weekday.
+	
 	private static int getTotalCost(List<Purchase> purchases) {
 		int totalCost = 0;
 		for(Purchase purchase : purchases) {
@@ -139,7 +123,7 @@ public class Runner {
 		System.out.println(result.toString());
 	}
 
-	// It is method which remove all entries from the map a given purchase or weekday;
+	// It is method which remove all entries from the map a given purchase or weekday.
 	 
 	private static void removeEntries(Map<Purchase, WeekDay> map, EntryChecker checker) {
 		Iterator<Entry<Purchase, WeekDay>> iterator = map.entrySet().iterator();
@@ -151,22 +135,8 @@ public class Runner {
 		}
 	}
 
+	// It is method which print the map. 
 	
-	
-	
-/*	private static void delete(Map<Purchase, WeekDay> map, Object o) {
-		Iterator<Entry<Purchase, WeekDay>> iterator = map.entrySet().iterator();
-		while(iterator.hasNext()) {
-			Map.Entry<Purchase, WeekDay> entry = iterator.next();
-			boolean isEqualsName = entry.getKey().getName().equals(o);
-			boolean isEqualsWeekDay = entry.getValue().equals(o);
-			if(isEqualsName||isEqualsWeekDay) {
-				iterator.remove();
-			}
-		}
-	}  */
-
-	// It is method which print the map 
 	private static <K, V> void print(Map<K, V> purchaseMap) {
 		for(Map.Entry<K, V> map : purchaseMap.entrySet()) {
 			System.out.println(map.getKey()+Constants.EQUALLY+map.getValue());
