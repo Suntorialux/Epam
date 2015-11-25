@@ -1,7 +1,9 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
@@ -20,7 +22,7 @@ public class Runner {
 		// TODO Auto-generated method stub
 		Map<Purchase, WeekDay> mapLastPurchase = new HashMap<Purchase, WeekDay>();
 		Map<Purchase, WeekDay> mapFirstPurchase = new HashMap<Purchase, WeekDay>();
-		Map<WeekDay, PurchaseList> weekDayMap = new TreeMap<WeekDay, PurchaseList>();
+		Map<WeekDay, List<Purchase>> weekDayMap = new TreeMap<WeekDay, List<Purchase>>();
 		
 		Scanner sc = null;
 		try {
@@ -42,14 +44,13 @@ public class Runner {
 					
 		//load the content of the file in.csv into the sorted map where a weekday is a key and purchases list for this weekday is a value;
 
-					if(!weekDayMap.containsKey(weekDay))  {
-	                    weekDayMap.put(weekDay,new PurchaseList(purchase));
-	                }
-	                else {
-	                    weekDayMap.get(weekDay).addPurchase(purchase);
-	                }
-					
-								
+					List<Purchase> purchases = weekDayMap.get(weekDay);
+					if(purchases==null) {
+						weekDayMap.put(weekDay, purchases=new ArrayList<Purchase>());
+					}
+					purchases.add(purchase);
+						
+										
 				} catch (CsvLineException e) {
 					// TODO Auto-generated catch block
 					System.err.println(e);
@@ -98,16 +99,16 @@ public class Runner {
 		
 		//print the total cost of all purchases for each weekday.
 		
-		for(Map.Entry<WeekDay, PurchaseList> map : weekDayMap.entrySet()) {
-			System.out.println(Constants.TOTAL_COST+map.getKey()+Constants.EQUALLY+map.getValue().getTotalCost());
+		for(Map.Entry<WeekDay, List<Purchase>> map : weekDayMap.entrySet()) {
+			int totalCost = 0;
+			for(Purchase purchase : map.getValue()) {
+				totalCost+=purchase.getCost();
+			}
+			System.out.println(Constants.TOTAL_COST+map.getKey()+Constants.EQUALLY+totalCost);
 		}
-		System.out.println();
-		
-		
-		
-		
+	 
 	}
-
+		
 	private static void findWeekday(Map<Purchase, WeekDay> map, Purchase purchase) {
 		StringBuilder result = new StringBuilder();
 		result.append(purchase.getName()).append(Constants.WITH_PRICE).append(purchase.getPrice())
@@ -115,18 +116,20 @@ public class Runner {
 		System.out.println(result.toString());
 	}
 
+	// It is method which remove all entries from the map a given purchase or weekday;
 	private static void delete(Map<Purchase, WeekDay> map, Object o) {
 		Iterator<Entry<Purchase, WeekDay>> iterator = map.entrySet().iterator();
 		while(iterator.hasNext()) {
 			Map.Entry<Purchase, WeekDay> entry = iterator.next();
-			boolean equals = entry.getKey().getName().equals(o);
-			boolean equal = entry.getValue().equals(o);
-			if(equals||equal) {
+			boolean isEqualsName = entry.getKey().getName().equals(o);
+			boolean isEqualsWeekDay = entry.getValue().equals(o);
+			if(isEqualsName||isEqualsWeekDay) {
 				iterator.remove();
 			}
 		}
 	}
 
+	// It is method which print the map 
 	private static <K, V> void print(Map<K, V> purchaseMap) {
 		for(Map.Entry<K, V> map : purchaseMap.entrySet()) {
 			System.out.println(map.getKey()+Constants.EQUALLY+map.getValue());
