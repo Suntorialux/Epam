@@ -10,9 +10,9 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 import by.gsu.epamlab.Constants;
+import by.gsu.epamlab.EntryChecker;
 import by.gsu.epamlab.Purchase;
 import by.gsu.epamlab.PurchaseFactory;
-import by.gsu.epamlab.PurchaseList;
 import by.gsu.epamlab.WeekDay;
 import exceptions.CsvLineException;
 
@@ -56,7 +56,63 @@ public class Runner {
 					System.err.println(e);
 				}
 			}
-						
+			
+			
+			//print the map by for–each cycle;
+			
+			print(mapLastPurchase);
+			print(mapFirstPurchase);
+
+			//find the first and the last weekdays for bread with price 1550;
+			
+			System.out.print(Constants.FIRST_WEEKDAY);
+			findWeekday(mapFirstPurchase, Constants.BREAD_1550);
+			System.out.print(Constants.LAST_WEEKDAY);
+			findWeekday(mapLastPurchase, Constants.BREAD_1550);
+
+			//find the first weekday for bread with price 1700;
+			
+			System.out.print(Constants.FIRST_WEEKDAY);
+			findWeekday(mapFirstPurchase, Constants.BREAD_1700);
+				
+			//remove all entries from the first map where the purchase name is meat;
+
+			EntryChecker checkMeat = new EntryChecker() {
+				
+				@Override
+				public boolean check(Entry<Purchase, WeekDay> entry) {
+					// TODO Auto-generated method stub
+					return entry.getKey().getName().equals("meat");
+				}
+			};
+
+			removeEntries(mapLastPurchase, checkMeat);
+			
+			//remove all entries from the second map for FRIDAY;
+			
+			EntryChecker checkFriday = new EntryChecker() {
+				
+				@Override
+				public boolean check(Entry<Purchase, WeekDay> entry) {
+					// TODO Auto-generated method stub
+					return entry.getValue()==WeekDay.FRIDAY;
+				}
+			};
+			
+			removeEntries(mapFirstPurchase, checkFriday);
+			
+			//print the map by for–each cycle;
+			
+			print(mapLastPurchase);
+			print(mapFirstPurchase);
+			print(weekDayMap);
+			
+			//print the total cost of all purchases for each weekday.
+			
+			for(Map.Entry<WeekDay, List<Purchase>> entry: weekDayMap.entrySet()) {
+				System.out.println(Constants.TOTAL_COST+entry.getKey()+Constants.EQUALLY+getTotalCost(entry.getValue()));
+			}
+					
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.err.println(Constants.ERROR_FILE_FOUND);
@@ -66,47 +122,14 @@ public class Runner {
 			}
 		}
 		
-		//print the map by for–each cycle;
-		
-		print(mapLastPurchase);
-		print(mapFirstPurchase);
+	}
 
-		//find the first and the last weekdays for bread with price 1550;
-		
-		System.out.print(Constants.FIRST_WEEKDAY);
-		findWeekday(mapFirstPurchase, Constants.BREAD_1550);
-		System.out.print(Constants.LAST_WEEKDAY);
-		findWeekday(mapLastPurchase, Constants.BREAD_1550);
-
-		//find the first weekday for bread with price 1700;
-		
-		System.out.print(Constants.FIRST_WEEKDAY);
-		findWeekday(mapFirstPurchase, Constants.BREAD_1700);
-			
-		//remove all entries from the first map where the purchase name is meat;
-
-		delete(mapLastPurchase, Constants.MEAT);
-
-		//remove all entries from the second map for FRIDAY;
-		
-		delete(mapFirstPurchase, WeekDay.FRIDAY);
-		
-		//print the map by for–each cycle;
-		
-		print(mapLastPurchase);
-		print(mapFirstPurchase);
-		print(weekDayMap);
-		
-		//print the total cost of all purchases for each weekday.
-		
-		for(Map.Entry<WeekDay, List<Purchase>> map : weekDayMap.entrySet()) {
-			int totalCost = 0;
-			for(Purchase purchase : map.getValue()) {
-				totalCost+=purchase.getCost();
-			}
-			System.out.println(Constants.TOTAL_COST+map.getKey()+Constants.EQUALLY+totalCost);
+	private static int getTotalCost(List<Purchase> purchases) {
+		int totalCost = 0;
+		for(Purchase purchase : purchases) {
+			totalCost+=purchase.getCost();
 		}
-	 
+		return totalCost;
 	}
 		
 	private static void findWeekday(Map<Purchase, WeekDay> map, Purchase purchase) {
@@ -117,7 +140,21 @@ public class Runner {
 	}
 
 	// It is method which remove all entries from the map a given purchase or weekday;
-	private static void delete(Map<Purchase, WeekDay> map, Object o) {
+	 
+	private static void removeEntries(Map<Purchase, WeekDay> map, EntryChecker checker) {
+		Iterator<Entry<Purchase, WeekDay>> iterator = map.entrySet().iterator();
+		while(iterator.hasNext()) {
+			Map.Entry<Purchase, WeekDay> entry = iterator.next();
+			if(checker.check(entry)) {
+				iterator.remove();
+			}
+		}
+	}
+
+	
+	
+	
+/*	private static void delete(Map<Purchase, WeekDay> map, Object o) {
 		Iterator<Entry<Purchase, WeekDay>> iterator = map.entrySet().iterator();
 		while(iterator.hasNext()) {
 			Map.Entry<Purchase, WeekDay> entry = iterator.next();
@@ -127,7 +164,7 @@ public class Runner {
 				iterator.remove();
 			}
 		}
-	}
+	}  */
 
 	// It is method which print the map 
 	private static <K, V> void print(Map<K, V> purchaseMap) {
