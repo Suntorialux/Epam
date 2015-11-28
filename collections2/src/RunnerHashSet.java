@@ -2,19 +2,22 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import Comparators.Comparators.ComparatorForNum;
 import beans.Constants;
 import beans.NumLen;
 
-
-public class Runner {
+public class RunnerHashSet {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
+
 		List<NumLen> list = new ArrayList<>();
+		Set<NumLen> setNumLen = new HashSet<NumLen>();
 			
 		Scanner scanner = null;
 		
@@ -30,19 +33,15 @@ public class Runner {
 				double y2 = Double.parseDouble(data[Constants.INDEX_FOUR]);
 				int len = (int)Math.round(Math.sqrt ((x1 - x2)*(x1 - x2)+(y1 - y2)*(y1 - y2))); 
 				NumLen numLen = new NumLen(len);
-							
-				int index = Collections.binarySearch(list, numLen); 
-				if(index>=0) { 
-					list.get(index).incNum();  
-				} else {
-					list.add(numLen);
-					Collections.sort(list);
-				}
-				
+				setNumLen.add(numLen);
 			} 
+			
+			list.addAll(setNumLen);
+			
 			Collections.sort(list, new ComparatorForNum());
 			
 			printList(list);
+	
 		
 			
 			
@@ -72,6 +71,8 @@ public class Runner {
 			System.out.println(numLen);
 			
 		}
+		
+		
 	}
 
 }

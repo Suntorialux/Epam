@@ -3,18 +3,21 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NavigableSet;
 import java.util.Scanner;
+import java.util.TreeSet;
+
 import Comparators.Comparators.ComparatorForNum;
 import beans.Constants;
 import beans.NumLen;
 
-
-public class Runner {
+public class RunnerSortedSet {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		List<NumLen> list = new ArrayList<>();
+		NavigableSet<NumLen> sortedSetNumLen = new TreeSet<NumLen>();
 			
 		Scanner scanner = null;
 		
@@ -31,18 +34,18 @@ public class Runner {
 				int len = (int)Math.round(Math.sqrt ((x1 - x2)*(x1 - x2)+(y1 - y2)*(y1 - y2))); 
 				NumLen numLen = new NumLen(len);
 							
-				int index = Collections.binarySearch(list, numLen); 
-				if(index>=0) { 
-					list.get(index).incNum();  
-				} else {
-					list.add(numLen);
-					Collections.sort(list);
+				if (!sortedSetNumLen.add(numLen)){
+					NumLen floorNumLen = sortedSetNumLen.floor(numLen); 
+					floorNumLen.incNum();
 				}
-				
 			} 
+			
+			list.addAll(sortedSetNumLen);
+			
 			Collections.sort(list, new ComparatorForNum());
 			
 			printList(list);
+	
 		
 			
 			
@@ -73,5 +76,4 @@ public class Runner {
 			
 		}
 	}
-
 }
