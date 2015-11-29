@@ -26,7 +26,7 @@ public class Runner {
 			try(Connection cn = DriverManager.getConnection(dbUrl, user, password)) {
 				
 				String querry = "SELECT ROUND(ABS(X1 - X2)+0.001) AS len, COUNT(ROUND(ABS(X1 - X2)+0.001))"
-						+ " AS num FROM coordinates GROUP BY ROUND(ABS(X1-X2) + 0.001) ORDER BY len ";
+						+ " AS num FROM coordinates GROUP BY ROUND(ABS(X1-X2)+0.001) ORDER BY len ";
 				try(Statement st = cn.createStatement()) {
 									
 					try(ResultSet rs = st.executeQuery(querry)) {
