@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import beans.Constants;
-import beans.NumLen;
+import beans.LenNum;
 
 public class Runner {
 	
@@ -26,7 +26,7 @@ public class Runner {
 		String user = "use";
 		String password = "111";
 		
-		List<NumLen> lenNums = new ArrayList<NumLen>();
+		List<LenNum> lenNums = new ArrayList<LenNum>();
 	
 		try {
 			
@@ -42,7 +42,7 @@ public class Runner {
 				statement = connection.createStatement();
 				resultSet = statement.executeQuery(QUERRY_MAIN);
 					while (resultSet.next()) {
-						NumLen numLen = new NumLen(resultSet.getInt(Constants.INDEX_ONE), resultSet.getInt(Constants.INDEX_TWO));
+						LenNum numLen = new LenNum(resultSet.getInt(Constants.INDEX_ONE), resultSet.getInt(Constants.INDEX_TWO));
 						lenNums.add(numLen);			
 					}
 				resultSet.close();
@@ -52,7 +52,7 @@ public class Runner {
 				statement.executeUpdate(QUERRY_DELETE_LINE);
 				preparedStatement = connection.prepareStatement(QUERRY_INSERT);
 					
-				for(NumLen numLen : lenNums) {
+				for(LenNum numLen : lenNums) {
 					preparedStatement.setInt(Constants.INDEX_ONE, numLen.getLen());
 					preparedStatement.setInt(Constants.INDEX_TWO, numLen.getNum());
 					preparedStatement.executeUpdate();
@@ -93,8 +93,8 @@ public class Runner {
 	}
 
 
-	private static void print(List<NumLen> lenNums) {
-		for(NumLen numLen :lenNums) {
+	private static void print(List<LenNum> lenNums) {
+		for(LenNum numLen :lenNums) {
 			System.out.println(numLen);
 		}
 		System.out.println();
