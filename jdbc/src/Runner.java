@@ -17,8 +17,8 @@ public class Runner {
 		final String QUERRY_MAIN = "SELECT ROUND(ABS(X1 - X2)+0.001) AS len, COUNT(*)"
 				+ " AS num FROM coordinates GROUP BY len ORDER BY len ";
 		final String QUERRY_DELETE_LINE = "DELETE FROM frequencies";
-		final String QUERRY_INSERT = "INSERT INTO frequencies(Len, Num) VALUES(?, ?)";
-		final String QUERRY_SELECT = "SELECT * FROM frequencies WHERE len>num";
+		final String QUERRY_INSERT = "INSERT INTO frequencies(len, num) VALUES(?, ?)";
+		final String QUERRY_SELECT = "SELECT len,num FROM frequencies WHERE len>num";
 		
 		
 		String driverName = "org.gjt.mm.mysql.Driver";
@@ -41,13 +41,12 @@ public class Runner {
 				connection = DriverManager.getConnection(dbUrl, user, password);
 				statement = connection.createStatement();
 				resultSet = statement.executeQuery(QUERRY_MAIN);
-					while (resultSet.next()) {
-						LenNum numLen = new LenNum(resultSet.getInt(Constants.INDEX_ONE), resultSet.getInt(Constants.INDEX_TWO));
-						lenNums.add(numLen);			
-					}
+				while (resultSet.next()) {
+					LenNum lenNum = new LenNum(resultSet.getInt(Constants.INDEX_ONE), resultSet.getInt(Constants.INDEX_TWO));
+					lenNums.add(lenNum);
+					System.out.println(lenNum);
+				}
 				resultSet.close();
-				
-				print(lenNums);
 				
 				statement.executeUpdate(QUERRY_DELETE_LINE);
 				preparedStatement = connection.prepareStatement(QUERRY_INSERT);
@@ -57,14 +56,16 @@ public class Runner {
 					preparedStatement.setInt(Constants.INDEX_TWO, numLen.getNum());
 					preparedStatement.executeUpdate();
 				}
-								
+							
+				System.out.println();
 				resultSet = statement.executeQuery(QUERRY_SELECT);
 				while(resultSet.next()) {
-					System.out.println(resultSet.getString(Constants.INDEX_ONE)+";"+resultSet.getString(Constants.INDEX_TWO));
+					System.out.println(resultSet.getInt(Constants.INDEX_ONE)+";"+resultSet.getInt(Constants.INDEX_TWO));
 				}
+				resultSet.close();
 			} finally {
 								
-				if(resultSet!=null) {
+				if(resultSet!=null&&resultSet.isClosed()) {
 					resultSet.close();
 				} else {
 					throw new SQLException(Constants.ERROR_READING);
@@ -93,10 +94,4 @@ public class Runner {
 	}
 
 
-	private static void print(List<LenNum> lenNums) {
-		for(LenNum numLen :lenNums) {
-			System.out.println(numLen);
-		}
-		System.out.println();
-	}
 }
