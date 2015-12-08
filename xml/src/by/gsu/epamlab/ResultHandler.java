@@ -16,8 +16,7 @@ public class ResultHandler extends DefaultHandler{
 	private List<Result> results;
 	private Result result=null; 
 	private String login;
-    private boolean inLogin;
-    private ResultEnum resultEnum=null;
+    private ResultEnum resultEnum;
 
 	
 	public List<Result> getResults() {
@@ -39,53 +38,31 @@ public class ResultHandler extends DefaultHandler{
 	public void startElement(String uri, String localName, String qName, Attributes attrs) throws SAXException {
 		// TODO Auto-generated method stub
 		resultEnum = ResultEnum.valueOf(localName.toUpperCase());
-		
-		switch (resultEnum) {
-			case LOGIN: {
-				inLogin=true;
-				break;
-			}
-			case TEST : {
-				result=new Result();
-				result.setLogin(login);
-				String nameTest = attrs.getValue(Constants.NAME);
-				result.setTest(nameTest);
-				String dateString = attrs.getValue(Constants.DATE);
-				result.setDate(dateString);
-				String mark = attrs.getValue(Constants.MARK);
-				result.setMark(mark);
-				break;
-			}
+		if(resultEnum==ResultEnum.TEST) {
+			result=new Result();
+			result.setLogin(login);
+			String nameTest = attrs.getValue(Constants.NAME);
+			result.setTest(nameTest);
+			String dateString = attrs.getValue(Constants.DATE);
+			result.setDate(dateString);
+			String mark = attrs.getValue(Constants.MARK);
+			result.setMark(mark);
+			results.add(result);			
 		}
 	}
 
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		// TODO Auto-generated method stub
-		String s = new String(ch, start, length);
-		
-		if(inLogin) {
-			login=new String(s);
+		if(resultEnum==ResultEnum.LOGIN) {
+			String s = new String(ch, start, length).trim();
+			if(!s.isEmpty()) {
+				login=s;
+			}
 		}
-		
 	}
 
-	@Override
-	public void endElement(String uri, String localName, String qName) throws SAXException {
-		// TODO Auto-generated method stub
-		resultEnum = ResultEnum.valueOf(localName.toUpperCase());
-		switch(resultEnum) {
-			case LOGIN : {
-				inLogin=false;
-				break;
-			}
-			case TEST : {
-				results.add(result);
-				result=null;
-				break;
-			}
-		}
-	}
+	
 
 	@Override
 	public void endDocument() throws SAXException {

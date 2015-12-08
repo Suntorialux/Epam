@@ -6,9 +6,9 @@ import java.util.Date;
 
 public class Result {
 	
-	private final static String INPUT_DATE = "yyyy-mm-dd";
-	private final static String OUITPUT_DATE = "dd.mm.yyyy";
 	private final static String SEPARATOR_POINT = "\\.";
+	private final static SimpleDateFormat INPUT_DATE_FORMAT = new SimpleDateFormat("yyyy-mm-dd");
+	private final static SimpleDateFormat OUTPUT_DATE_FORMAT = new SimpleDateFormat("dd.mm.yyyy");
 	
 	private String login;
 	private String test;
@@ -24,6 +24,15 @@ public class Result {
 		this.login = login;
 		this.test = test;
 		this.date = date;
+		setMark(mark);
+	}
+	
+	
+
+	public Result(String login, String test, String date, String mark) {
+		this.login = login;
+		this.test = test;
+		setDate(date);
 		setMark(mark);
 	}
 
@@ -48,13 +57,16 @@ public class Result {
 	}
 
 	public void setDate(String date) {
-		SimpleDateFormat dateInput =new SimpleDateFormat(INPUT_DATE);
 		try {
-			this.date = dateInput.parse(date);
+			this.date = INPUT_DATE_FORMAT.parse(date);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new IllegalArgumentException();
 		}
+	}
+	
+	public String getStringDate () {
+		return OUTPUT_DATE_FORMAT.format(date);
 	}
 
 	public int getMark() {
@@ -66,7 +78,7 @@ public class Result {
 	}
 	
 	public String getStringMark() {
-		String stringMark = mark/Constants.TEN+Constants.POINT+mark%Constants.TEN;
+		String stringMark = (mark/Constants.TEN)+Constants.POINT+(mark%Constants.TEN);
 		return stringMark;
 	}
 	
@@ -77,8 +89,7 @@ public class Result {
 
 	@Override
 	public String toString() {
-		SimpleDateFormat dateOutput =new SimpleDateFormat(OUITPUT_DATE);
-		return login + Constants.DELIMETER + test + Constants.DELIMETER + dateOutput.format(date) + Constants.DELIMETER + getStringMark();
+		return login + Constants.DELIMETER + test + Constants.DELIMETER + getStringDate() + Constants.DELIMETER + getStringMark();
 	}
 	
 	
