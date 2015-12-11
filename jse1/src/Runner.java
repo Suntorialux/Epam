@@ -1,24 +1,17 @@
-import java.sql.SQLException;
-import java.sql.Statement;
 
-import by.gsu.epamlab.ConnectDB;
+import by.gsu.epamlab.IResultDAO;
+import by.gsu.epamlab.ResultImplCsv;
+import by.gsu.epamlab.ResultsLoader;
 
 public class Runner {
+	
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		try {
-			ConnectDB connect = ConnectDB.getConnectDB();
-			
-			
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		IResultDAO resultDAO = new ResultImplCsv("results");
+		ResultsLoader.loadResults(resultDAO);
+
 		
 		
 		
