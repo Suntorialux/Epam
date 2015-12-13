@@ -44,7 +44,7 @@ public class ConnectDB {
 				resultSet.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Error reading data from the database");
 			}
 		 }
 	 }
@@ -55,7 +55,7 @@ public class ConnectDB {
 				statement.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Statement not created");;
 			}
 		 }
 	 }
@@ -66,17 +66,8 @@ public class ConnectDB {
 				connection.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Connection not created");;
 			}
 		 }
 	 }
-	
-	
-	
-	
-
-	
-	
-	
-
 }

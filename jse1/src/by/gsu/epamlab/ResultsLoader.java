@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 
@@ -17,71 +18,74 @@ public class ResultsLoader {
 	
 	
 	
-	private static int getId (String name, String selectLogin, String insert) {
-		int loginId=0;
-		
-		
-		Connection connection = ConnectDB.getConnection();
-		PreparedStatement preparedStatement=null;
-		PreparedStatement preparedStatement2=null;
+	private static int getId (String name, PreparedStatement psSelect, PreparedStatement psInsert) throws SQLException {
+		int id;
 		ResultSet resultSet =null;
-		
-		try {
-			preparedStatement = connection.prepareStatement(selectLogin);
-			preparedStatement.setString(1, name);
-			resultSet=preparedStatement.executeQuery();
-			while(resultSet.next()) {
-				loginId = resultSet.getInt(1);
-			}
-			resultSet.close();
-			if(loginId==0) {
-				preparedStatement2=connection.prepareStatement(insert);
-				preparedStatement2.setString(1, name);
-				preparedStatement2.executeUpdate();
-				loginId=getId(name, selectLogin, insert);		
-			} 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			ConnectDB.closeResultSet(resultSet);
-			ConnectDB.closeStatement(preparedStatement);
-			ConnectDB.closeStatement(preparedStatement2);
-			ConnectDB.closeConnection(connection);	
+		psSelect.setString(1, name);
+		resultSet=psSelect.executeQuery();
+		if(resultSet.first()) {
+			id = resultSet.getInt(1);
+		} else {
+			id = insert(name, psInsert);
 		}
-		return loginId;
+		return id;
+	}
+	
+	private static int insert (String name, PreparedStatement psInsert) throws SQLException {
+		psInsert.setString(1, name);	
+		int idInsert = psInsert.executeUpdate();
+		if(idInsert==0) {
+			 throw new SQLException("Creating user failed, no rows affected.");
+		}
+		int generatedId;
+		ResultSet generatedKeys = psInsert.getGeneratedKeys();
+		if(generatedKeys.next()) {
+			generatedId=generatedKeys.getInt(1);
+		} else {
+			throw new SQLException("Creating user failed, no ID obtained.");
+		}
+		
+		
+		return generatedId;
 	}
 	
 	
 	public static void loadResults(IResultDAO reader) {
 		Connection connection = ConnectDB.getConnection();
-		PreparedStatement preparedStatement =null;
+		PreparedStatement psInsertResult = null;
+		PreparedStatement psSelectLogin = null;
+		PreparedStatement psInsertLogin = null;
+		PreparedStatement psSelectTest = null;
+		PreparedStatement psInsertTest = null;	
 		try {
-			preparedStatement = connection.prepareStatement(INSERT_RESULT);
+			psInsertResult = connection.prepareStatement(INSERT_RESULT);
+			psSelectLogin = connection.prepareStatement(SELECT_LOGIN_ID);
+			psSelectTest = connection.prepareStatement(SELECT_TEST_ID);
+			psInsertLogin = connection.prepareStatement(INSERT_LOGIN_ID, Statement.RETURN_GENERATED_KEYS);
+			psInsertTest = connection.prepareStatement(INSERT_TEST_ID, Statement.RETURN_GENERATED_KEYS);
 			while(reader.hasResult()) {
 				Result result = reader.nextResult();
 				String login = result.getLogin();
 				String test = result.getTest();
-				int idLogin = getId(login, SELECT_LOGIN_ID, INSERT_LOGIN_ID);
-				int idTest = getId(test, SELECT_TEST_ID, INSERT_TEST_ID);
-				preparedStatement.setInt(1, idLogin);
-				preparedStatement.setInt(2, idTest);
-				preparedStatement.setDate(3, result.getDate());
-				preparedStatement.setInt(4, result.getMark());
-				preparedStatement.executeUpdate();
+				int idLogin = getId(login, psSelectLogin, psInsertLogin);
+				int idTest = getId(test, psSelectTest, psInsertTest);
+				psInsertResult.setInt(1, idLogin);
+				psInsertResult.setInt(2, idTest);
+				psInsertResult.setDate(3, result.getDate());
+				psInsertResult.setInt(4, result.getMark());
+				psInsertResult.executeUpdate();
 			}
-			reader.closeReader();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			ConnectDB.closeStatement(preparedStatement);
+			reader.closeReader();
+			ConnectDB.closeStatement(psInsertLogin);
+			ConnectDB.closeStatement(psInsertResult);
+			ConnectDB.closeStatement(psInsertTest);
+			ConnectDB.closeStatement(psSelectLogin);
+			ConnectDB.closeStatement(psSelectTest);
 			ConnectDB.closeConnection(connection);
 		}
-				
-			
-		
-		
 	}
-
 }
