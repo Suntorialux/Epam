@@ -25,8 +25,8 @@ public class ResultImplCsv implements IResultDAO{
 	@Override
 	public Result nextResult() {
 		String [] data = this.sc.nextLine().split(";");
-		String login = data[0];
-		String name = data[1];
+		String login = data[0].trim();
+		String name = data[1].trim();
 		Date date = Date.valueOf(data[2]);
 		int mark = Integer.parseInt(data[3]);
 		Result result = new Result(login, name, date, mark);
