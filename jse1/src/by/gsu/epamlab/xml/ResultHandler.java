@@ -8,6 +8,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import by.gsu.epamlab.Result;
+
 public class ResultHandler extends DefaultHandler{
 	
 	private static final String NAME = "name";
@@ -18,19 +20,19 @@ public class ResultHandler extends DefaultHandler{
 		RESULTS,STUDENT,LOGIN,TESTS,TEST;
 	}
 	
-	private List<DecimalResult> results;
-	private DecimalResult result=null; 
+	private List<Result> results;
+	private Result result; 
 	private String login;
     private ResultEnum resultEnum;
 
 	
-	public List<DecimalResult> getResults() {
+	public List<Result> getResults() {
 		return results;
 	}
 	
 	public ResultHandler() {
 		// TODO Auto-generated constructor stub
-		this.results = new ArrayList<DecimalResult>();
+		this.results = new ArrayList<Result>();
 	}
 
 	@Override
@@ -38,15 +40,13 @@ public class ResultHandler extends DefaultHandler{
 		// TODO Auto-generated method stub
 		resultEnum = ResultEnum.valueOf(localName.toUpperCase());
 		if(resultEnum==ResultEnum.TEST) {
-			result = new DecimalResult();
-			result.setLogin(login);
 			String nameTest = attrs.getValue(NAME).trim();
-			result.setTest(nameTest);
 			String dateString = attrs.getValue(DATE).trim();
-			result.setDate(Date.valueOf(dateString));
+			Date date = Date.valueOf(dateString);
 			String markString = attrs.getValue(MARK).trim();
 			int mark = (int)(Double.parseDouble(markString)*10);
-			result.setMark(mark);
+			result=new DecimalResult(login, nameTest, date, mark);
+			
 			results.add(result);			
 		}
 	}

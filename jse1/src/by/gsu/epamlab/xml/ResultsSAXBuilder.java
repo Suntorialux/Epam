@@ -7,8 +7,10 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+import by.gsu.epamlab.Result;
+
 public class ResultsSAXBuilder {
-	private List<DecimalResult> results;
+	private List<Result> results;
 	private ResultHandler handler;
 	private XMLReader reader;
 	
@@ -25,7 +27,7 @@ public class ResultsSAXBuilder {
 		} 
 	}
 
-	public List<DecimalResult> getResults() {
+	public List<Result> getResults() {
 		return results;
 	}
 

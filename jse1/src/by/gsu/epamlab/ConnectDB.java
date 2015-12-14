@@ -20,7 +20,7 @@ public class ConnectDB {
 			Class.forName(DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 	
@@ -29,7 +29,7 @@ public class ConnectDB {
         try {
             connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
         } catch (SQLException e) {
-            System.out.println("ERROR: Unable to Connect to Database.");
+            System.err.println("ERROR: Unable to Connect to Database.");
         }
         return connection;
 	}
@@ -44,7 +44,7 @@ public class ConnectDB {
 				resultSet.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				System.out.println("Error reading data from the database");
+				System.err.println("Resource closing problem : " + e);
 			}
 		 }
 	 }
@@ -55,7 +55,7 @@ public class ConnectDB {
 				statement.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				System.out.println("Statement not created");;
+				System.err.println("Resource closing problem : " + e);
 			}
 		 }
 	 }
@@ -66,7 +66,7 @@ public class ConnectDB {
 				connection.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				System.out.println("Connection not created");;
+				System.err.println("Resource closing problem : " + e);
 			}
 		 }
 	 }

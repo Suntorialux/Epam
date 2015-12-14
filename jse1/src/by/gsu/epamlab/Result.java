@@ -13,11 +13,6 @@ public class Result {
 	private Date date;
 	private int mark;
 
-	public Result() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public Result(String login, String test, Date date, int mark) {
 		this.login = login;
 		this.test = test;
@@ -25,6 +20,13 @@ public class Result {
 		this.mark=mark;
 	}
 	
+	public Result(String login, String test, Date date) {
+		// TODO Auto-generated constructor stub
+		this.login = login;
+		this.test = test;
+		this.date = date;
+	}
+
 	public String getLogin() {
 		return login;
 	}

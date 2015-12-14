@@ -6,7 +6,7 @@ import by.gsu.epamlab.Result;
 
 public class ResultImplXml implements IResultDAO {
 
-	private Iterator<DecimalResult> iterator;
+	private Iterator<Result> iterator;
 	
 			
 	public ResultImplXml(String nameFile) {
