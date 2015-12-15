@@ -6,9 +6,9 @@ public class HalfResultFactory extends ResultFactory {
 
 		
 	@Override
-	public Result getResultFromFactory(String login, String test, Date date, String stringMark) {
+	public Result setResultFromFactory(String login, String test, Date date, String stringMark) {
 		// TODO Auto-generated method stub
-		int mark = (int)Double.parseDouble(stringMark)*2;
+		int mark = (int)(Double.parseDouble(stringMark)*2);
 		return new HalfResult(login, test, date, mark);
 	}
 
@@ -17,6 +17,14 @@ public class HalfResultFactory extends ResultFactory {
 		// TODO Auto-generated method stub
 		return new HalfResult(login, test, date, mark);
 	}
+
+	@Override
+	public IResultDAO getResultDaoFromFactory(ResultFactory resultFactory, String fileName) {
+		// TODO Auto-generated method stub
+		return new ResultImplCsv(fileName, resultFactory);
+	}
+	
+	
 	
 	
 

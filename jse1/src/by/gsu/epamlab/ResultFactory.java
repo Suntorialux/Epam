@@ -8,13 +8,13 @@ public class ResultFactory {
 		return new Result(login, test, date, mark);
 	}
 
-	public Result getResultFromFactory(String login, String test, Date date, String stringMark) {
+	public Result setResultFromFactory(String login, String test, Date date, String stringMark) {
 		int mark = Integer.parseInt(stringMark);
 		return new Result(login, test, date, mark);
 	}
 	
 	public IResultDAO getResultDaoFromFactory(ResultFactory resultFactory, String fileName) {
-		return new ResultImplCsv(resultFactory ,fileName);
+		return new ResultImplCsv(fileName, resultFactory);
 	}
 
 	

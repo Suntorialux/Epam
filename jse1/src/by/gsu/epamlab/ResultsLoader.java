@@ -15,6 +15,7 @@ public class ResultsLoader {
 	private final static String SELECT_TEST_ID="SELECT idTest FROM tests WHERE name = (?)" ;
 	private final static String INSERT_TEST_ID="INSERT INTO tests (name) VALUES (?)" ;
 	private final static String INSERT_RESULT = "INSERT INTO results(loginId, testId, dat, mark) VALUES (?,?,?,?)";
+	private final static String DELETE_RESULTS = "DELETE FROM results";
 	
 	
 	
@@ -56,8 +57,11 @@ public class ResultsLoader {
 		PreparedStatement psSelectLogin = null;
 		PreparedStatement psInsertLogin = null;
 		PreparedStatement psSelectTest = null;
-		PreparedStatement psInsertTest = null;	
+		PreparedStatement psInsertTest = null;
+		PreparedStatement psDeleteResults = null;
 		try {
+			psDeleteResults = connection.prepareStatement(DELETE_RESULTS);
+			psDeleteResults.executeUpdate();
 			psInsertResult = connection.prepareStatement(INSERT_RESULT);
 			psSelectLogin = connection.prepareStatement(SELECT_LOGIN_ID);
 			psSelectTest = connection.prepareStatement(SELECT_TEST_ID);
@@ -80,6 +84,7 @@ public class ResultsLoader {
 			e.printStackTrace();
 		} finally {
 			reader.closeReader();
+			ConnectDB.closeStatement(psDeleteResults);
 			ConnectDB.closeStatement(psInsertLogin);
 			ConnectDB.closeStatement(psInsertResult);
 			ConnectDB.closeStatement(psInsertTest);

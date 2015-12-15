@@ -19,7 +19,7 @@ public class DecimalResultFactory extends ResultFactory {
 	@Override
 	public IResultDAO getResultDaoFromFactory(ResultFactory resultFactory, String fileName) {
 		// TODO Auto-generated method stub
-		return new ResultImplXml(resultFactory, fileName);
+		return new ResultImplXml(fileName);
 	}
 	
 	

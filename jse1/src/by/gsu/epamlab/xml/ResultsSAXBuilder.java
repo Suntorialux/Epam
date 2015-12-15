@@ -10,6 +10,10 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import by.gsu.epamlab.Result;
 
 public class ResultsSAXBuilder {
+	
+	private static final String BEGIN_NAME_FILE = "src/";
+	private static final String END_NAME_FILE = ".xml";
+	
 	private List<Result> results;
 	private ResultHandler handler;
 	private XMLReader reader;
@@ -34,7 +38,7 @@ public class ResultsSAXBuilder {
 	public void buildListResults (String fileName) {
 	
 		try {
-			reader.parse(fileName);
+			reader.parse(BEGIN_NAME_FILE+fileName+END_NAME_FILE);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.err.print(e);
