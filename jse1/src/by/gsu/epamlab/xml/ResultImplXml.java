@@ -3,7 +3,7 @@ package by.gsu.epamlab.xml;
 import java.util.Iterator;
 
 import by.gsu.epamlab.IResultDAO;
-import by.gsu.epamlab.Result;
+import by.gsu.epamlab.results.Result;
 
 public class ResultImplXml implements IResultDAO {
 

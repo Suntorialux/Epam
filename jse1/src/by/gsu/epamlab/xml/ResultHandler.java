@@ -8,7 +8,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import by.gsu.epamlab.Result;
+import by.gsu.epamlab.results.DecimalResult;
+import by.gsu.epamlab.results.Result;
 
 public class ResultHandler extends DefaultHandler{
 	

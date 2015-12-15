@@ -7,7 +7,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import by.gsu.epamlab.Result;
+import by.gsu.epamlab.results.Result;
 
 public class ResultsSAXBuilder {
 	
@@ -41,10 +41,10 @@ public class ResultsSAXBuilder {
 			reader.parse(BEGIN_NAME_FILE+fileName+END_NAME_FILE);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			System.err.print(e);
+			System.err.println("File not found");
 		} catch (SAXException e) {
 			// TODO Auto-generated catch block
-			System.err.print(e);
+			System.err.println(e);
 		}
 		
 		results=handler.getResults();

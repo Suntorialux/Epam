@@ -1,6 +1,10 @@
-package by.gsu.epamlab;
+package by.gsu.epamlab.factories;
 
 import java.sql.Date;
+import by.gsu.epamlab.IResultDAO;
+import by.gsu.epamlab.ResultImplCsv;
+import by.gsu.epamlab.results.HalfResult;
+import by.gsu.epamlab.results.Result;
 
 public class HalfResultFactory extends ResultFactory {
 
@@ -25,7 +29,11 @@ public class HalfResultFactory extends ResultFactory {
 	}
 	
 	
-	
-	
+
+	@Override
+	protected double setMean(double mean) {
+		// TODO Auto-generated method stub
+		return mean/2;
+	}
 
 }

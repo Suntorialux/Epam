@@ -3,18 +3,18 @@
 	<student>
 		<login>cool</login>
 		<tests>
-			<test name="oop" date="2013-03-20" mark="8.5"/>
-			<test name="xml" date="2013-03-23" mark="7.3"/>
-			<test name="oop" date="2013-03-27" mark="9.4"/>
-			<test name="jdbc" date="2013-03-27" mark="6.8"/>
-			<test name="xml" date="2013-03-29" mark="7.9"/>
+			<test name="oop" date="2015-12-2" mark="8.5"/>
+			<test name="xml" date="2015-12-2" mark="7.3"/>
+			<test name="oop" date="2015-12-2" mark="9.4"/>
+			<test name="jdbc" date="2015-12-2" mark="6.8"/>
+			<test name="xml" date="2015-12-2" mark="7.9"/>
 		</tests>
 	</student>
 	<student>
 		<login>clever</login>
 		<tests>
-			<test name="oop" date="2013-03-27" mark="7.0"/>
-			<test name="collections" date="2013-03-28" mark="6.4"/>
+			<test name="oop" date="2015-12-2" mark="7.0"/>
+			<test name="collections" date="2015-12-2" mark="6.4"/>
 		</tests>
 	</student>
 </results>

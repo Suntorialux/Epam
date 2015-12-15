@@ -2,9 +2,9 @@ package by.gsu.epamlab;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class ConnectDB {
 	
@@ -49,10 +49,10 @@ public class ConnectDB {
 		 }
 	 }
 	 
-	 public static void closeStatement (Statement statement) {
-		 if(statement!=null) {
+	 public static void closePreparedStatement (PreparedStatement preparedStatement) {
+		 if(preparedStatement!=null) {
 			 try {
-				statement.close();
+				preparedStatement.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				System.err.println("Resource closing problem : " + e);

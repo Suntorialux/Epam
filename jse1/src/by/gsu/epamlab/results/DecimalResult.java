@@ -1,8 +1,6 @@
-package by.gsu.epamlab.xml;
+package by.gsu.epamlab.results;
 
 import java.sql.Date;
-
-import by.gsu.epamlab.Result;
 
 public class DecimalResult extends Result{
 	

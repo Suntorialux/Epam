@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.sql.Date;
 import java.util.Scanner;
 
+import by.gsu.epamlab.factories.ResultFactory;
+import by.gsu.epamlab.results.Result;
+
 public class ResultImplCsv implements IResultDAO{
 	
 	private static final String START_NAME_FILE = "src/";
@@ -20,7 +23,7 @@ public class ResultImplCsv implements IResultDAO{
 			this.sc = new Scanner(new File(START_NAME_FILE+nameFile+END_NAME_FILE));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			System.out.println("File not found");
+			System.err.println("File not found");
 		}
 		this.resultFactory = resultFactory;
 	}
@@ -39,7 +42,11 @@ public class ResultImplCsv implements IResultDAO{
 
 	@Override
 	public boolean hasResult() {
-		return sc.hasNext();
+		boolean isResult = false;
+		if(sc!=null) {
+			isResult = sc.hasNext();
+		}
+		return isResult;
 	}
 
 

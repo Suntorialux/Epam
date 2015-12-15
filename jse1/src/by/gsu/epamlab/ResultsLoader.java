@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import by.gsu.epamlab.results.Result;
+
 
 
 public class ResultsLoader {
@@ -84,12 +86,12 @@ public class ResultsLoader {
 			e.printStackTrace();
 		} finally {
 			reader.closeReader();
-			ConnectDB.closeStatement(psDeleteResults);
-			ConnectDB.closeStatement(psInsertLogin);
-			ConnectDB.closeStatement(psInsertResult);
-			ConnectDB.closeStatement(psInsertTest);
-			ConnectDB.closeStatement(psSelectLogin);
-			ConnectDB.closeStatement(psSelectTest);
+			ConnectDB.closePreparedStatement(psDeleteResults);
+			ConnectDB.closePreparedStatement(psInsertLogin);
+			ConnectDB.closePreparedStatement(psInsertResult);
+			ConnectDB.closePreparedStatement(psInsertTest);
+			ConnectDB.closePreparedStatement(psSelectLogin);
+			ConnectDB.closePreparedStatement(psSelectTest);
 			ConnectDB.closeConnection(connection);
 		}
 	}

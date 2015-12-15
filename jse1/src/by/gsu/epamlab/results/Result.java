@@ -1,4 +1,4 @@
-package by.gsu.epamlab;
+package by.gsu.epamlab.results;
 
 import java.text.SimpleDateFormat;
 import java.sql.Date;
