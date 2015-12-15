@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class ResultImplCsv implements IResultDAO{
 	
 	private Scanner sc;
+	private ResultFactory resultFactory;
 	
-	
-	public ResultImplCsv(String nameFile) {
+	public ResultImplCsv(ResultFactory resultFactory, String nameFile) {
 
 		try {
 			this.sc = new Scanner(new File("src/"+nameFile+".csv"));
@@ -18,7 +18,7 @@ public class ResultImplCsv implements IResultDAO{
 			// TODO Auto-generated catch block
 			System.out.println("File not found");
 		}
-			
+		this.resultFactory = resultFactory;
 	}
 	
 	
@@ -26,19 +26,16 @@ public class ResultImplCsv implements IResultDAO{
 	public Result nextResult() {
 		String [] data = this.sc.nextLine().split(";");
 		String login = data[0].trim();
-		String name = data[1].trim();
+		String test = data[1].trim();
 		Date date = Date.valueOf(data[2]);
 		String stringMark = data[3];
-		Result result = ResultFactory.getResultFromFactory(login, name, date, stringMark);
+		Result result = resultFactory.getResultFromFactory(login, test, date, stringMark); 
 		return result;
 	}
 
 	@Override
 	public boolean hasResult() {
-		if (this.sc.hasNext()) {
-			return true;
-		}
-		return false;
+		return sc.hasNext();
 	}
 
 

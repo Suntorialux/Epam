@@ -1,13 +1,13 @@
-import by.gsu.epamlab.IResultDAO;
-import by.gsu.epamlab.ResultsLoader;
-import by.gsu.epamlab.xml.ResultImplXml;
+import by.gsu.epamlab.DecimalResultFactory;
+import by.gsu.epamlab.ResultFactory;
 
 public class RunnerDecimal {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		IResultDAO resultDAO = new ResultImplXml("src/results.xml");
-		ResultsLoader.loadResults(resultDAO);
+		
+		ResultFactory resultFactory = new DecimalResultFactory();
+		RunnerLogic.logic(resultFactory, "src/results.xml");
 		
 		
 		
