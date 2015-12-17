@@ -12,39 +12,33 @@ public class ConnectDB {
 	private static final String DB_URL = "jdbc:mysql://localhost/results"; 
 	private static final String USER = "jse";
 	private static final String PASSWORD = "jse";
+	
+	private static final String ERROR_MESSAGE_RS = "ResultSet closing problem : "; 
+	private static final String ERROR_MESSAGE_PS = "PreparedStatement closing problem : "; 
+	private static final String ERROR_MESSAGE_CON = "Connection closing problem : "; 
 		
-	private static ConnectDB instance = new ConnectDB();
+	private static Connection connection;
 		
 	private ConnectDB() {
-		try {
-			Class.forName(DRIVER_NAME);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.getMessage();
-		}
+		
 	}
 	
-	private Connection createConnection () {
-		Connection connection = null;
-        try {
-            connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
-        } catch (SQLException e) {
-            System.err.println("ERROR: Unable to Connect to Database.");
-        }
+	public static Connection getConnection () throws SQLException, ClassNotFoundException {
+		if (connection==null||connection.isClosed()) {
+			Class.forName(DRIVER_NAME);
+			connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+		}
         return connection;
 	}
 	
-	 public static Connection getConnection() {
-	        return instance.createConnection();
-	    }
-	 
+	
 	 public static void closeResultSet(ResultSet resultSet) {
 		 if(resultSet!=null) {
 			 try {
 				resultSet.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				System.err.println("Resource closing problem : " + e);
+				System.err.println(ERROR_MESSAGE_RS + e);
 			}
 		 }
 	 }
@@ -55,7 +49,7 @@ public class ConnectDB {
 				preparedStatement.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				System.err.println("Resource closing problem : " + e);
+				System.err.println(ERROR_MESSAGE_PS + e);
 			}
 		 }
 	 }
@@ -66,7 +60,7 @@ public class ConnectDB {
 				connection.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				System.err.println("Resource closing problem : " + e);
+				System.err.println(ERROR_MESSAGE_CON + e);
 			}
 		 }
 	 }

@@ -1,4 +1,3 @@
-
 import by.gsu.epamlab.factories.ResultFactory;
 
 public class RunnerInt {

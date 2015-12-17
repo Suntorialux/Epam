@@ -1,9 +1,10 @@
 package by.gsu.epamlab.factories;
 
+import java.io.IOException;
 import java.sql.Date;
 import by.gsu.epamlab.IResultDAO;
-import by.gsu.epamlab.results.DecimalResult;
-import by.gsu.epamlab.results.Result;
+import by.gsu.epamlab.beans.DecimalResult;
+import by.gsu.epamlab.beans.Result;
 import by.gsu.epamlab.xml.ResultImplXml;
 
 public class DecimalResultFactory extends ResultFactory {
@@ -15,7 +16,7 @@ public class DecimalResultFactory extends ResultFactory {
 	}
 
 	@Override
-	public IResultDAO getResultDaoFromFactory(ResultFactory resultFactory, String fileName) {
+	public IResultDAO getResultDaoFromFactory(ResultFactory resultFactory, String fileName) throws IOException {
 		// TODO Auto-generated method stub
 		return new ResultImplXml(fileName);
 	}

@@ -1,18 +1,19 @@
-package by.gsu.epamlab.results;
+package by.gsu.epamlab.beans;
 
 import java.text.SimpleDateFormat;
+
 import java.sql.Date;
 
 public class Result {
 	
-	//private final static SimpleDateFormat INPUT_DATE_FORMAT = new SimpleDateFormat("yyyy-mm-dd");
 	private final static SimpleDateFormat OUTPUT_DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
+	private final static String DELIMETER = ";";
 	
 	private String login;
 	private String test;
 	private Date date;
 	private int mark;
-
+		
 	public Result(String login, String test, Date date, int mark) {
 		this.login = login;
 		this.test = test;
@@ -20,11 +21,11 @@ public class Result {
 		this.mark=mark;
 	}
 	
-	public Result(String login, String test, Date date) {
-		// TODO Auto-generated constructor stub
+	public Result(String login, String test, Date date, String stringMark) {
 		this.login = login;
 		this.test = test;
 		this.date = date;
+		setMark(stringMark);
 	}
 
 	public String getLogin() {
@@ -51,17 +52,6 @@ public class Result {
 		this.date = date;
 	}
 
-	
-/*	
-	public void setDate(String date) {
-		try {
-			this.date = new Date(INPUT_DATE_FORMAT.parse(date).getTime());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			throw new IllegalArgumentException();
-		}
-	}
-	 */
 	public String getStringDate () {
 		return OUTPUT_DATE_FORMAT.format(date);
 	}
@@ -73,18 +63,18 @@ public class Result {
 	public void setMark(int mark) {
 		this.mark = mark;
 	}
+	
+	public void setMark (String stringMark) {
+		this.mark=Integer.parseInt(stringMark);
+	}
 		
 	public String getStringMark() {
 		String stringMark = Integer.toString(mark);
 		return stringMark;
 	}
-/*	
-	public void setMark (String mark) {
-			this.mark=Integer.parseInt(mark);
-	}  */
-	
+		
 	@Override
 	public String toString() {
-		return login + ";" + test + ";" + getStringDate() + ";" + getStringMark();
+		return login + DELIMETER + test + DELIMETER + getStringDate() + DELIMETER + getStringMark();
 	}
 }

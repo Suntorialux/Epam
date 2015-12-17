@@ -6,11 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import by.gsu.epamlab.results.Result;
+import by.gsu.epamlab.beans.Result;
 
 
 
 public class ResultsLoader {
+	
+	private static final int LOGIN_IND = 1;
+	private static final int TEST_IND = 2;
+	private static final int DATE_IND = 3;
+	private static final int MARK_IND = 4;
 	
 	private final static String SELECT_LOGIN_ID="SELECT idLogin FROM logins WHERE name = (?)" ;
 	private final static String INSERT_LOGIN_ID="INSERT INTO logins (name) VALUES (?)" ;
@@ -24,10 +29,10 @@ public class ResultsLoader {
 	private static int getId (String name, PreparedStatement psSelect, PreparedStatement psInsert) throws SQLException {
 		int id;
 		ResultSet resultSet =null;
-		psSelect.setString(1, name);
+		psSelect.setString(LOGIN_IND, name);
 		resultSet=psSelect.executeQuery();
 		if(resultSet.first()) {
-			id = resultSet.getInt(1);
+			id = resultSet.getInt(LOGIN_IND);
 		} else {
 			id = insert(name, psInsert);
 		}
@@ -35,7 +40,7 @@ public class ResultsLoader {
 	}
 	
 	private static int insert (String name, PreparedStatement psInsert) throws SQLException {
-		psInsert.setString(1, name);	
+		psInsert.setString(LOGIN_IND, name);	
 		int idInsert = psInsert.executeUpdate();
 		if(idInsert==0) {
 			 throw new SQLException("Creating user failed, no rows affected.");
@@ -43,7 +48,7 @@ public class ResultsLoader {
 		int generatedId;
 		ResultSet generatedKeys = psInsert.getGeneratedKeys();
 		if(generatedKeys.next()) {
-			generatedId=generatedKeys.getInt(1);
+			generatedId=generatedKeys.getInt(LOGIN_IND);
 		} else {
 			throw new SQLException("Creating user failed, no ID obtained.");
 		}
@@ -54,7 +59,7 @@ public class ResultsLoader {
 	
 	
 	public static void loadResults(IResultDAO reader) {
-		Connection connection = ConnectDB.getConnection();
+		Connection connection = null;
 		PreparedStatement psInsertResult = null;
 		PreparedStatement psSelectLogin = null;
 		PreparedStatement psInsertLogin = null;
@@ -62,6 +67,7 @@ public class ResultsLoader {
 		PreparedStatement psInsertTest = null;
 		PreparedStatement psDeleteResults = null;
 		try {
+			connection = ConnectDB.getConnection();
 			psDeleteResults = connection.prepareStatement(DELETE_RESULTS);
 			psDeleteResults.executeUpdate();
 			psInsertResult = connection.prepareStatement(INSERT_RESULT);
@@ -75,16 +81,19 @@ public class ResultsLoader {
 				String test = result.getTest();
 				int idLogin = getId(login, psSelectLogin, psInsertLogin);
 				int idTest = getId(test, psSelectTest, psInsertTest);
-				psInsertResult.setInt(1, idLogin);
-				psInsertResult.setInt(2, idTest);
-				psInsertResult.setDate(3, result.getDate());
-				psInsertResult.setInt(4, result.getMark());
+				psInsertResult.setInt(LOGIN_IND, idLogin);
+				psInsertResult.setInt(TEST_IND, idTest);
+				psInsertResult.setDate(DATE_IND, result.getDate());
+				psInsertResult.setInt(MARK_IND, result.getMark());
 				psInsertResult.executeUpdate();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}   finally {
 			reader.closeReader();
 			ConnectDB.closePreparedStatement(psDeleteResults);
 			ConnectDB.closePreparedStatement(psInsertLogin);

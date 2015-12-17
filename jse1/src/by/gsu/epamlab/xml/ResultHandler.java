@@ -8,8 +8,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import by.gsu.epamlab.results.DecimalResult;
-import by.gsu.epamlab.results.Result;
+import by.gsu.epamlab.beans.DecimalResult;
+import by.gsu.epamlab.beans.Result;
 
 public class ResultHandler extends DefaultHandler{
 	
@@ -45,10 +45,8 @@ public class ResultHandler extends DefaultHandler{
 			String dateString = attrs.getValue(DATE).trim();
 			Date date = Date.valueOf(dateString);
 			String markString = attrs.getValue(MARK).trim();
-			int mark = (int)(Double.parseDouble(markString)*10);
-			result=new DecimalResult(login, nameTest, date, mark);
-			
-			results.add(result);			
+			result = new DecimalResult(login, nameTest, date, markString);
+			results.add(result);	
 		}
 	}
 
