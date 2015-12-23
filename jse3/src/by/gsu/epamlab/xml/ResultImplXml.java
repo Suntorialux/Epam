@@ -15,7 +15,7 @@ public class ResultImplXml implements IResultDAO {
 	
 	private static final String BEGIN_NAME_FILE = "src/";
 	private static final String END_NAME_FILE = ".xml";
-
+	
 	private Iterator<Result> iterator;
 	
 			

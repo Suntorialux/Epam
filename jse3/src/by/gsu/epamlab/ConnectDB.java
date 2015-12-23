@@ -19,7 +19,7 @@ public class ConnectDB {
 	private static final String ERROR_MESSAGE_PS = "PreparedStatement closing problem : "; 
 	private static final String ERROR_MESSAGE_CON = "Connection closing problem : "; 
 		
-	private static Connection connection ;
+	private static volatile Connection connection ;
 		
 	private ConnectDB () {}
 	

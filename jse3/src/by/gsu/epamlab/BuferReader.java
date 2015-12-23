@@ -1,24 +1,32 @@
 package by.gsu.epamlab;
 
-public class BuferReader implements Runnable{
+import by.gsu.epamlab.beans.Result;
+
+public class BuferReader implements IResultDAO {
 
 	private Bufer bufer;
-	private IResultDAO reader;
+
 	
-	public BuferReader(Bufer bufer, IResultDAO reader) {
+	public BuferReader(Bufer bufer) {
 		this.bufer = bufer;
-		this.reader = reader;
 	}
 
 	@Override
-	public void run() {
+	public Result nextResult() {
 		// TODO Auto-generated method stub
-		while(reader.hasResult()) {
-			
-			bufer.setResult(reader.nextResult());
-		}
 		
-		
+		return bufer.getResult();
 	}
 
+	@Override
+	public boolean hasResult() {
+		// TODO Auto-generated method stub
+		return bufer.hasResult();
+	}
+
+	@Override
+	public void closeReader() {
+		// TODO Auto-generated method stub
+		
+	}
 }

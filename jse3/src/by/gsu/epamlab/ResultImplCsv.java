@@ -9,7 +9,7 @@ import java.util.Scanner;
 import by.gsu.epamlab.beans.Result;
 import by.gsu.epamlab.factories.ResultFactory;
 
-public class ResultImplCsv implements IResultDAO, Runnable{
+public class ResultImplCsv implements IResultDAO {
 	
 	private static final String START_NAME_FILE = "src/";
 	private static final String END_NAME_FILE = ".csv";
@@ -22,7 +22,7 @@ public class ResultImplCsv implements IResultDAO, Runnable{
 	
 	private Scanner sc;
 	private ResultFactory resultFactory;
-	private Bufer bufer;
+		
 		
 	public ResultImplCsv(String nameFile, ResultFactory resultFactory) throws IOException  {
 
@@ -37,7 +37,7 @@ public class ResultImplCsv implements IResultDAO, Runnable{
 	
 	
 	@Override
-	public Result nextResult() {
+	public synchronized Result nextResult() {
 			String [] data = sc.nextLine().split(SEPARATOR);
 			String login = data[LOGIN_IND].trim();
 			String test = data[TEST_IND].trim();
@@ -48,7 +48,7 @@ public class ResultImplCsv implements IResultDAO, Runnable{
 	}
 
 	@Override
-	public boolean hasResult() {
+	public synchronized boolean hasResult() {
 		boolean isResult = false;
 		if(sc!=null) {
 			isResult = sc.hasNext();
@@ -58,15 +58,10 @@ public class ResultImplCsv implements IResultDAO, Runnable{
 
 
 	@Override
-	public void closeReader() {
+	public synchronized void closeReader() {
 		if (sc!=null) 
 			sc.close();		
 	}
 
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		bufer.setResult(nextResult());
-	}
 }

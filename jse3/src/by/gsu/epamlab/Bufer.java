@@ -5,7 +5,7 @@ import by.gsu.epamlab.beans.Result;
 public class Bufer {
 	
 	private Result result;
-	private boolean empty = true;
+	private volatile boolean empty = true;
 			
 	public synchronized Result getResult() {
        
@@ -17,7 +17,7 @@ public class Bufer {
         empty = true;
         
         notifyAll();
-        
+        System.out.println("get - > "+ result);
         return result;
     }
 	
@@ -32,9 +32,14 @@ public class Bufer {
         empty = false;
        
         this.result = result;
+        System.out.println("SET -> " + result);
         
         notifyAll();
     }
+	
+	public synchronized boolean hasResult () {
+		return !empty;
+	}
 	
 	
 

@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -10,9 +9,6 @@ import java.util.List;
 import java.util.ListIterator;
 
 import by.gsu.epamlab.ConnectDB;
-import by.gsu.epamlab.IResultDAO;
-import by.gsu.epamlab.ResultImplCsv;
-import by.gsu.epamlab.ResultsLoader;
 import by.gsu.epamlab.beans.Result;
 import by.gsu.epamlab.exceptions.ConnectionException;
 import by.gsu.epamlab.factories.ResultFactory;
@@ -41,16 +37,10 @@ public class RunnerLogic {
 	
 	
 	
-	public static void logic(ResultFactory resultFactory, String fileName) {
+	public static void logic(ResultFactory resultFactory/* String fileName */) {
 		        
         try{
-			try {
-				IResultDAO reader = resultFactory.getResultDaoFromFactory(fileName);
-				ResultsLoader.loadResults(reader);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.err.println("file is not found and the base has not been updated");
-			}
+			
 			printResults(resultFactory);
 			printAverageMarks(resultFactory);
 			
