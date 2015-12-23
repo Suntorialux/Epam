@@ -4,41 +4,48 @@ import by.gsu.epamlab.beans.Result;
 
 public class Bufer {
 	
-	private Result result;
-	private volatile boolean empty = true;
-			
+	private Result result=null;
+	
 	public synchronized Result getResult() {
        
-        while (empty) {
-            try {
-                wait();
-            } catch (InterruptedException e) {}
-        }
-        empty = true;
-        
-        notifyAll();
-        System.out.println("get - > "+ result);
-        return result;
+        while (this.result==null) {
+           try {
+			this.wait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+           }
+        Result getResult = this.result;
+        this.result = null;
+        System.out.println("get - > "+ getResult);
+        this.notifyAll();
+        return getResult;
     }
 	
-	public synchronized void setResult (Result result) {
+	public synchronized void setResult (Result newResult) {
        
-        while (!empty) {
-            try { 
-                wait();
-            } catch (InterruptedException e) {}
+        while (this.result!=null) {
+           
+                try {
+					this.wait();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
         }
-        
-        empty = false;
-       
-        this.result = result;
+             
+        this.result = newResult;
         System.out.println("SET -> " + result);
-        
-        notifyAll();
+        this.notifyAll();
     }
 	
 	public synchronized boolean hasResult () {
-		return !empty;
+		boolean   isResult = false;
+		if(this.result!=null) {
+			isResult = true;
+		}
+		return isResult;
 	}
 	
 	

@@ -24,6 +24,12 @@ public class RunnerInt {
 					// TODO Auto-generated method stub
 					while(readerCSV.hasResult()) {
 						bufer.setResult(readerCSV.nextResult());
+						try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 									
 				}
@@ -32,10 +38,11 @@ public class RunnerInt {
 			Thread loader = new Thread(runnable);
 			loader.start();
 			
-			IResultDAO reader = new BuferReader(bufer);		
+			IResultDAO reader = new BuferReader(bufer, readerCSV);	
+			
 			ResultsLoader.loadResults(reader);
 		
-			RunnerLogic.logic(resultFactory);
+			
 		
 		} catch (ConnectionException e) {
 			// TODO Auto-generated catch block

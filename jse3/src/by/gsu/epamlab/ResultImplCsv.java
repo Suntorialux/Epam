@@ -37,7 +37,7 @@ public class ResultImplCsv implements IResultDAO {
 	
 	
 	@Override
-	public synchronized Result nextResult() {
+	public Result nextResult() {
 			String [] data = sc.nextLine().split(SEPARATOR);
 			String login = data[LOGIN_IND].trim();
 			String test = data[TEST_IND].trim();
@@ -48,7 +48,7 @@ public class ResultImplCsv implements IResultDAO {
 	}
 
 	@Override
-	public synchronized boolean hasResult() {
+	public boolean hasResult() {
 		boolean isResult = false;
 		if(sc!=null) {
 			isResult = sc.hasNext();
@@ -58,7 +58,7 @@ public class ResultImplCsv implements IResultDAO {
 
 
 	@Override
-	public synchronized void closeReader() {
+	public void closeReader() {
 		if (sc!=null) 
 			sc.close();		
 	}

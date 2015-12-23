@@ -5,23 +5,28 @@ import by.gsu.epamlab.beans.Result;
 public class BuferReader implements IResultDAO {
 
 	private Bufer bufer;
+	private IResultDAO reader;
 
 	
-	public BuferReader(Bufer bufer) {
+	public BuferReader(Bufer bufer, IResultDAO reader) {
 		this.bufer = bufer;
+		this.reader = reader;
 	}
 
 	@Override
-	public Result nextResult() {
+	public synchronized Result nextResult() {
 		// TODO Auto-generated method stub
-		
 		return bufer.getResult();
 	}
 
 	@Override
-	public boolean hasResult() {
+	public synchronized boolean hasResult() {
 		// TODO Auto-generated method stub
-		return bufer.hasResult();
+		boolean isResult = false;
+		if(reader.hasResult()) {
+			isResult = true;
+		}
+		return isResult;
 	}
 
 	@Override
