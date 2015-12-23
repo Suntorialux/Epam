@@ -15,7 +15,9 @@ public class Bufer {
             } catch (InterruptedException e) {}
         }
         empty = true;
+        
         notifyAll();
+        
         return result;
     }
 	

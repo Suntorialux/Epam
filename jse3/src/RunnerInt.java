@@ -7,6 +7,8 @@ public class RunnerInt {
 		final String FILE_NAME = "results";	
 			
 		ResultFactory resultFactory = new ResultFactory();
+		
+		
 		RunnerLogic.logic(resultFactory, FILE_NAME);
 	}
 }
