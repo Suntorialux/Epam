@@ -6,9 +6,9 @@ public class BuferReader implements IResultDAO {
 
 	private Bufer bufer;
 	private IResultDAO reader;
-
 	
-	public BuferReader(Bufer bufer, IResultDAO reader) {
+	
+	public BuferReader(IResultDAO reader, Bufer bufer) {
 		this.bufer = bufer;
 		this.reader = reader;
 	}
@@ -16,6 +16,12 @@ public class BuferReader implements IResultDAO {
 	@Override
 	public synchronized Result nextResult() {
 		// TODO Auto-generated method stub
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 		return bufer.getResult();
 	}
 
@@ -23,7 +29,7 @@ public class BuferReader implements IResultDAO {
 	public synchronized boolean hasResult() {
 		// TODO Auto-generated method stub
 		boolean isResult = false;
-		if(reader.hasResult()) {
+		if(reader.hasResult()||bufer.hasResult()) {
 			isResult = true;
 		}
 		return isResult;

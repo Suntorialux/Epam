@@ -58,8 +58,10 @@ public class ResultsLoader {
 	}
 	
 	
-	public static synchronized void loadResults(IResultDAO reader) throws ConnectionException {
+	public static void loadResults(IResultDAO reader) throws ConnectionException {
 		Connection connection = ConnectDB.getConnection();
+		//System.out.println("loader");
+		
 		PreparedStatement psInsertResult = null;
 		PreparedStatement psSelectLogin = null;
 		PreparedStatement psInsertLogin = null;

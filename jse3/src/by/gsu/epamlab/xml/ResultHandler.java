@@ -53,6 +53,12 @@ public class ResultHandler extends DefaultHandler{
 	}
 
 	@Override
+	public void endDocument() throws SAXException {
+		// TODO Auto-generated method stub
+		super.endDocument();
+	}
+
+	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		// TODO Auto-generated method stub
 		if(resultEnum==ResultEnum.LOGIN) {
