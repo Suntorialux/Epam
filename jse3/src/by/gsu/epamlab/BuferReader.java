@@ -14,19 +14,14 @@ public class BuferReader implements IResultDAO {
 	}
 
 	@Override
-	public synchronized Result nextResult() {
+	public Result nextResult() {
 		// TODO Auto-generated method stub
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+		
 		return bufer.getResult();
 	}
 
 	@Override
-	public synchronized boolean hasResult() {
+	public boolean hasResult() {
 		// TODO Auto-generated method stub
 		boolean isResult = false;
 		if(reader.hasResult()||bufer.hasResult()) {

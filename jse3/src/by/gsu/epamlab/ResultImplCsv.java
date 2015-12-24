@@ -22,10 +22,11 @@ public class ResultImplCsv implements IResultDAO {
 	
 	private Scanner sc;
 	private ResultFactory resultFactory;
+	private Bufer bufer;
 
 		
 		
-	public ResultImplCsv(String nameFile, ResultFactory resultFactory) throws IOException  {
+	public ResultImplCsv(String nameFile, ResultFactory resultFactory, Bufer bufer) throws IOException  {
 
 		try {
 			this.sc = new Scanner(new File(START_NAME_FILE+nameFile+END_NAME_FILE));
@@ -34,24 +35,24 @@ public class ResultImplCsv implements IResultDAO {
 			throw new IOException();
 		}
 		this.resultFactory = resultFactory;
-
+		this.bufer = bufer;
 	}
 	
 	
 	@Override
-	public synchronized Result nextResult() {
+	public Result nextResult() {
 			String [] data = sc.nextLine().split(SEPARATOR);
 			String login = data[LOGIN_IND].trim();
 			String test = data[TEST_IND].trim();
 			Date date = Date.valueOf(data[DATE_IND]);
 			String stringMark = data[MARK_IND];
 			Result result = this.resultFactory.setResultFromFactory(login, test, date, stringMark); 
-			System.out.println("setresult");
+			bufer.setResult(result);
 			return result;
 	}
 
 	@Override
-	public synchronized boolean hasResult() {
+	public boolean hasResult() {
 		boolean isResult = false;
 		if(sc!=null) {
 			isResult = sc.hasNext();

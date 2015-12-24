@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.Locale;
 
+import by.gsu.epamlab.Bufer;
 import by.gsu.epamlab.IResultDAO;
 import by.gsu.epamlab.ResultImplCsv;
 import by.gsu.epamlab.beans.Result;
@@ -18,8 +19,8 @@ public class ResultFactory {
 		return new Result(login, test, date, stringMark);
 	}
 	
-	public IResultDAO getResultDaoFromFactory(String fileName) throws IOException {
-		return new ResultImplCsv(fileName, this);
+	public IResultDAO getResultDaoFromFactory(String fileName, Bufer bufer) throws IOException {
+		return new ResultImplCsv(fileName, this, bufer);
 	}
 	
 	protected double setMean(double mean) {

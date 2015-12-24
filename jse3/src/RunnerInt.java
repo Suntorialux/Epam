@@ -18,11 +18,9 @@ public class RunnerInt {
 		final Bufer bufer = new Bufer();
 		try {
 				
-			final IResultDAO readerCSV = resultFactory.getResultDaoFromFactory(FILE_NAME);
-		
-				
-				
-			Runnable runnable = new BuferRunnable(bufer, readerCSV);
+			final IResultDAO readerCSV = resultFactory.getResultDaoFromFactory(FILE_NAME, bufer);
+			
+			Runnable runnable = new BuferRunnable(readerCSV);
 		
 			Thread loader = new Thread(runnable);
 			loader.start();
@@ -32,8 +30,8 @@ public class RunnerInt {
 			ResultsLoader.loadResults(reader);
 			System.out.println("exit");
 			
-	
-		
+			RunnerLogic.logic(resultFactory);
+				
 		} catch (ConnectionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
