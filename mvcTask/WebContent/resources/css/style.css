@@ -1,0 +1,14 @@
+div{
+	display: inline-block;
+	margin-left: 20px;
+	margin-top:20px;
+}
+
+ul li {
+	display: inline;
+	padding-left: 10px;
+}
+
+.reference {
+	display: inline;
+}
