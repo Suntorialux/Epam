@@ -19,9 +19,9 @@ import by.gsu.epamlab.model.beans.ConstantsSQL;
  * @author Yahorau Andrei
  *
  */
-public class ManagerDB {
+abstract public class AbstractManagerDB {
 
-	public static Connection getConnection() throws NamingException, SQLException {
+	protected Connection getConnection() throws NamingException, SQLException {
 		Connection connection;
 		Context initContext = new InitialContext();
 		Context envContext = (Context) initContext.lookup(ConstantsSQL.DB_CONTEXT);
@@ -31,7 +31,7 @@ public class ManagerDB {
 
 	}
 
-	public static void closeResultSet(ResultSet... resultSets) {
+	protected void closeResultSet(ResultSet... resultSets) {
 		for (ResultSet rs : resultSets) {
 			if (rs != null) {
 				try {
@@ -43,7 +43,7 @@ public class ManagerDB {
 		}
 	}
 
-	public static void closeStatement(Statement... statement) {
+	protected void closeStatement(Statement... statement) {
 		for (Statement st : statement) {
 			if (st != null) {
 				try {
@@ -55,7 +55,7 @@ public class ManagerDB {
 		}
 	}
 
-	public static void closeConnection(Connection connection) {
+	protected void closeConnection(Connection connection) {
 		if (connection != null) {
 			try {
 				connection.close();
@@ -65,7 +65,7 @@ public class ManagerDB {
 		}
 	}
 
-	public static void printSQLException(SQLException ex) {
+	private void printSQLException(SQLException ex) {
 		for (Throwable e : ex) {
 			if (e instanceof SQLException) {
 				e.printStackTrace(System.err);

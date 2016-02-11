@@ -58,7 +58,7 @@ public class RegistrationController extends HttpServlet {
 
 			HttpSession session = request.getSession();
 			session.setAttribute(Constants.USER, user);
-			jump(Constants.FOLDER_VIEWS + Constants.PAGE_MAIN, request, response);
+			jump("/main", request, response);
 
 		} catch (ValidationException | UserException e) {
 			jump(Constants.FOLDER_VIEWS + Constants.PAGE_REGISTRATION, e.getMessage(), request, response);

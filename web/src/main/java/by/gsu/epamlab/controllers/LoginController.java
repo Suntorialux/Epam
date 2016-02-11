@@ -55,7 +55,7 @@ public class LoginController extends HttpServlet {
 			User user = userDAO.getUser(login.trim(), password.trim());
 			HttpSession session = request.getSession();
 			session.setAttribute(Constants.USER, user);
-			jump(Constants.FOLDER_VIEWS + Constants.PAGE_MAIN, request, response);
+			jump("/main", request, response);
 		} catch (ValidationException | UserException e) {
 			jump(Constants.FOLDER_VIEWS + Constants.PAGE_LOGIN, e.getMessage(), request, response);
 		}

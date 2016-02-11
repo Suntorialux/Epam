@@ -6,6 +6,11 @@
 	version="3.1">
 
 	<display-name>web</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+
 	<resource-ref>
 		<description>DB Connection</description>
 		<res-ref-name>jdbc/WebDB</res-ref-name>

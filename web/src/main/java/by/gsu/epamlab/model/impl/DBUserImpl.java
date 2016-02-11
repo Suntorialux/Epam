@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 import javax.naming.NamingException;
 
-import by.gsu.epamlab.model.DB.ManagerDB;
+import by.gsu.epamlab.model.DB.AbstractManagerDB;
 import by.gsu.epamlab.model.beans.Constants;
 import by.gsu.epamlab.model.beans.ConstantsSQL;
 import by.gsu.epamlab.model.beans.Role;
@@ -22,7 +22,7 @@ import by.gsu.epamlab.model.ifaces.IUserDAO;
  * @author Andrei Yahorau
  *
  */
-public class DBUserImpl implements IUserDAO {
+public class DBUserImpl extends AbstractManagerDB implements IUserDAO {
 
 	private final static Object lock = new Object();
 
@@ -41,7 +41,7 @@ public class DBUserImpl implements IUserDAO {
 		ResultSet resultSet = null;
 
 		try {
-			connection = ManagerDB.getConnection();
+			connection = getConnection();
 			preparedStatement = connection.prepareStatement(ConstantsSQL.SQL_GET_LOGIN_AND_PASSWORD);
 			preparedStatement.setString(ConstantsSQL.LOGIN_INDEX, login);
 			preparedStatement.setString(ConstantsSQL.PASSWORD_INDEX, password);
@@ -57,9 +57,9 @@ public class DBUserImpl implements IUserDAO {
 			// TODO Auto-generated catch block
 			throw new UserException(e.getMessage());
 		} finally {
-			ManagerDB.closeResultSet(resultSet);
-			ManagerDB.closeStatement(preparedStatement);
-			ManagerDB.closeConnection(connection);
+			closeResultSet(resultSet);
+			closeStatement(preparedStatement);
+			closeConnection(connection);
 		}
 	}
 
@@ -76,30 +76,36 @@ public class DBUserImpl implements IUserDAO {
 		PreparedStatement preparedStatement = null;
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
+		User user = null;
 		try {
-			connection = ManagerDB.getConnection();
+			connection = getConnection();
+
+			preparedStatement = connection.prepareStatement(ConstantsSQL.SQL_GET_LOGIN);
+			preparedStatement.setString(ConstantsSQL.LOGIN_INDEX, login);
+			ps = connection.prepareStatement(ConstantsSQL.SQL_ADD_USER);
+			ps.setString(ConstantsSQL.LOGIN_INDEX, login);
+			ps.setString(ConstantsSQL.PASSWORD_INDEX, password);
+			ps.setString(ConstantsSQL.ROLE_INDEX, Role.USER.toString().toUpperCase());
 			synchronized (lock) {
-				preparedStatement = connection.prepareStatement(ConstantsSQL.SQL_GET_LOGIN);
-				preparedStatement.setString(ConstantsSQL.LOGIN_INDEX, login);
 				resultSet = preparedStatement.executeQuery();
 				if (!resultSet.next()) {
-					ps = connection.prepareStatement(ConstantsSQL.SQL_ADD_USER);
-					ps.setString(ConstantsSQL.LOGIN_INDEX, login);
-					ps.setString(ConstantsSQL.PASSWORD_INDEX, password);
-					ps.setString(ConstantsSQL.ROLE_INDEX, Role.USER.toString().toUpperCase());
 					ps.executeUpdate();
-					return new User(login, Role.USER);
-				} else {
-					throw new UserException(Constants.KEY_LOGIN + " " + login + Constants.NOT_EMPTY);
+					user = new User(login, Role.USER);
 				}
 			}
+			if (user != null) {
+				return user;
+			} else {
+				throw new UserException(Constants.KEY_LOGIN + " " + login + Constants.NOT_EMPTY);
+			}
+
 		} catch (NamingException | SQLException e) {
 			// TODO Auto-generated catch block
 			throw new UserException(e.getMessage());
 		} finally {
-			ManagerDB.closeResultSet(resultSet);
-			ManagerDB.closeStatement(preparedStatement,ps);
-			ManagerDB.closeConnection(connection);
+			closeResultSet(resultSet);
+			closeStatement(preparedStatement, ps);
+			closeConnection(connection);
 		}
 
 	}

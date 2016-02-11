@@ -13,7 +13,7 @@
 			type="password" name="password" /> <input type="submit"
 			value="Registration" />
 	</form>
-	<p><a href="start">main</a></p>
+	<p><a href="main">main</a></p>
 <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

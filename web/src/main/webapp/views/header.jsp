@@ -12,8 +12,8 @@
 <fieldset>
 	<c:if test="${user ne null}">
     <p>${user.role}:&nbsp;&nbsp;&nbsp;${user.login}</p>
-    <form name="form" action="logout" method="post"> 
-		<a style="float:right" href="JavaScript:document.form.submit()">Logout</a>
+    <form name="form1" action="logout" method="post"> 
+		<a style="float:right" href="JavaScript:document.form1.submit()">Logout</a>
 	</form>
 	</c:if>
 	<c:if test="${empty user}">

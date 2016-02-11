@@ -13,7 +13,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import by.gsu.epamlab.model.beans.Play;
 
 /**
- * @author Андрей
+ * @author Yahorau Andrei
  *
  */
 public class PlayHundler extends DefaultHandler {
@@ -22,9 +22,21 @@ public class PlayHundler extends DefaultHandler {
 		PLAYS, PLAY, DESCRIPTION, DATES, DATE;
 	}
 
-	private List<Play> plays = new ArrayList<>();
+	private List<Play> plays;
 	private Play play = null;
 	private PlayEnum playEnum;
+	private String title;
+	private String description;
+	int id;
+
+	/**
+	 * @param plays
+	 */
+	public PlayHundler() {
+		super();
+		this.plays = new ArrayList<Play>();
+		this.id = 0;
+	}
 
 	/**
 	 * @return the plays
@@ -44,9 +56,7 @@ public class PlayHundler extends DefaultHandler {
 		// TODO Auto-generated method stub
 		playEnum = PlayEnum.valueOf(localName.toUpperCase());
 		if (playEnum == PlayEnum.PLAY) {
-			play = new Play();
-			String title = attributes.getValue("title");
-			play.setTitle(title);
+			title = attributes.getValue("title").trim();
 		}
 	}
 
@@ -61,15 +71,20 @@ public class PlayHundler extends DefaultHandler {
 		if (playEnum == PlayEnum.DESCRIPTION) {
 			String description = new String(ch, start, length).trim();
 			if (!description.isEmpty()) {
-				play.setDescription(description);;
+				this.description = description;
 			}
 		}
-		if(playEnum == PlayEnum.DATE) {
-			String date = new String(ch, start, length);
+		if (playEnum == PlayEnum.DATE) {
+			String date = new String(ch, start, length).trim();
 			if (!date.isEmpty()) {
+				play = new Play();
+				id++;
+				play.setId(id);
 				play.setDate(date);
+				play.setTitle(title);
+				play.setDescription(description);
+				plays.add(play);
 			}
 		}
 	}
-
 }

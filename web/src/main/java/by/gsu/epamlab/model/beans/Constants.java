@@ -29,7 +29,8 @@ public class Constants {
 	public static final String ERROR = "error";
 	public static final String NOT_EMPTY = " is not empty";
 	
-
+	
+	public static final String PLAY_LIST_XML = "playlist.xml";
 	public static final String FOLDER_VIEWS = "/views";
 	public static final String PAGE_LOGIN = "/login.jsp";
 	public static final String PAGE_INDEX = "/index.jsp";

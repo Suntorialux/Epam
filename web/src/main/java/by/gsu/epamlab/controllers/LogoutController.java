@@ -24,7 +24,7 @@ public class LogoutController extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		session.invalidate();
-		response.sendRedirect(request.getContextPath());
+		response.sendRedirect(request.getContextPath()+"/");
 	}
 
 }

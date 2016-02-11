@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import by.gsu.epamlab.model.beans.Constants;
+
 
 /**
  * Servlet implementation class StartController
@@ -26,7 +26,7 @@ public class StartController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		request.getRequestDispatcher(Constants.FOLDER_VIEWS + Constants.PAGE_MAIN).forward(request, response);
+		request.getRequestDispatcher("/main").forward(request, response);
 	}
 
 	/**
