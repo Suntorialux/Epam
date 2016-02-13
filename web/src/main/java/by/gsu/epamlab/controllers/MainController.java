@@ -2,6 +2,7 @@ package by.gsu.epamlab.controllers;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -32,8 +33,17 @@ public class MainController extends HttpServlet {
 	 */
 	@Override
 	public void init() throws ServletException {
-		// TODO Auto-generated method stub
-		System.out.println("init");
+
+		IPlayDAO playDAO = PlayFactory.getClassFromFactory();
+		ServletContext context = getServletContext();
+		String filePath = context.getRealPath("/WEB-INF/classes/" + Constants.PLAY_LIST_XML);
+		try {
+			List<Play> playlist = playDAO.getPlaysFromXML(filePath);
+			playDAO.addPlaysDB(playlist);
+		} catch (UserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -42,21 +52,17 @@ public class MainController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		IPlayDAO playDAO = PlayFactory.getClassFromFactory();
 		try {
-			ServletContext context = getServletContext();
-			String filePath = context.getRealPath("/WEB-INF/classes/" + Constants.PLAY_LIST_XML);
-			List<Play> playlist = playDAO.getPlays(filePath);
-
+			Map<Integer, Play> playlist = playDAO.getPlaysFromDB();
 			HttpSession session = request.getSession();
 			session.setAttribute("playlist", playlist);
 			jump(Constants.FOLDER_VIEWS + Constants.PAGE_MAIN, request, response);
-
 		} catch (UserException e) {
 			// TODO Auto-generated catch block
-			jump(Constants.FOLDER_VIEWS + Constants.PAGE_LOGIN, e.getMessage(), request, response);
+			jumpError(e.getMessage(), request, response);
 		}
-
 	}
 
 	/**

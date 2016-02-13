@@ -3,8 +3,8 @@
  */
 package by.gsu.epamlab.model.beans;
 
-import java.text.ParseException;
-import java.util.Date;
+
+import java.sql.Date;
 
 /**
  * @author Andrei Yahorau
@@ -54,8 +54,6 @@ public class Play {
 	/**
 	 * Instantiates a new play.
 	 * 
-	 * @param id
-	 *            the id
 	 * @param title
 	 *            the title
 	 * @param description
@@ -63,10 +61,10 @@ public class Play {
 	 * @param date
 	 *            the date
 	 */
-	public Play(int id, String title, String description, String date) {
+	public Play(String title, String description, Date date) {
 		this.title = title;
 		this.description = description;
-		setDate(date);
+		this.date = date;
 	}
 
 	/**
@@ -117,10 +115,17 @@ public class Play {
 	/**
 	 * @return the date
 	 */
-	public String getDate() {
+	public String getStringDate() {
 		return Constants.OUTPUT_DATE_FORMAT.format(date);
 	}
-
+	
+	/**
+	 * @return the date
+	 */
+	public Date getDate() {
+		return date;
+	}
+	
 	/**
 	 * @param date
 	 *            the date to set
@@ -129,17 +134,51 @@ public class Play {
 		this.date = date;
 	}
 
-	/**
-	 * @param date
-	 *            the date to set
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
 	 */
-	public void setDate(String date) {
-		try {
-			this.date = Constants.INPUT_DATE_FORMAT.parse(date);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Play other = (Play) obj;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (id != other.id)
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
+
+	
 }

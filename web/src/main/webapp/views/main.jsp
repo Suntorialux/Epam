@@ -34,11 +34,11 @@ folder.display="none"
 	<table border="1" width="100%" cellpadding="5" align="center">
 		<c:forEach items="${playlist}" var="play" varStatus="id">
 			<tr>
-				<th><a href="${pageContext.request.contextPath}/booking?id=${play.id}">${play.date}</a></th>
+				<th><a href="${pageContext.request.contextPath}/booking?id=${play.value.id}">${play.value.date}</a></th>
 				<th><p style="cursor: hand" onClick="expandit(this)">
-						<a>${play.title}</a>
+						<a>${play.value.title}</a>
 					</p> <span style="display: none" style=&{head};>
-						${play.description} </span></th>
+						${play.value.description} </span></th>
 			</tr>
 		</c:forEach>
 

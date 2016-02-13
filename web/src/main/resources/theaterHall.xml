@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theater>
+	<hall>
+		<sector name="OrchestraStalls" price="100" rows="10" places="30" />
+		<sector name="Balcony" price="50" rows="5" places="30" />
+	</hall>
+</theater>

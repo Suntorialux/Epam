@@ -64,11 +64,10 @@ public class MemoryUserImpl implements IUserDAO {
 			User user = new User(login, Role.USER);
 			if (!users.containsKey(user)) {
 				users.put(user, password);
-
+				return user;
 			} else {
 				throw new UserException(Constants.KEY_LOGIN + " " + login + Constants.NOT_EMPTY);
 			}
-			return user;
 		}
 	}
 }

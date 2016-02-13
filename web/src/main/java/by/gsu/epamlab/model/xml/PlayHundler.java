@@ -3,6 +3,7 @@
  */
 package by.gsu.epamlab.model.xml;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import by.gsu.epamlab.model.beans.Play;
  */
 public class PlayHundler extends DefaultHandler {
 
-	private static enum PlayEnum {
+	private enum PlayEnum {
 		PLAYS, PLAY, DESCRIPTION, DATES, DATE;
 	}
 
@@ -27,15 +28,13 @@ public class PlayHundler extends DefaultHandler {
 	private PlayEnum playEnum;
 	private String title;
 	private String description;
-	int id;
 
 	/**
-	 * @param plays
+	 * @param plays the plays
+	 * @param id the id
 	 */
 	public PlayHundler() {
-		super();
 		this.plays = new ArrayList<Play>();
-		this.id = 0;
 	}
 
 	/**
@@ -56,7 +55,7 @@ public class PlayHundler extends DefaultHandler {
 		// TODO Auto-generated method stub
 		playEnum = PlayEnum.valueOf(localName.toUpperCase());
 		if (playEnum == PlayEnum.PLAY) {
-			title = attributes.getValue("title").trim();
+			this.title = attributes.getValue("title").trim();
 		}
 	}
 
@@ -77,14 +76,30 @@ public class PlayHundler extends DefaultHandler {
 		if (playEnum == PlayEnum.DATE) {
 			String date = new String(ch, start, length).trim();
 			if (!date.isEmpty()) {
-				play = new Play();
-				id++;
-				play.setId(id);
-				play.setDate(date);
-				play.setTitle(title);
-				play.setDescription(description);
+				Date dateSql = Date.valueOf(date);
+				play = new Play(title, description, dateSql);
 				plays.add(play);
 			}
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

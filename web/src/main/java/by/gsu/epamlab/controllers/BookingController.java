@@ -1,10 +1,9 @@
 package by.gsu.epamlab.controllers;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
-
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import by.gsu.epamlab.model.beans.Constants;
+import by.gsu.epamlab.model.beans.Place;
 import by.gsu.epamlab.model.beans.Play;
+import by.gsu.epamlab.model.exceptions.UserException;
+import by.gsu.epamlab.model.factories.PlayFactory;
+import by.gsu.epamlab.model.ifaces.IPlayDAO;
 
 /**
  * Servlet implementation class OrderController
@@ -23,19 +26,6 @@ import by.gsu.epamlab.model.beans.Play;
 public class BookingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
-	
-	
-	Map<Integer,int[]> zale=new TreeMap<>();
-	
-	{
-	zale.put(1,new int[10]);
-	zale.put(2,new int[10]);
-	zale.get(2)[3]=1;
-	zale.put(3,new int[10]);
-	
-	}
-	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -44,16 +34,23 @@ public class BookingController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		HttpSession session = request.getSession();
-		List<Play> playList = (List<Play>) session.getAttribute("playlist");
-		int id = Integer.parseInt(request.getParameter("id"));
-		Play play = playList.get(id-1);
-		request.setAttribute("play", play);
-		
-		request.setAttribute("zale", zale);
-		request.getServletContext().getRequestDispatcher(Constants.FOLDER_VIEWS + "/booking.jsp").forward(request,
-				response);
+		IPlayDAO playDAO = PlayFactory.getClassFromFactory();
+		ServletContext context = getServletContext();
+		String filePath = context.getRealPath("WEB-INF/classes/" + "theaterHall.xml");
+
+		try {
+			Map<String, Place> hall = playDAO.getHall(filePath);
+			HttpSession session = request.getSession();
+			Map<Integer, Play> playList = (Map<Integer, Play>) session.getAttribute("playlist");
+			Integer id = Integer.parseInt(request.getParameter("id"));
+			Play play = playList.get(id);
+			request.setAttribute("play", play);
+			request.setAttribute("hall", hall);
+			jump(Constants.FOLDER_VIEWS + "/booking.jsp", request, response);
+		} catch (UserException e) {
+			// TODO Auto-generated catch block
+			jump(Constants.FOLDER_VIEWS + Constants.PAGE_LOGIN, e.getMessage(), request, response);
+		}
 	}
 
 	/**
@@ -63,14 +60,26 @@ public class BookingController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String s = request.getParameter("place");
-		System.out.println(s);
-		String [] places = s.split("_");
-		int row = Integer.parseInt(places[0]);
-		int place = Integer.parseInt(places[1]);
-		String date = request.getParameter("date");
-		String title = request.getParameter("title");		
-		zale.get(row)[place-1]=1;
+
 		doGet(request, response);
 	}
+
+	protected void jump(String url, HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+		rd.forward(request, response);
+	}
+
+	protected void jumpError(String message, HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		jump(Constants.PAGE_INDEX, message, request, response);
+	}
+
+	protected void jump(String url, String message, HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setAttribute(Constants.ERROR, message);
+		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+		rd.forward(request, response);
+	}
+
 }

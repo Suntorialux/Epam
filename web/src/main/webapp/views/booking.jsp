@@ -5,25 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/style.css" />
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.tools.js"></script>
-<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+
 <title>booking</title>
-<style>
-.bg-red {
-	background-color: #ff0000;
-}
 
-.bg-green {
-	background-color: #008900;
-}
-
-.bg-blue {
-	background-color: #0000ff;
-}
-</style>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -33,47 +17,91 @@
 	<a href="main">main</a>
 	<br>
 
-	<table>
-		<c:forEach var="i" items="${zale}">
-			<tr>
-				<c:forEach var="j" items="${i.value}" varStatus="count">
 
-					<c:if test="${j eq 0}">
-						<c:set var="bg" scope="page" value="bg-red" />
+	<c:forEach var="sector" items="${hall}">
+		<caption>${sector.key}</caption>
+		<table>
+			<c:forEach var="row" begin="1" end="${sector.value.numberRow}"
+				varStatus="col">
+				<tr>
 
-					</c:if>
-					<c:if test="${j eq 1}">
-						<c:set var="bg" scope="page" value="bg-blue " />
+					<c:forEach var="place" begin="1" end="${sector.value.numberPlace}"
+						varStatus="col2">
 
-					</c:if>
+						<td bgcolor="yellow" width="30" height="30">${col.count}-${col2.count}</td>
 
-					<td class="${bg}" id="${i.key}_${count.count}"
-						style="width: 20px; height: 20px"></td>
+					</c:forEach>
+				</tr>
+			</c:forEach>
+		</table>
+		<br>
+		<br>
+		<br>
+	</c:forEach>
 
-				</c:forEach>
-			</tr>
-		</c:forEach>
-	</table>
-	<form id="form" name="send" action="booking" method="POST">
-		<input id="place" name="place" type="hidden"> <input
-			name="date" value="${date}" type="hidden"> <input
-			name="title" value="${title}" type="hidden">
 
+	<div id="mainmenu">
+		<ul>
+			<c:forEach var="sector" items="${hall}">
+				<li class="parent"><a>${sector.key}</a>
+					<ul>
+						<c:forEach var="row" begin="1" end="${sector.value.numberRow}"
+							varStatus="col">
+							<li class="parent"><a>Row ${row}</a>
+								<ul>
+									<c:forEach var="place" begin="1"
+										end="${sector.value.numberPlace}" varStatus="col2">
+										<li id="${sector.key}_${row}_${place}" class="parent"><a
+											onclick="sendForm('${sector.key}_${row}_${place}')">Place
+												${place}</a></li>
+									</c:forEach>
+								</ul></li>
+						</c:forEach>
+					</ul></li>
+			</c:forEach>
+		</ul>
+	</div>
+
+
+	<form id="name" name="send" action="order" method="post">
+		<input id="place" name="place" type="hidden" />
 	</form>
-	<script type="text/javascript"
-		src=" http://code.jquery.com/jquery-1.11.2.js "></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("td").click(function() {
-				$(this).toggleClass("bg-blue");
-
-				$("#place").attr("value", $(this).attr("id"));
-
-				$("#form").submit();
-
-			});
-		});
+	<script>
+		function sendForm(sRef) {
+			document.send.place.value = sRef;
+			document.send.submit();
+		}
 	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -48,7 +48,6 @@ public class RegistrationFilter implements Filter {
 			chain.doFilter(request, response);
 		} else {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
-			System.out.println(httpRequest.getContextPath());
 			httpResponse.sendRedirect(httpRequest.getContextPath()+"/");
 		}
 	}
