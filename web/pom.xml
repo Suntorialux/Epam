@@ -15,6 +15,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
@@ -45,7 +51,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.38</version>
 		</dependency>
-		
+
 
 		<dependency>
 			<groupId>tomcat</groupId>
@@ -61,7 +67,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>web</finalName>	
+		<finalName>web</finalName>
 	</build>
 </project>
 

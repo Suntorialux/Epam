@@ -1,0 +1,99 @@
+html, body {
+  /*  background: #cccccc; */
+    color: #333333;
+    margin: 0;
+    padding: 0;
+ 
+}
+h1 {
+    margin: 0 0 18px;
+}
+p {
+    margin: 9px 0;
+}
+.wrap {
+    background: #fafafa;
+    border: 1px solid #c0c0c0;
+    padding: 0;
+    width: 100%;
+}
+.topnav {
+    background: -webkit-linear-gradient(top,#F1F1F1 0,#CFCFCF 100%);
+    background: -moz-linear-gradient(top,#F1F1F1 0,#CFCFCF 100%);
+    background: -ms-linear-gradient(top,#F1F1F1 0,#CFCFCF 100%);
+    background: -o-linear-gradient(top,#F1F1F1 0,#CFCFCF 100%);
+    background: linear-gradient(top,#F1F1F1 0,#CFCFCF 100%);
+    border: solid #c0c0c0;
+    border-width: 0 0 1px;
+    margin: 0;
+    padding: 20px 20px;
+    position: relative;
+}
+.page {
+    border-top: 1px solid #ffffff;
+    padding: 35px 17px;
+}
+.button{
+    background: #57baff url("/images/s-grad.png") repeat-x 0 -76px;
+    background: -ms-linear-gradient(top, #57baff, #0062db) 0 0;
+    background: -moz-linear-gradient(top, #57baff, #0062db) 0 0;
+    background: -o-linear-gradient(top, #57baff, #0062db) 0 0;
+    background: -webkit-linear-gradient(top, #57baff, #0062db) 0 0;
+    background: linear-gradient(top, #57baff, #0062db) 0 0;
+    border: 1px solid #0163dc;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -moz-box-shadow: 0 2px 4px rgba(0,0,0,0.35), 1px 2px 2px -1px rgba(255,255,255,0.75) inset;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.35), 1px 2px 2px -1px rgba(255,255,255,0.75) inset;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font: normal 12px/18px Arial;
+    min-height: 18px;
+    padding: 4px 12px;
+    text-decoration: none;
+    text-shadow: 0 1px rgba(10,59,112,0.75);
+}
+.button:hover{
+    background: #57baff url("/images/s-grad.png") repeat-x 0 -108px;
+    background: -ms-linear-gradient(bottom, #57baff, #0062db) 0 0;
+    background: -moz-linear-gradient(bottom, #57baff, #0062db) 0 0;
+    background: -o-linear-gradient(bottom, #57baff, #0062db) 0 0;
+    background: -webkit-linear-gradient(bottom, #57baff, #0062db) 0 0;
+    background: linear-gradient(bottom, #57baff, #0062db) 0 0;
+    color: #ffffff !important;
+}
+.button:active{
+    -moz-box-shadow: 1px 2px 2px -1px rgba(0,0,0,0.75) inset;
+    box-shadow: 1px 2px 2px -1px rgba(0,0,0,0.75) inset;
+}
+.b-login__link {
+    border-bottom: 1px dotted #0000ff;
+    color: #0000ff;
+    text-decoration: none;
+}
+.b-login__popup {
+    background: #ececec;
+    border: 1px solid #c0c0c0;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.35);
+    display: none;
+    left: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    width: auto;
+}
+.b-login__field {
+    display: block;
+    margin: 9px 17px
+}
+.b-login__field__lbl {
+    display: block;
+}
+.b-login__field input {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    display: block;
+    width: 150px;
+}

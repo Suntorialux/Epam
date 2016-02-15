@@ -20,8 +20,7 @@ import by.gsu.epamlab.model.beans.User;
  */
 
 
-@WebFilter("/login")
-
+@WebFilter(urlPatterns = {"/login/*","/registration/*"})
 public class LoginFilter implements Filter {
 
 	/**

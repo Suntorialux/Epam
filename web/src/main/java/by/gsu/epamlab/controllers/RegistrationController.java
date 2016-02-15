@@ -25,16 +25,15 @@ import by.gsu.epamlab.model.ifaces.IUserDAO;
 public class RegistrationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	/* (non-Javadoc)
+	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		jump(Constants.FOLDER_VIEWS + Constants.PAGE_REGISTRATION, request, response);
+		resp.sendRedirect(req.getContextPath());
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -61,7 +60,7 @@ public class RegistrationController extends HttpServlet {
 			jump("/main", request, response);
 
 		} catch (ValidationException | UserException e) {
-			jump(Constants.FOLDER_VIEWS + Constants.PAGE_REGISTRATION, e.getMessage(), request, response);
+			jump("/main", e.getMessage(), request, response);
 		}
 	}
 

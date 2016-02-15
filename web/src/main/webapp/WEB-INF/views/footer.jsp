@@ -9,18 +9,12 @@
 <link rel="stylesheet" href="css/style.css" />
 <title>footer</title>
 <style type="text/css">
-.footer {
-	/* position: absolute; /* Фиксированное положение */
-	left: 0;
-	bottom: 0; /* Левый нижний угол */
-	width: 100%; /* Ширина слоя */
-}
 </style>
 </head>
 <body>
-	<fieldset class="footer">
+	<div class="footer">
 		<%=Constants.DEVELOPER%>
 		<a href="mailto:<%=Constants.MAIL_DEVELOPER%>"><%=Constants.MAIL_DEVELOPER%></a>
-	</fieldset>
+	</div>
 </body>
 </html>

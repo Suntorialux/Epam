@@ -4,18 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>login</title>
+<title>Insert title here</title>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-${error}
-	<form action="login" method="post">
-	       Login <input type="text" name="login" /><br />
-	       Password <input type="password" name="password" />
-	      			 <input type="submit" value="login" name="login" />
-   	</form>
-   	<p><a href="main">main</a></p>
-   	
+	<table border="1" cellpadding="1">
+	<tr><td>Date: ${play.date}</td>
+	</tr>
+	<tr><td>Title: ${play.title}</td></tr>
+	<tr><td>Sector: ${place.nameSector}</td></tr>
+	<tr><td>Row: ${place.numberRow}</td></tr>
+	<tr><td>Place: ${place.numberPlace}</td></tr>
+	<tr><td>Price: ${place.price}</td></tr>
+	
+</table>
 <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
