@@ -6,8 +6,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<link rel="stylesheet" href="css/jquery.loginPopup.css" />
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.loginPopup.js"></script>
 <script type="text/javascript">
@@ -16,7 +14,7 @@
 		$('#togglePopup1').loginPopup($('#popup1'));
 
 	});
-</script>
+</script> 
 
 <title>header</title>
 </head>
@@ -25,7 +23,8 @@
 		<div class="wrap">
 			<div class="topnav">
 				<p>${user.role}:&nbsp;&nbsp;&nbsp;${user.login}</p>
-				<form name="form1" action="logout" method="post">
+				<a href='<c:url value="/main"/>' >main</a>
+				<form name="form1" action='<c:url value="/logout"/>' method="post">
 					<a style="float: right" href="JavaScript:document.form1.submit()">Logout</a>
 				</form>
 			</div>
@@ -39,7 +38,7 @@
 						href="#toLoginPage" id="togglePopup">Login</a> <a
 						class="b-login__link" href="#toLoginPage" id="togglePopup1">Registration</a>
 					<div class="b-login__popup" id="popup">
-						<form action="login" method="post">
+						<form action='<c:url value="/login"/>' method="post">
 							<label class="b-login__field"> <span
 								class="b-login__field__lbl">Login:</span> <input type="text"
 								name="login" />
@@ -54,7 +53,7 @@
 					</div>
 
 					<div class="b-login__popup" id="popup1">
-						<form action="registration" method="post">
+						<form action='<c:url value="/registration"/>' method="post">
 							<label class="b-login__field"> <span
 								class="b-login__field__lbl">Login:</span> <input type="text"
 								name="login" />
@@ -67,6 +66,7 @@
 							</div>
 						</form>
 					</div>
+					<br><br> <a href='<c:url value="/main"/>' >main</a>
 				</div>
 			</div>
 		</div>

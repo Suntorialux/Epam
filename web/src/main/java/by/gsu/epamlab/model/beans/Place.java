@@ -32,6 +32,7 @@ public class Place {
 	 * @param price
 	 *            is Price
 	 */
+
 	public Place(String nameSector, int numberRow, int numberPlace, int price) {
 		this.nameSector = nameSector;
 		this.numberRow = numberRow;
@@ -142,5 +143,16 @@ public class Place {
 			return false;
 		return true;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Place [nameSector=" + nameSector + ", numberRow=" + numberRow + ", numberPlace=" + numberPlace
+				+ ", price=" + price + "]";
+	}
+	
+	
 
 }

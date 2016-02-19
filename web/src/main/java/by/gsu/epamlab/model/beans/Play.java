@@ -13,7 +13,7 @@ import java.sql.Date;
 public class Play {
 
 	/** The id. */
-	private int id;
+	private final int id;
 
 	/** The title. */
 	private String title;
@@ -23,14 +23,6 @@ public class Play {
 
 	/** The date. */
 	private Date date;
-
-	/**
-	 * Instantiates a new play.
-	 */
-	public Play() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	/**
 	 * Instantiates a new play.
@@ -62,6 +54,7 @@ public class Play {
 	 *            the date
 	 */
 	public Play(String title, String description, Date date) {
+		this.id = 0;
 		this.title = title;
 		this.description = description;
 		this.date = date;
@@ -72,14 +65,6 @@ public class Play {
 	 */
 	public int getId() {
 		return id;
-	}
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	/**

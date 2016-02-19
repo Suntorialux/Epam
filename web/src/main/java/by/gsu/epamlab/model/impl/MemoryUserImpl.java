@@ -18,7 +18,7 @@ import by.gsu.epamlab.model.ifaces.IUserDAO;
  */
 public class MemoryUserImpl implements IUserDAO {
 
-	private static final Object lock = new Object();
+	private static final Object LOCK = new Object();
 	
 	private static Map<User, String> users;
 
@@ -60,7 +60,7 @@ public class MemoryUserImpl implements IUserDAO {
 	public User addAndGetUser(String login, String password) throws UserException {
 		// TODO Auto-generated method stub
 
-		synchronized (lock) {
+		synchronized (LOCK) {
 			User user = new User(login, Role.USER);
 			if (!users.containsKey(user)) {
 				users.put(user, password);

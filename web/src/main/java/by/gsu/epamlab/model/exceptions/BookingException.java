@@ -7,13 +7,13 @@ package by.gsu.epamlab.model.exceptions;
  * @author Yahorau Andrei
  *
  */
-public class ValidationException extends Exception {
+public class BookingException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
 	 */
-	public ValidationException() {
+	public BookingException() {
 		super();
 
 	}
@@ -21,7 +21,7 @@ public class ValidationException extends Exception {
 	/**
 	 * @param message
 	 */
-	public ValidationException(String message) {
+	public BookingException(String message) {
 		super(message);
 
 	}

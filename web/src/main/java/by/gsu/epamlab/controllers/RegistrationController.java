@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import by.gsu.epamlab.model.beans.Constants;
 import by.gsu.epamlab.model.beans.User;
 import by.gsu.epamlab.model.exceptions.UserException;
-import by.gsu.epamlab.model.exceptions.ValidationException;
 import by.gsu.epamlab.model.factories.UserFactory;
 import by.gsu.epamlab.model.ifaces.IUserDAO;
 
@@ -25,15 +24,6 @@ import by.gsu.epamlab.model.ifaces.IUserDAO;
 public class RegistrationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/* (non-Javadoc)
-	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
-	 */
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		resp.sendRedirect(req.getContextPath());
-	}
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -50,7 +40,7 @@ public class RegistrationController extends HttpServlet {
 		String login = request.getParameter(Constants.KEY_LOGIN);
 		String password = request.getParameter(Constants.KEY_PASSWORD);
 		try {
-			checkInput(login, password);
+			//checkInput(login, password);
 			IUserDAO userDAO = UserFactory.getClassFromFactory();
 
 			User user = userDAO.addAndGetUser(login.trim(), password.trim());
@@ -59,12 +49,12 @@ public class RegistrationController extends HttpServlet {
 			session.setAttribute(Constants.USER, user);
 			jump("/main", request, response);
 
-		} catch (ValidationException | UserException e) {
+		} catch (UserException e) {
 			jump("/main", e.getMessage(), request, response);
 		}
 	}
 
-	private static void checkInput(String login, String password) throws ValidationException {
+/*	private static void checkInput(String login, String password) throws ValidationException {
 		if (login == null || password == null) {
 			throw new ValidationException(Constants.LOGIN_OR_PASSWORD_ABSENT_ERROR);
 		}
@@ -72,7 +62,7 @@ public class RegistrationController extends HttpServlet {
 		if (Constants.EMPTY.equals(login)) {
 			throw new ValidationException(Constants.LOGIN_EMPTY_ERROR);
 		}
-	}
+	}  */
 
 	protected void jump(String url, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

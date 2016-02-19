@@ -20,7 +20,7 @@ import by.gsu.epamlab.model.beans.User;
  */
 
 
-@WebFilter(urlPatterns = {"/login/*","/registration/*"})
+@WebFilter(urlPatterns = {"/booking/info/*"})
 public class LoginFilter implements Filter {
 
 	/**
@@ -32,12 +32,15 @@ public class LoginFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession();
 		User user = (User) session.getAttribute(Constants.USER);
-		if (user == null) {
-			chain.doFilter(request, response);
-		} else {
+				
+		if (user == null)  {
+			session.invalidate();
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
-			httpResponse.sendRedirect(httpRequest.getContextPath());
-		}
+			httpResponse.sendRedirect(httpRequest.getContextPath()); 
+			return;	
+		} 
+		chain.doFilter(request, response);	
+		
 	}
 
 	/**

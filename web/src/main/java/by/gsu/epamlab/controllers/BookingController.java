@@ -2,6 +2,9 @@ package by.gsu.epamlab.controllers;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Set;
+
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,11 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import by.gsu.epamlab.model.beans.Booking;
 import by.gsu.epamlab.model.beans.Constants;
 import by.gsu.epamlab.model.beans.Place;
 import by.gsu.epamlab.model.beans.Play;
+import by.gsu.epamlab.model.exceptions.BookingException;
 import by.gsu.epamlab.model.exceptions.UserException;
+import by.gsu.epamlab.model.factories.BookingFactory;
 import by.gsu.epamlab.model.factories.PlayFactory;
+import by.gsu.epamlab.model.ifaces.IBookingDAO;
 import by.gsu.epamlab.model.ifaces.IPlayDAO;
 
 /**
@@ -25,34 +32,8 @@ import by.gsu.epamlab.model.ifaces.IPlayDAO;
 @WebServlet("/booking")
 public class BookingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		IPlayDAO playDAO = PlayFactory.getClassFromFactory();
-		ServletContext context = getServletContext();
-		String filePath = context.getRealPath("WEB-INF/classes/" + "theaterHall.xml");
-
-		try {
-			Map<String, Place> hall = playDAO.getHall(filePath);
-			HttpSession session = request.getSession();
-			Map<Integer, Play> playList = (Map<Integer, Play>) session.getAttribute("playlist");
-			Integer id = Integer.parseInt(request.getParameter("id"));
-			Play play = playList.get(id);
-			request.setAttribute("play", play);
-			request.setAttribute("hall", hall);
-			jump(Constants.FOLDER_VIEWS + "/booking.jsp", request, response);
-		} catch (UserException e) {
-			// TODO Auto-generated catch block
-			jump(Constants.FOLDER_VIEWS + Constants.PAGE_LOGIN, e.getMessage(), request, response);
-		}
-	}
-
+	
+		
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -60,8 +41,27 @@ public class BookingController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		doGet(request, response);
+		IPlayDAO playDAO = PlayFactory.getClassFromFactory();
+		ServletContext context = getServletContext();
+		String filePath = context.getRealPath("WEB-INF/classes/" + "theaterHall.xml");
+		IBookingDAO bookingDAO = BookingFactory.getClassFromFactory(); 
+		try {
+			Map<String, Place> hall = playDAO.getHall(filePath);
+			Set<Booking> bookings = bookingDAO.getBookingsDB(); 
+			HttpSession session = request.getSession();
+			Map<Integer, Play> playList = (Map<Integer, Play>) session.getAttribute("playlist");
+			Integer id = Integer.parseInt(request.getParameter("ID"));
+			Play play = playList.get(id);
+			Set<Booking> bookingFree = playDAO.getShemaHall(hall, id);
+			request.setAttribute("bookingFree", bookingFree);
+			request.setAttribute("play", play);
+			request.setAttribute("hall", hall);
+			request.setAttribute("bookings", bookings);
+			jump(Constants.FOLDER_VIEWS + "/booking.jsp", request, response);
+		} catch (UserException | BookingException e) {
+			// TODO Auto-generated catch block
+			jump("/main", e.getMessage(), request, response);
+		}
 	}
 
 	protected void jump(String url, HttpServletRequest request, HttpServletResponse response)

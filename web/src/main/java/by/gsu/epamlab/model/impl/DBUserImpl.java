@@ -24,7 +24,7 @@ import by.gsu.epamlab.model.ifaces.IUserDAO;
  */
 public class DBUserImpl extends AbstractManagerDB implements IUserDAO {
 
-	private final static Object lock = new Object();
+	private final static Object LOCK = new Object();
 
 	/*
 	 * (non-Javadoc)
@@ -86,9 +86,9 @@ public class DBUserImpl extends AbstractManagerDB implements IUserDAO {
 			ps.setString(ConstantsSQL.LOGIN_INDEX, login);
 			ps.setString(ConstantsSQL.PASSWORD_INDEX, password);
 			ps.setString(ConstantsSQL.ROLE_INDEX, Role.USER.toString().toUpperCase());
-			synchronized (lock) {
+			synchronized (LOCK) {
 				resultSet = preparedStatement.executeQuery();
-				if (!resultSet.next()) {
+				if (!resultSet.first()) {
 					ps.executeUpdate();
 					user = new User(login, Role.USER);
 				}
