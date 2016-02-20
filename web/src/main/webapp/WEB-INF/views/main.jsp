@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/jquery.loginPopup.css" />
 
-
 <script>
 	
 var ns6=document.getElementById&&!document.all?1:0

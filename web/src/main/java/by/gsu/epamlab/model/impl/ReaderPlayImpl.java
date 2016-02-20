@@ -10,25 +10,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import javax.naming.NamingException;
-
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
-
 import by.gsu.epamlab.model.DB.AbstractManagerDB;
-import by.gsu.epamlab.model.beans.Booking;
-import by.gsu.epamlab.model.beans.Place;
 import by.gsu.epamlab.model.beans.Play;
 import by.gsu.epamlab.model.exceptions.UserException;
 import by.gsu.epamlab.model.ifaces.IPlayDAO;
-import by.gsu.epamlab.model.xml.HallHundler;
 import by.gsu.epamlab.model.xml.PlayHundler;
 
 /**
@@ -50,34 +42,7 @@ public class ReaderPlayImpl extends AbstractManagerDB implements IPlayDAO {
 		}
 	}
 
-	@Override
-	public Map<String, Place> getHall(String filePath) throws UserException {
-		HallHundler hallHundler = new HallHundler();
-		try {
-			XMLReader reader = XMLReaderFactory.createXMLReader();
-			reader.setContentHandler(hallHundler);
-			reader.parse(filePath);
-			return hallHundler.getHall();
-		} catch (SAXException | IOException e) {
-			throw new UserException(e.getMessage());
-		}
-	}
 
-	@Override
-	public Set<Booking> getShemaHall(Map<String, Place> hall, int idPlay) {
-		Set<Booking> places = new HashSet<>();
-		for (Map.Entry<String, Place> sector : hall.entrySet()) {
-			for (int row = 1; row <= sector.getValue().getNumberRow(); row++) {
-				for (int numberPlace = 1; numberPlace <= sector.getValue().getNumberPlace(); numberPlace++) {
-					Place place = new Place(sector.getKey(), row, numberPlace, sector.getValue().getPrice());
-					places.add(new Booking(place, idPlay, "free"));
-				}
-			}
-		}
-
-		return places;
-
-	}
 
 	@Override
 	public void addPlaysDB(List<Play> playlist) throws UserException {

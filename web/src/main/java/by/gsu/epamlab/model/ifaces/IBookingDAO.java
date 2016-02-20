@@ -4,7 +4,6 @@
 package by.gsu.epamlab.model.ifaces;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import by.gsu.epamlab.model.beans.Booking;
@@ -19,5 +18,6 @@ public interface IBookingDAO {
 	
 	void addBookingDB(List<String> params, User user) throws BookingException;	
 	Set<Booking> getBookingsDB () throws BookingException;
+	Set<Booking> getBookingsDB(int idPlay) throws BookingException;
 
 }

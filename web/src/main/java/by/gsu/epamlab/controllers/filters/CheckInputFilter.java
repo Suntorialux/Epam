@@ -36,7 +36,8 @@ public class CheckInputFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 	
-		System.out.println(httpRequest.getServletPath());
+		System.out.println(httpRequest.getHeader("referer"));
+		
 		Enumeration<String> enumeration = httpRequest.getParameterNames();
 		if (!enumeration.hasMoreElements()) {
 			httpResponse.sendRedirect(httpRequest.getContextPath());

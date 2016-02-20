@@ -10,12 +10,9 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import javax.naming.NamingException;
-
 import by.gsu.epamlab.model.DB.AbstractManagerDB;
 import by.gsu.epamlab.model.beans.Booking;
-import by.gsu.epamlab.model.beans.Place;
 import by.gsu.epamlab.model.beans.User;
 import by.gsu.epamlab.model.exceptions.BookingException;
 import by.gsu.epamlab.model.ifaces.IBookingDAO;
@@ -95,14 +92,12 @@ public class BookingDBImpl extends AbstractManagerDB implements IBookingDAO {
 				int idPlay = resultSet.getInt(3);
 				String sector = resultSet.getString(4);
 				int row = resultSet.getInt(5);
-				int numberPlace = resultSet.getInt(6);
+				int place = resultSet.getInt(6);
 				int price = resultSet.getInt(7);
 				String status = resultSet.getString(8);
-				Place place = new Place(sector, row, numberPlace, price);
-				Booking booking = new Booking(place, idPlay, status);
+				Booking booking = new Booking(idPlay, sector, row, place, price, status);
 				bookings.add(booking);
 			}
-
 			return bookings;
 		} catch (NamingException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -112,8 +107,40 @@ public class BookingDBImpl extends AbstractManagerDB implements IBookingDAO {
 			closeStatement(psSelectBooking);
 			closeConnection(connection);
 		}
-
 	}
+	
+	@Override
+	public Set<Booking> getBookingsDB(int idPlay) throws BookingException {
+		Connection connection = null;
+		PreparedStatement psSelectBooking = null;
+		ResultSet resultSet = null;
+		try {
+			Set<Booking> bookings = new HashSet<>();
+			connection = getConnection();
+			psSelectBooking = connection.prepareStatement("Select * from orders where id_play = (?)");
+			psSelectBooking.setInt(1, idPlay);
+			resultSet = psSelectBooking.executeQuery();
+			while (resultSet.next()) {
+				String sector = resultSet.getString(4);
+				int row = resultSet.getInt(5);
+				int place = resultSet.getInt(6);
+				int price = resultSet.getInt(7);
+				String status = resultSet.getString(8);
+				Booking booking = new Booking(idPlay, sector, row, place, price, status);
+				bookings.add(booking);
+			}
+			return bookings;
+		} catch (NamingException | SQLException e) {
+			// TODO Auto-generated catch block
+			throw new BookingException(e.getMessage());
+		} finally {
+			closeResultSet(resultSet);
+			closeStatement(psSelectBooking);
+			closeConnection(connection);
+		}
+	}
+	
+	
 
 	private static int getId(String name, PreparedStatement psSelect) throws SQLException {
 		int id;

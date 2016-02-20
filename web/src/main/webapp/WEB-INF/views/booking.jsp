@@ -16,16 +16,22 @@
 	<br>
 	<div id="mainmenu">
 		<ul>
-			<c:forEach var="sector" items="${hall}">
-				<li class="parent"><a>${sector.key} </a>
+			<c:set var = "free" value="free"/>
+			<c:forEach var="sector" items="${bookingHall}">
+				<li class="parent"><a>${sector.key}</a>
 					<ul>
-						<c:forEach var="row" begin="1" end="${sector.value.numberRow}" varStatus="col">
-							<li class="parent"><a>Row ${row}</a>
+						<c:forEach var="rowBooking" items="${sector.value}"
+							varStatus="numRow">
+							<li class="parent"><a>Row ${numRow.count}</a>
 								<ul>
-									<c:forEach var="place" begin="1" end="${sector.value.numberPlace}" varStatus="col2">
-										<li id="${sector.key}_${row}_${place}" class="parent"><a
-											onclick="sendForm('${play.id}_${sector.key}_${row}_${place}_${sector.value.price}')">Place
-												${place}</a></li>
+									<c:forEach var="booking" items="${rowBooking}"
+										varStatus="numPlace">
+										
+										<c:if test="${free eq booking.status}">
+											<li class="parent"><a
+												onclick="sendForm('${play.id}_${sector.key}_${numRow.count}_${numPlace.count}_${booking.price}')">Place
+													${numPlace.count} price: ${booking.price}</a></li>
+										</c:if>
 									</c:forEach>
 								</ul></li>
 						</c:forEach>
@@ -35,38 +41,28 @@
 	</div>
 
 	<table>
-		<tr><td bgcolor="red" width="40" height="30" ></td><td>is brone</td></tr>
-		<tr><td bgcolor="yellow" width="40" height="30"></td><td>is free</td></tr>
+		<tr>
+			<td bgcolor="red" width="40" height="30"></td>
+			<td>is brone</td>
+		</tr>
+		<tr>
+			<td bgcolor="yellow" width="40" height="30"></td>
+			<td>is free</td>
+		</tr>
 	</table>
-	
-	<c:forEach var="sector" items="${hall}">
-		<caption>${sector.key}price: ${sector.value.price} $</caption>
+
+	<c:forEach var="sector" items="${bookingHall}">
 		<table>
-			<c:forEach var="row" begin="1" end="${sector.value.numberRow}"
-				varStatus="col">
+			<caption>${sector.key}</caption>
+			<c:forEach var="row" items="${sector.value}" varStatus="numRow">
 				<tr>
-					<c:forEach var="places" begin="1" end="${sector.value.numberPlace}"
-						varStatus="col2">
-						<jsp:useBean id="place" class="by.gsu.epamlab.model.beans.Place" />
-						<jsp:setProperty property="nameSector" name="place"
-							value="${sector.key}" />
-						<jsp:setProperty property="numberRow" name="place"
-							value="${col.count}" />
-						<jsp:setProperty property="numberPlace" name="place"
-							value="${col2.count}" />
-						<jsp:setProperty property="price" name="place"
-							value="${sector.value.price}" />
-						<jsp:useBean id="booking"
-							class="by.gsu.epamlab.model.beans.Booking" />
-						<jsp:setProperty property="place" name="booking" value="${place}" />
-						<jsp:setProperty property="idPlay" name="booking"
-							value="${play.id}" />
+					<c:forEach var="booking" items="${row}" varStatus="numPlace">
 						<c:choose>
-							<c:when test="${bookings.contains(booking)}">
-								<td bgcolor="red" width="40" height="30">${col.count}-${col2.count}</td>
+							<c:when test="${booking.status == 'brone'}">
+								<td bgcolor="red" width="40" height="30">${numRow.count}-${numPlace.count}</td>
 							</c:when>
 							<c:otherwise>
-								<td bgcolor="yellow" width="40" height="30">${col.count}-${col2.count}</td>
+								<td bgcolor="yellow" width="40" height="30">${numRow.count}-${numPlace.count}</td>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>

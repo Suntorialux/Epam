@@ -10,8 +10,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import by.gsu.epamlab.model.beans.Place;
-
 
 /**
  * @author Andrei Yahorau
@@ -26,9 +24,9 @@ public class HallHundler extends DefaultHandler {
 	private HallEnum hallEnum;
 	private String nameSector;
 	private int price;
-	private int rows;
-	private int places;
-	private Map<String, Place> hall;
+	private int numRows;
+	private int numPlaces;
+	private Map<String, int[]> hall;
 	
 	/**
 	 * 
@@ -41,7 +39,7 @@ public class HallHundler extends DefaultHandler {
 	/**
 	 * @return the hall
 	 */
-	public Map<String, Place> getHall() {
+	public Map<String, int[]> getHall() {
 		return hall;
 	}
 
@@ -54,10 +52,10 @@ public class HallHundler extends DefaultHandler {
 		if (hallEnum==HallEnum.SECTOR) {
 			this.nameSector=attributes.getValue("name").trim();
 			this.price = Integer.parseInt(attributes.getValue("price"));
-			this.rows = Integer.parseInt(attributes.getValue("rows"));
-			this.places= Integer.parseInt(attributes.getValue("places"));
-			Place place = new Place(nameSector, rows, places, price);
-			hall.put(nameSector, place);
+			this.numRows = Integer.parseInt(attributes.getValue("rows"));
+			this.numPlaces= Integer.parseInt(attributes.getValue("places"));
+			int [] paramSector = new int[] {numRows, numPlaces, price};
+			hall.put(nameSector, paramSector);
 		}	
 	}
 }

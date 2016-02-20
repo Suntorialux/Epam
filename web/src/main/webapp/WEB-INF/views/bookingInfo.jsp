@@ -19,25 +19,25 @@
 			<th>Title: ${play.title}</th>
 		</tr>
 		<tr>
-			<th>Sector: ${place.nameSector}</th>
+			<th>Sector: ${booking.nameSector}</th>
 		</tr>
 		<tr>
-			<th>Row: ${place.numberRow}</th>
+			<th>Row: ${booking.row}</th>
 		</tr>
 		<tr>
-			<th>Place: ${place.numberPlace}</th>
+			<th>Place: ${booking.place}</th>
 		</tr>
 		<tr>
-			<th>Price: ${place.price}</th>
+			<th>Price: ${booking.price}</th>
 		</tr>
 
 	</table>
 	<form name="book" action='<c:url value="/booking/order"/>' method="POST">
 		<input type="hidden" name="date" value="${play.id}">
-		<input type="hidden" name="sector" value="${place.nameSector}">
-		<input type="hidden" name="row" value="${place.numberRow}">
-		<input type="hidden" name="place" value="${place.numberPlace}">
-		<input type="hidden" name="price" value="${place.price}">
+		<input type="hidden" name="sector" value="${booking.nameSector}">
+		<input type="hidden" name="row" value="${booking.row}">
+		<input type="hidden" name="place" value="${booking.place}">
+		<input type="hidden" name="price" value="${booking.price}">
 		<input type="submit" value="Book">
 	
 	</form>
