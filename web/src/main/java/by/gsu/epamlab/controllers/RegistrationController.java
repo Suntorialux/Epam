@@ -40,29 +40,17 @@ public class RegistrationController extends HttpServlet {
 		String login = request.getParameter(Constants.KEY_LOGIN);
 		String password = request.getParameter(Constants.KEY_PASSWORD);
 		try {
-			//checkInput(login, password);
 			IUserDAO userDAO = UserFactory.getClassFromFactory();
-
 			User user = userDAO.addAndGetUser(login.trim(), password.trim());
-
 			HttpSession session = request.getSession();
 			session.setAttribute(Constants.USER, user);
 			jump("/main", request, response);
 
 		} catch (UserException e) {
-			jump("/main", e.getMessage(), request, response);
+			jumpError(e.getMessage(), request, response);
 		}
 	}
 
-/*	private static void checkInput(String login, String password) throws ValidationException {
-		if (login == null || password == null) {
-			throw new ValidationException(Constants.LOGIN_OR_PASSWORD_ABSENT_ERROR);
-		}
-		login = login.trim();
-		if (Constants.EMPTY.equals(login)) {
-			throw new ValidationException(Constants.LOGIN_EMPTY_ERROR);
-		}
-	}  */
 
 	protected void jump(String url, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

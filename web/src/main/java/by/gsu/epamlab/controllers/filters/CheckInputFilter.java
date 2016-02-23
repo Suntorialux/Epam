@@ -16,7 +16,7 @@ import by.gsu.epamlab.model.beans.Constants;
 /**
  * Servlet Filter implementation class CheckInputFilter
  */
-@WebFilter(urlPatterns = { "/login", "/registration", "/booking/*" })
+@WebFilter(urlPatterns = { "/login", "/registration", "/booking/*"})
 
 public class CheckInputFilter implements Filter {
 
@@ -36,15 +36,13 @@ public class CheckInputFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 	
-		System.out.println(httpRequest.getHeader("referer"));
-		
 		Enumeration<String> enumeration = httpRequest.getParameterNames();
 		if (!enumeration.hasMoreElements()) {
 			httpResponse.sendRedirect(httpRequest.getContextPath());
 			return;
 		}
 
-		System.out.println(enumeration.hasMoreElements());
+		
 		while (enumeration.hasMoreElements()) {
 			String parametrName = enumeration.nextElement();
 			String parametrValue = httpRequest.getParameter(parametrName);
@@ -53,9 +51,7 @@ public class CheckInputFilter implements Filter {
 				return;
 			}
 		}
-
 		chain.doFilter(request, response);
-
 	}
 
 	/**

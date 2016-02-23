@@ -39,7 +39,8 @@ public class User {
 	/**
 	 * @return the role
 	 */
-	public Role getRole() {
+	public String getRole() {
+		String role = this.role.name().toUpperCase();
 		return role;
 	}
 

@@ -14,32 +14,8 @@
 	<p>${play.title}</p>
 	<p>${play.description}</p>
 	<br>
-	<div id="mainmenu">
-		<ul>
-			<c:set var = "free" value="free"/>
-			<c:forEach var="sector" items="${bookingHall}">
-				<li class="parent"><a>${sector.key}</a>
-					<ul>
-						<c:forEach var="rowBooking" items="${sector.value}"
-							varStatus="numRow">
-							<li class="parent"><a>Row ${numRow.count}</a>
-								<ul>
-									<c:forEach var="booking" items="${rowBooking}"
-										varStatus="numPlace">
-										
-										<c:if test="${free eq booking.status}">
-											<li class="parent"><a
-												onclick="sendForm('${play.id}_${sector.key}_${numRow.count}_${numPlace.count}_${booking.price}')">Place
-													${numPlace.count} price: ${booking.price}</a></li>
-										</c:if>
-									</c:forEach>
-								</ul></li>
-						</c:forEach>
-					</ul></li>
-			</c:forEach>
-		</ul>
-	</div>
-
+	
+	
 	<table>
 		<tr>
 			<td bgcolor="red" width="40" height="30"></td>
@@ -52,17 +28,18 @@
 	</table>
 
 	<c:forEach var="sector" items="${bookingHall}">
-		<table>
+		<table border="1">
 			<caption>${sector.key}</caption>
 			<c:forEach var="row" items="${sector.value}" varStatus="numRow">
 				<tr>
 					<c:forEach var="booking" items="${row}" varStatus="numPlace">
 						<c:choose>
-							<c:when test="${booking.status == 'brone'}">
-								<td bgcolor="red" width="40" height="30">${numRow.count}-${numPlace.count}</td>
+							<c:when test="${booking.status ne 'free'}">
+								<td bgcolor="red" width="40" height="30"></td>
 							</c:when>
 							<c:otherwise>
-								<td bgcolor="yellow" width="40" height="30">${numRow.count}-${numPlace.count}</td>
+								<td bgcolor="yellow" width="40" height="30" style="cursor: hand"
+												onclick="sendForm('${play.id}_${sector.key}_${numRow.count}_${numPlace.count}_${booking.price}')"></td>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>

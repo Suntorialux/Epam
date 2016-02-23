@@ -15,4 +15,5 @@ public interface IUserDAO {
 	User getUser(String login, String password) throws UserException;
 
 	User addAndGetUser(String login, String password) throws UserException;
+	
 }

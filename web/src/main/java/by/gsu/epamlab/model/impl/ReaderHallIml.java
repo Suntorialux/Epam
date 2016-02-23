@@ -6,7 +6,6 @@ package by.gsu.epamlab.model.impl;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
@@ -35,15 +34,14 @@ public class ReaderHallIml implements IHallDAO {
 	}
 	
 	@Override
-	public Map<String, Booking[][]> getBookingHall (Map<String, int[]> hall, Set<Booking> bookings) {
+	public Map<String, Booking[][]> getBookingHall (Map<String, int[]> hall, Map<Integer, Booking> bookings) {
 		Map<String, Booking[][]> bookingHall = new HashMap<>();
 		for(Map.Entry<String, int[]> sector : hall.entrySet()) {
 			Booking [] [] books = new Booking [sector.getValue()[0]] [sector.getValue()[1]];
 			for (int row = 0; row<sector.getValue()[0]; row++) {
 				for (int place = 0; place <sector.getValue()[1]; place++) {
-					//Place place = new Place(sector.getKey(), row+1, numPlace+1, sector.getValue().getPrice());
 					Booking booking = new Booking(sector.getKey(), row+1, place+1, sector.getValue()[2], "free");
-					if(bookings.contains(booking)) {
+					if(bookings.containsValue(booking)) {
 						booking.setStatus("brone");
 					}
 					books[row][place] = booking;

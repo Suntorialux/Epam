@@ -2,7 +2,6 @@ package by.gsu.epamlab.controllers;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.Set;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -65,7 +64,7 @@ public class BookingController extends HttpServlet {
 			Integer idPlay = Integer.parseInt(request.getParameter("ID"));
 			Play play = playList.get(idPlay);
 			Map<String, int[]> hall = (Map<String, int[]>) getServletContext().getAttribute("hall");
-			Set<Booking> bookings = bookingDAO.getBookingsDB(idPlay);
+			Map<Integer, Booking> bookings = bookingDAO.getBookingsDB(idPlay);
 			Map<String, Booking[][]> bookingHall = hallDAO.getBookingHall(hall, bookings); 
 			request.setAttribute("play", play);
 			request.setAttribute("bookingHall", bookingHall);

@@ -7,9 +7,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
 import javax.naming.NamingException;
 import by.gsu.epamlab.model.DB.AbstractManagerDB;
 import by.gsu.epamlab.model.beans.Booking;
@@ -48,7 +51,7 @@ public class BookingDBImpl extends AbstractManagerDB implements IBookingDAO {
 			int row = Integer.parseInt(params.get(2));
 			int place = Integer.parseInt(params.get(3));
 			int price = Integer.parseInt(params.get(4));
-			String status = "book";
+			String status = "isBooked";
 			psSelectOrder.setInt(1, idPlay);
 			psSelectOrder.setString(2, sector);
 			psSelectOrder.setInt(3, row);
@@ -79,28 +82,31 @@ public class BookingDBImpl extends AbstractManagerDB implements IBookingDAO {
 	}
 
 	@Override
-	public Set<Booking> getBookingsDB() throws BookingException {
+	public Map<Integer, Booking> getBookingsDB() throws BookingException {
 		Connection connection = null;
 		PreparedStatement psSelectBooking = null;
 		ResultSet resultSet = null;
 		try {
-			Set<Booking> bookings = new HashSet<>();
+			Map<Integer, Booking> bookings = new HashMap<>();
 			connection = getConnection();
-			psSelectBooking = connection.prepareStatement("Select * from orders");
+			psSelectBooking = connection.prepareStatement("Select orders.idOrder, users.login, orders.id_play, orders.sector, orders.row, orders.place, orders.price, orders.status from users, orders where users.idUser = orders.id_user");
 			resultSet = psSelectBooking.executeQuery();
 			while (resultSet.next()) {
+				int idBooking = resultSet.getInt(1);
+				String loginUser = resultSet.getString(2);
 				int idPlay = resultSet.getInt(3);
 				String sector = resultSet.getString(4);
 				int row = resultSet.getInt(5);
 				int place = resultSet.getInt(6);
 				int price = resultSet.getInt(7);
 				String status = resultSet.getString(8);
-				Booking booking = new Booking(idPlay, sector, row, place, price, status);
-				bookings.add(booking);
+				Booking booking = new Booking(loginUser, idPlay, sector, row, place, price, status); 
+				bookings.put(idBooking, booking);
 			}
 			return bookings;
 		} catch (NamingException | SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
 			throw new BookingException(e.getMessage());
 		} finally {
 			closeResultSet(resultSet);
@@ -110,32 +116,88 @@ public class BookingDBImpl extends AbstractManagerDB implements IBookingDAO {
 	}
 	
 	@Override
-	public Set<Booking> getBookingsDB(int idPlay) throws BookingException {
-		Connection connection = null;
-		PreparedStatement psSelectBooking = null;
-		ResultSet resultSet = null;
-		try {
-			Set<Booking> bookings = new HashSet<>();
-			connection = getConnection();
-			psSelectBooking = connection.prepareStatement("Select * from orders where id_play = (?)");
-			psSelectBooking.setInt(1, idPlay);
-			resultSet = psSelectBooking.executeQuery();
-			while (resultSet.next()) {
-				String sector = resultSet.getString(4);
-				int row = resultSet.getInt(5);
-				int place = resultSet.getInt(6);
-				int price = resultSet.getInt(7);
-				String status = resultSet.getString(8);
-				Booking booking = new Booking(idPlay, sector, row, place, price, status);
-				bookings.add(booking);
+	public Map<Integer, Booking> getBookingsDB(int idPlay) throws BookingException {
+		Map<Integer, Booking> bookingsByIdPlay = new HashMap<>();
+		Map<Integer, Booking> bookings = getBookingsDB();
+		for(Map.Entry<Integer, Booking> entry : bookings.entrySet()) {
+			if(entry.getValue().getIdPlay()==idPlay) {
+				bookingsByIdPlay.put(entry.getKey(), entry.getValue());
 			}
-			return bookings;
-		} catch (NamingException | SQLException e) {
+		}
+		return bookingsByIdPlay;
+	}
+	
+	
+	@Override
+	public Map<Integer, Booking> getBookingsDB(String userLogin) throws BookingException {
+		Map<Integer, Booking> bookingsByIdPlay = new HashMap<>();
+		Map<Integer, Booking> bookings = getBookingsDB();
+		for(Map.Entry<Integer, Booking> entry : bookings.entrySet()) {
+			if(entry.getValue().getNameUser().equals(userLogin)) {
+				bookingsByIdPlay.put(entry.getKey(), entry.getValue());
+			}
+		}
+		return bookingsByIdPlay;
+	}
+	
+
+	@Override
+	public Map<Integer, Booking> getBookingsByStatus(String status) throws BookingException {
+		Map<Integer, Booking> bookingsByStatus = new HashMap<>();
+		Map<Integer, Booking> bookings = getBookingsDB();
+		for(Map.Entry<Integer, Booking> entry : bookings.entrySet()) {
+			if(entry.getValue().getStatus().equals(status)) {
+				bookingsByStatus.put(entry.getKey(), entry.getValue());
+			}
+		}
+		return bookingsByStatus;
+	}
+	@Override
+	public Set<String> getUserLoginFromBooking() throws BookingException {
+		Map<Integer, Booking> bookings = getBookingsDB();
+		Set<String> userLogins = new HashSet<>();
+		for(Map.Entry<Integer, Booking> entry : bookings.entrySet()) {
+			String login = entry.getValue().getNameUser();
+			userLogins.add(login);
+		}
+		return userLogins;
+	}
+	
+	@Override
+	public void changeStatusBooking(Integer idBooking) throws BookingException {
+
+		Connection connection = null;
+		PreparedStatement psUpdateStatus = null;
+		try {
+			connection = getConnection();
+			psUpdateStatus = connection.prepareStatement(" update orders set status = 'isBought' where  idOrder = (?)");
+			psUpdateStatus.setInt(1, idBooking);
+			psUpdateStatus.executeUpdate();	
+		} catch (SQLException | NamingException e) {
 			// TODO Auto-generated catch block
 			throw new BookingException(e.getMessage());
 		} finally {
-			closeResultSet(resultSet);
-			closeStatement(psSelectBooking);
+			closeStatement(psUpdateStatus);
+			closeConnection(connection);
+		}
+	}
+	
+
+	@Override
+	public void deleteBooking(Integer idBooking) throws BookingException {
+		
+		Connection connection = null;
+		PreparedStatement psUpdateStatus = null;
+		try {
+			connection = getConnection();
+			psUpdateStatus = connection.prepareStatement("delete from orders WHERE  idOrder = (?)");
+			psUpdateStatus.setInt(1, idBooking);
+			psUpdateStatus.executeUpdate();	
+		} catch (SQLException | NamingException e) {
+			// TODO Auto-generated catch block
+			throw new BookingException(e.getMessage());
+		} finally {
+			closeStatement(psUpdateStatus);
 			closeConnection(connection);
 		}
 	}

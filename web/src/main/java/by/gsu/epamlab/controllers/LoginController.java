@@ -29,12 +29,7 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		performTask(request, response);
-
-	}
-	protected void performTask(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+		
 		String login = request.getParameter(Constants.KEY_LOGIN);
 		String password = request.getParameter(Constants.KEY_PASSWORD);
 		try {
@@ -44,21 +39,12 @@ public class LoginController extends HttpServlet {
 			session.setAttribute(Constants.USER, user);
 			jump("/main", request, response);
 		} catch (UserException e) {
-			jump("/main", e.getMessage(), request, response);
+			jumpError(e.getMessage(), request, response);
 		}
 	}
+	
 
-	/*
-	private static void checkInput(String login, String password) throws ValidationException {
-		if (login == null || password == null) {
-			throw new ValidationException(Constants.LOGIN_OR_PASSWORD_ABSENT_ERROR);
-		}
-		login = login.trim();
-		if (Constants.EMPTY.equals(login)) {
-			throw new ValidationException(Constants.LOGIN_EMPTY_ERROR);
-		}
-	}
- */
+	
 	protected void jump(String url, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);

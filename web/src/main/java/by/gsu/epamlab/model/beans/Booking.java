@@ -9,6 +9,7 @@ package by.gsu.epamlab.model.beans;
  */
 public class Booking {
 
+	private String nameUser;
 	private int idPlay;
 	private String nameSector;
 	private int row;
@@ -24,7 +25,26 @@ public class Booking {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	/**
+	 * @param nameUser
+	 * @param idPlay
+	 * @param nameSector
+	 * @param row
+	 * @param place
+	 * @param price
+	 * @param status
+	 */
+	public Booking(String nameUser, int idPlay, String nameSector, int row, int place, int price, String status) {
+		super();
+		this.nameUser = nameUser;
+		this.idPlay = idPlay;
+		this.nameSector = nameSector;
+		this.row = row;
+		this.place = place;
+		this.price = price;
+		this.status = status;
+	}
+
 	/**
 	 * @param idPlay is idPlay
 	 * @param nameSector is nameSector
@@ -59,6 +79,19 @@ public class Booking {
 		this.status = status;
 	}
 
+	/**
+	 * @return the nameUser
+	 */
+	public String getNameUser() {
+		return nameUser;
+	}
+
+	/**
+	 * @param nameUser the nameUser to set
+	 */
+	public void setNameUser(String nameUser) {
+		this.nameUser = nameUser;
+	}
 
 	/**
 	 * @return the idPlay

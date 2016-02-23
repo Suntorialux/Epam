@@ -34,16 +34,7 @@ public class OrderController extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -71,7 +62,7 @@ public class OrderController extends HttpServlet {
 		} catch (BookingException e) {
 			// TODO Auto-generated catch block
 			request.setAttribute("error", e.getMessage());
-			RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.FOLDER_VIEWS + "/bookingInfo.jsp");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.FOLDER_VIEWS + "/order.jsp");
 			rd.forward(request, response);
 		}
 

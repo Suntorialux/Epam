@@ -50,20 +50,20 @@ public class ReaderPlayImpl extends AbstractManagerDB implements IPlayDAO {
 		Iterator<Play> iterator = playlist.iterator();
 		Connection connection = null;
 		PreparedStatement psInsertPlay = null;
-		PreparedStatement psSelect = null;
+		PreparedStatement psSelectPlay = null;
 		ResultSet resultSet = null;
 		try {
 			connection = getConnection();
 			psInsertPlay = connection
 					.prepareStatement("INSERT INTO plays (title, datePlay, description) VALUES (?,?,?)");
-			psSelect = connection.prepareStatement("SELECT title, datePlay FROM plays WHERE title = ? && datePlay = ?");
+			psSelectPlay = connection.prepareStatement("SELECT title, datePlay FROM plays WHERE title = ? && datePlay = ?");
 			while (iterator.hasNext()) {
 				Play play = iterator.next();
 				String title = play.getTitle();
 				Date date = play.getDate();
-				psSelect.setString(1, title);
-				psSelect.setDate(2, date);
-				resultSet = psSelect.executeQuery();
+				psSelectPlay.setString(1, title);
+				psSelectPlay.setDate(2, date);
+				resultSet = psSelectPlay.executeQuery();
 				if (!resultSet.first()) {
 					psInsertPlay.setString(1, title);
 					psInsertPlay.setDate(2, date);
@@ -76,7 +76,7 @@ public class ReaderPlayImpl extends AbstractManagerDB implements IPlayDAO {
 			throw new UserException(e.getMessage());
 		} finally {
 			closeResultSet(resultSet);
-			closeStatement(psSelect, psInsertPlay);
+			closeStatement(psSelectPlay, psInsertPlay);
 			closeConnection(connection);
 		}
 	}

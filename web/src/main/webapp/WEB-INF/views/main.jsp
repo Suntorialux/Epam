@@ -27,6 +27,8 @@ folder.display="none"
 
 	<jsp:include page="header.jsp"></jsp:include>
 	${error}
+	
+	
 	<table border="1" style="width: 100%">
 		<c:forEach items="${playlist}" var="play" varStatus="id">
 			<tr>

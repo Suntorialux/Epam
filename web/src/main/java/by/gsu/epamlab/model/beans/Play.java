@@ -4,13 +4,19 @@
 package by.gsu.epamlab.model.beans;
 
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  * @author Andrei Yahorau
  *
  */
-public class Play {
+public class Play implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6729160721354415365L;
 
 	/** The id. */
 	private final int id;
