@@ -1,4 +1,4 @@
-package by.gsu.epamlab.controllers.filters;
+
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -16,32 +16,42 @@ import by.gsu.epamlab.model.beans.Constants;
 import by.gsu.epamlab.model.beans.User;
 
 /**
- * Servlet Filter implementation class LoginFilter
+ * Servlet Filter implementation class CourierFilter
  */
+@WebFilter(filterName = "CourierFilter",
+ 			urlPatterns="/courier")
+public class CourierFilter implements Filter {
 
+    /**
+     * Default constructor. 
+     */
+    public CourierFilter() {
+        // TODO Auto-generated constructor stub
+    }
 
-@WebFilter( filterName = "LoginFilter",
-		urlPatterns = {"/booking/info/*", "/courier", "/myBooking"})
-public class LoginFilter implements Filter {
+	/**
+	 * @see Filter#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
 
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession();
 		User user = (User) session.getAttribute(Constants.USER);
 				
-		if (user == null)  {
+		if (!user.getRole().equals("COURIER"))  {
 			session.invalidate();
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			httpResponse.sendRedirect(httpRequest.getContextPath()); 
 			return;	
 		} 
 		chain.doFilter(request, response);	
-		
 	}
 
 	/**
@@ -49,12 +59,6 @@ public class LoginFilter implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

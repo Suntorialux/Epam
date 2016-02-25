@@ -24,7 +24,7 @@ import by.gsu.epamlab.model.ifaces.IHallDAO;
  * Servlet implementation class OrderController
  */
 
-@WebServlet("/booking")
+@WebServlet(urlPatterns = "/booking")
 public class BookingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -38,13 +38,13 @@ public class BookingController extends HttpServlet {
 
 		IHallDAO hallDAO = HallFactory.getClassFromFactory();
 		ServletContext context = getServletContext();
-		String filePath = context.getRealPath("WEB-INF/classes/" + "theaterHall.xml");
+		String filePath = context.getRealPath(Constants.RESOURSE_PATH + Constants.THEATER_HALL_XML);
 		try {
 			Map<String, int[]> hall = hallDAO.getHall(filePath);
-			context.setAttribute("hall", hall);
+			context.setAttribute(Constants.HALL, hall);
 		} catch (HallException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ServletException(e.getMessage());
 		}
 	}
 
@@ -54,35 +54,39 @@ public class BookingController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		IHallDAO hallDAO = HallFactory.getClassFromFactory();
 		IBookingDAO bookingDAO = BookingFactory.getClassFromFactory();
 		try {
-		
+
 			HttpSession session = request.getSession();
-			Map<Integer, Play> playList = (Map<Integer, Play>) session.getAttribute("playlist");
-			Integer idPlay = Integer.parseInt(request.getParameter("ID"));
+			Map<Integer, Play> playList = (Map<Integer, Play>) session.getAttribute(Constants.PLAYLIST);
+			Integer idPlay = Integer.parseInt(request.getParameter(Constants.ID_PLAY));
 			Play play = playList.get(idPlay);
-			Map<String, int[]> hall = (Map<String, int[]>) getServletContext().getAttribute("hall");
+			Map<String, int[]> hall = (Map<String, int[]>) getServletContext().getAttribute(Constants.HALL);
 			Map<Integer, Booking> bookings = bookingDAO.getBookingsDB(idPlay);
-			Map<String, Booking[][]> bookingHall = hallDAO.getBookingHall(hall, bookings); 
-			request.setAttribute("play", play);
-			request.setAttribute("bookingHall", bookingHall);
-			jump(Constants.FOLDER_VIEWS + "/booking.jsp", request, response);
+			Map<String, Booking[][]> bookingHall = hallDAO.getBookingHall(hall, bookings);
+			request.setAttribute(Constants.PLAY, play);
+			request.setAttribute(Constants.BOOKING_HALL, bookingHall);
+			jump(Constants.FOLDER_VIEWS + Constants.PAGE_BOOKING, request, response);
+			
 		} catch (BookingException e) {
-			// TODO Auto-generated catch block
-			jump("/main", e.getMessage(), request, response);
+			
+			jumpError(e.getMessage(), request, response);
+			
 		}
 	}
 
 	protected void jump(String url, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 
 	protected void jumpError(String message, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		jump(Constants.PAGE_INDEX, message, request, response);
 	}
 
@@ -92,5 +96,4 @@ public class BookingController extends HttpServlet {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
-
 }

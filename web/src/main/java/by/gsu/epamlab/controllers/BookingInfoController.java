@@ -16,9 +16,15 @@ import by.gsu.epamlab.model.beans.Play;
 /**
  * Servlet implementation class OrderController
  */
-@WebServlet("/booking/info")
+@WebServlet(urlPatterns="/booking/info")
 public class BookingInfoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private final int INDEX_PLAY = 0;
+	private final int INDEX_SECTOR = 1;
+	private final int INDEX_ROW = 2;
+	private final int INDEX_PLACE = 3;
+	private final int INDEX_PRICE = 4;
+	private final String STATUS_FREE = "free";
    
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -26,20 +32,20 @@ public class BookingInfoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String [] querry = request.getParameter("place").split("_");
-		Integer idPlay = Integer.parseInt(querry[0]);
-		String sector = querry[1];
-		Integer row = Integer.parseInt(querry[2]);
-		Integer place = Integer.parseInt(querry[3]);
-		Integer price = Integer.parseInt(querry[4]);
+		String [] paramBooking = request.getParameter(Constants.PLACE).split(Constants.SEPARATOR);
+		Integer idPlay = Integer.parseInt(paramBooking[INDEX_PLAY]);
+		String sector = paramBooking[INDEX_SECTOR];
+		Integer row = Integer.parseInt(paramBooking[INDEX_ROW]);
+		Integer place = Integer.parseInt(paramBooking[INDEX_PLACE]);
+		Integer price = Integer.parseInt(paramBooking[INDEX_PRICE]);
 		HttpSession session = request.getSession();
-		Map<Integer, Play> playList = (Map<Integer, Play>) session.getAttribute("playlist");
+		Map<Integer, Play> playList = (Map<Integer, Play>) session.getAttribute(Constants.PLAYLIST);
 		Play play = playList.get(idPlay);
-		Booking booking = new Booking(sector, row, place, price, "free");
-		session.setAttribute("play", play);
-		session.setAttribute("booking", booking);
+		Booking booking = new Booking(sector, row, place, price, STATUS_FREE);
+		session.setAttribute(Constants.PLAY, play);
+		session.setAttribute(Constants.BOOKING, booking);
 		
-		jump(Constants.FOLDER_VIEWS+"/bookingInfo.jsp", request, response);
+		jump(Constants.FOLDER_VIEWS + Constants.PAGE_BOOKING_INFO, request, response);
 		
 		}
 	

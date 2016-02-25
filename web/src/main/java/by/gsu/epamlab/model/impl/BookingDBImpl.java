@@ -73,7 +73,7 @@ public class BookingDBImpl extends AbstractManagerDB implements IBookingDAO {
 			}
 		} catch (NamingException | SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new BookingException(e.getMessage());
 		} finally {
 			closeStatement(psAddBooking, psSelect, psSelectOrder);
 			closeConnection(connection);
@@ -106,7 +106,6 @@ public class BookingDBImpl extends AbstractManagerDB implements IBookingDAO {
 			return bookings;
 		} catch (NamingException | SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 			throw new BookingException(e.getMessage());
 		} finally {
 			closeResultSet(resultSet);

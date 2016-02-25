@@ -1,6 +1,8 @@
 package by.gsu.epamlab.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.RequestDispatcher;
@@ -18,11 +20,11 @@ import by.gsu.epamlab.model.ifaces.IBookingDAO;
 /**
  * Servlet implementation class CourierController
  */
-@WebServlet("/courier")
+@WebServlet(urlPatterns="/courier")
 public class CourierController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private Map<Integer, Booking> bookings;
+	private Map<Integer, Booking> bookings = new HashMap<>();
 	private int flag;
 	private String login;
 	private Integer id;
@@ -46,8 +48,8 @@ public class CourierController extends HttpServlet {
 		IBookingDAO bookingDAO = BookingFactory.getClassFromFactory();
 		try {
 			Set<String> logins = bookingDAO.getUserLoginFromBooking();
-			request.setAttribute("logins", logins);
-			jump(Constants.FOLDER_VIEWS+"/courier.jsp", request, response);
+			request.setAttribute(Constants.LOGINS, logins);
+			jump(Constants.FOLDER_VIEWS+Constants.PAGE_COURIER, request, response);
 		} catch (BookingException e) {
 			// TODO Auto-generated catch block
 			jumpError(e.getMessage(), request, response);
@@ -70,14 +72,14 @@ public class CourierController extends HttpServlet {
 				flag = 1;
 				break;
 			}
-			case "play": {
-				int idPlay = Integer.parseInt(request.getParameter("idPlay"));
+			case Constants.PLAY: {
+				int idPlay = Integer.parseInt(request.getParameter(Constants.ID_PLAY));
 				bookings = bookingDAO.getBookingsDB(idPlay);
 				flag = 2;
 				id = idPlay;
 				break;
 			}
-			case "user": {
+			case Constants.USER: {
 				String userLogin = request.getParameter("userLogin");
 				bookings = bookingDAO.getBookingsDB(userLogin);
 				flag = 3;
@@ -91,7 +93,6 @@ public class CourierController extends HttpServlet {
 				status = statusBook;
 				break;
 			}
-
 			case "change on isBought": {
 				int idBooking = Integer.parseInt(request.getParameter("idBooking"));
 				bookingDAO.changeStatusBooking(idBooking);
@@ -104,12 +105,23 @@ public class CourierController extends HttpServlet {
 				setBookings(bookingDAO);
 				break;
 			}
+			case "print": {
+				response.setContentType("text/plain");
+				response.setHeader("Content-Disposition","attachment;filename=bookings.csv");
+				PrintWriter printWriter = response.getWriter();
+				for(Map.Entry<Integer, Booking> entry : bookings.entrySet()) {
+					printWriter.write(""+entry.getKey()+";"+entry.getValue().toString()+"\n");
+					printWriter.flush();					
+				}			
+				printWriter.close();
+				break;
+			}
 
 			}
 			Set<String> logins = bookingDAO.getUserLoginFromBooking();
-			request.setAttribute("logins", logins);
-			request.setAttribute("bookings", bookings);
-			jump(Constants.FOLDER_VIEWS+"/courier.jsp", request, response);
+			request.setAttribute(Constants.LOGINS, logins);
+			request.setAttribute(Constants.BOOKINGS, bookings);
+			jump(Constants.FOLDER_VIEWS+Constants.PAGE_COURIER, request, response);
 		} catch (BookingException e) {
 			jumpError(e.getMessage(), request, response);
 		}
@@ -140,7 +152,9 @@ public class CourierController extends HttpServlet {
 	protected void jump(String url, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-		rd.forward(request, response);
+		rd.include(request, response);
+
+		
 	}
 
 	protected void jumpError(String message, HttpServletRequest request, HttpServletResponse response)

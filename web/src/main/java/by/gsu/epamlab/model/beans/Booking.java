@@ -25,6 +25,7 @@ public class Booking {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	/**
 	 * @param nameUser
 	 * @param idPlay
@@ -224,5 +225,14 @@ public class Booking {
 		if (row != other.row)
 			return false;
 		return true;
+	}
+	
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return nameUser + ";" + idPlay + ";" + nameSector + ";" + row + ";" + place + ";" + price + ";" + status;
 	}
 }

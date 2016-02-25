@@ -59,7 +59,7 @@ public class MainController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("playlist", playlist);
 			jump(Constants.FOLDER_VIEWS + Constants.PAGE_MAIN, request, response);
-			System.out.println("main");
+			
 		} catch (UserException e) {
 			// TODO Auto-generated catch block
 			jumpError(e.getMessage(), request, response);

@@ -9,12 +9,15 @@
 <title>INFO</title>
 </head>
 <body>
+	<div class="main">
+		<div class="content">
+			<jsp:include page="header.jsp"></jsp:include>
+			<p>Thanks for your order!!</p>
+			<p>Soon our courier will contact you.</p>
 
-<jsp:include page="header.jsp"></jsp:include>
-<p> Thanks for your order!! </p>
-<p> Soon our courier will contact you. </p>
 
-
-<jsp:include page="footer.jsp"></jsp:include>
+		</div>
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>
