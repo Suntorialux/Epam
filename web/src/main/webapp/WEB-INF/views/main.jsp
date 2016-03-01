@@ -13,8 +13,8 @@
 	<div class="main">
 		<div class="content">
 			<jsp:include page="header.jsp"></jsp:include>
-			${error}
-			<table border="1" style="width: 100%">
+			${error} 
+			<table class="content-table">
 				<c:forEach items="${playlist}" var="play" varStatus="id">
 					<tr>
 						<th><a style="cursor: hand"

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import by.gsu.epamlab.model.beans.Booking;
-import by.gsu.epamlab.model.beans.Constants;
 import by.gsu.epamlab.model.beans.User;
+import by.gsu.epamlab.model.constants.Constants;
 import by.gsu.epamlab.model.exceptions.BookingException;
 import by.gsu.epamlab.model.factories.BookingFactory;
 import by.gsu.epamlab.model.ifaces.IBookingDAO;
@@ -31,10 +31,10 @@ public class MyBookingsController extends HttpServlet {
 		IBookingDAO bookingDAO = BookingFactory.getClassFromFactory();
 		try {
 			HttpSession session = request.getSession();
-			User user = (User)session.getAttribute("user"); 
+			User user = (User)session.getAttribute(Constants.USER); 
 			Map<Integer, Booking> bookings = bookingDAO.getBookingsDB(user.getLogin());
-			request.setAttribute("bookings", bookings);
-			jump(Constants.FOLDER_VIEWS+"/myBookings.jsp", request, response);
+			request.setAttribute(Constants.BOOKINGS, bookings);
+			jump(Constants.FOLDER_VIEWS+Constants.PAGE_MY_BOOKINGS, request, response);
 		} catch (BookingException e) {
 			// TODO Auto-generated catch block
 			jumpError(e.getMessage(), request, response);
@@ -45,7 +45,7 @@ public class MyBookingsController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idBooking = Integer.parseInt(request.getParameter("idBooking"));
+		int idBooking = Integer.parseInt(request.getParameter(Constants.ID_BOOKING));
 		IBookingDAO bookingDAO = BookingFactory.getClassFromFactory();
 		try {
 			bookingDAO.deleteBooking(idBooking);

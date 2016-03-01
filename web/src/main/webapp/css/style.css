@@ -4,7 +4,7 @@
 }
 
 body {
-	background: #FDF5E6;
+	background-image:url(../images/background.jpg);
 	height: 100%;
 	font-family: sans-serif;
 }
@@ -24,6 +24,7 @@ a:VISITED {
 
 .main {
 	width: 1000px;
+	background-color: rgba(212, 199, 245, 0.82) ;
 	position: relative;
 	min-height: 100%;
 	margin: 0 auto;
@@ -189,6 +190,10 @@ a:VISITED {
 	box-shadow: inset 0 1px 2px #B9B9B9;
 }
 
+.content-table {
+	width: 100%;
+	}
+
 .content-table table {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 14px;
@@ -198,7 +203,7 @@ a:VISITED {
 }
 
 .content-table th, .content-table td:first-child {
-	background: #AFCDE7;
+	background: rgba(212, 199, 245, 0.82);
 	color: white;
 	padding: 10px 20px;
 }
@@ -207,6 +212,7 @@ a:VISITED {
 	border-style: solid;
 	border-width: 0 1px 1px 0;
 	border-color: white;
+	
 }
 
 .content-table td {

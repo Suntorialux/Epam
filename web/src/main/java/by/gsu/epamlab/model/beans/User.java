@@ -4,7 +4,7 @@
 package by.gsu.epamlab.model.beans;
 
 /**
- * @author Yahorau Andrei
+ * @author Andrei Yahorau
  *
  */
 public class User {

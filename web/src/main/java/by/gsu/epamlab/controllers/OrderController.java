@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import by.gsu.epamlab.model.beans.Constants;
 import by.gsu.epamlab.model.beans.User;
+import by.gsu.epamlab.model.constants.Constants;
 import by.gsu.epamlab.model.exceptions.BookingException;
 import by.gsu.epamlab.model.factories.BookingFactory;
 import by.gsu.epamlab.model.ifaces.IBookingDAO;
@@ -34,36 +34,23 @@ public class OrderController extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		/*
-		 * create table orders ( idOrder int (10) AUTO_INCREMENT, id_user int
-		 * (10) NOT NULL, id_play int (10) NOT NULL, sector varchar(50) NOT
-		 * NULL, row int (10) NOT NULL, place int (10) NOT NULL, price int (10)
-		 * NOT NULL, status varchar (20) NOT NULL, PRIMARY KEY (idOrder),
-		 * FOREIGN KEY (id_user) REFERENCES users (idUser), FOREIGN KEY
-		 * (id_play) REFERENCES plays (idPlay) );
-		 */
 
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
+		User user = (User) session.getAttribute(Constants.USER);
 		List<String> parametrsBooking = getParametrsOrder(request);
 		try {
 			IBookingDAO bookingDAO = BookingFactory.getClassFromFactory();
 			bookingDAO.addBookingDB(parametrsBooking, user);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.FOLDER_VIEWS + "/orderInfo.jsp");
-			rd.forward(request, response);
+			jump(Constants.FOLDER_VIEWS + Constants.PAGE_INFO_ORDER, request, response);
 		} catch (BookingException e) {
-			// TODO Auto-generated catch block
-			request.setAttribute("error", e.getMessage());
-			RequestDispatcher rd = getServletContext().getRequestDispatcher(Constants.FOLDER_VIEWS + "/order.jsp");
-			rd.forward(request, response);
+			
+			jumpError(e.getMessage(), request, response);
 		}
 
 	}
@@ -77,6 +64,24 @@ public class OrderController extends HttpServlet {
 			parametrs.add(paramValue);
 		}
 		return parametrs;
+	}
+
+	protected void jump(String url, HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+		rd.forward(request, response);
+	}
+
+	protected void jumpError(String message, HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		jump(Constants.FOLDER_VIEWS + Constants.PAGE_ORDER, message, request, response);
+	}
+
+	protected void jump(String url, String message, HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setAttribute(Constants.ERROR, message);
+		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+		rd.forward(request, response);
 	}
 
 }

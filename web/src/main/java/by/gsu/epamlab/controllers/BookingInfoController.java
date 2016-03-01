@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import by.gsu.epamlab.model.beans.Booking;
-import by.gsu.epamlab.model.beans.Constants;
 import by.gsu.epamlab.model.beans.Play;
+import by.gsu.epamlab.model.constants.Constants;
 
 /**
  * Servlet implementation class OrderController

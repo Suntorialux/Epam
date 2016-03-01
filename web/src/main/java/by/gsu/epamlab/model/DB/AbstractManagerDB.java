@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import by.gsu.epamlab.model.beans.ConstantsSQL;
+import by.gsu.epamlab.model.constants.ConstantsSQL;
 
 /**
  * @author Yahorau Andrei

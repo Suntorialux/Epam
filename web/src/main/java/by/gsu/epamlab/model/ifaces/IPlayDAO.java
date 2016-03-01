@@ -6,7 +6,7 @@ package by.gsu.epamlab.model.ifaces;
 import java.util.List;
 import java.util.Map;
 import by.gsu.epamlab.model.beans.Play;
-import by.gsu.epamlab.model.exceptions.UserException;
+import by.gsu.epamlab.model.exceptions.PlayException;
 
 /**
  * @author Yahorau Andrei
@@ -14,10 +14,10 @@ import by.gsu.epamlab.model.exceptions.UserException;
  */
 public interface IPlayDAO {
 
-	List<Play> getPlaysFromXML(String filePath) throws UserException;
+	List<Play> getPlaysFromXML(String filePath) throws PlayException;
 	
-	void addPlaysDB(List<Play> playlist) throws UserException;
+	void addPlaysDB(List<Play> playlist) throws PlayException ;
 	
-	Map<Integer, Play> getPlaysFromDB() throws UserException;
+	Map<Integer, Play> getPlaysFromDB() throws PlayException  ;
 
 }

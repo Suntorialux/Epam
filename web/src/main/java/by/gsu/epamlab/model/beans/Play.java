@@ -7,6 +7,8 @@ package by.gsu.epamlab.model.beans;
 import java.io.Serializable;
 import java.sql.Date;
 
+import by.gsu.epamlab.model.constants.Constants;
+
 /**
  * @author Andrei Yahorau
  *

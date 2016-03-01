@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import by.gsu.epamlab.model.beans.Constants;
 import by.gsu.epamlab.model.beans.User;
+import by.gsu.epamlab.model.constants.Constants;
 import by.gsu.epamlab.model.exceptions.UserException;
 import by.gsu.epamlab.model.factories.UserFactory;
 import by.gsu.epamlab.model.ifaces.IUserDAO;
@@ -44,7 +44,7 @@ public class RegistrationController extends HttpServlet {
 			User user = userDAO.addAndGetUser(login.trim(), password.trim());
 			HttpSession session = request.getSession();
 			session.setAttribute(Constants.USER, user);
-			jump("/main", request, response);
+			jump(Constants.MAIN, request, response);
 
 		} catch (UserException e) {
 			jumpError(e.getMessage(), request, response);

@@ -17,6 +17,8 @@ import javax.naming.NamingException;
 import by.gsu.epamlab.model.DB.AbstractManagerDB;
 import by.gsu.epamlab.model.beans.Booking;
 import by.gsu.epamlab.model.beans.User;
+import by.gsu.epamlab.model.constants.Constants;
+import by.gsu.epamlab.model.constants.ConstantsSQL;
 import by.gsu.epamlab.model.exceptions.BookingException;
 import by.gsu.epamlab.model.ifaces.IBookingDAO;
 
@@ -27,8 +29,19 @@ import by.gsu.epamlab.model.ifaces.IBookingDAO;
 public class BookingDBImpl extends AbstractManagerDB implements IBookingDAO {
 
 	private final static Object LOCK = new Object();
-	private final static String SELECT_USER_ID = "SELECT idUser FROM users WHERE login = (?)";
-
+	
+	private final int ID_PLAY_INDEX = 1;
+	private final int SECTOR_INDEX = 2;
+	private final int ROW_INDEX = 3;
+	private final int PLACE_INDEX = 4;
+	private final int INDEX_ID_USER = 1;
+	private final int INDEX_ID_PLAY = 2;
+	private final int INDEX_SECTOR = 3;
+	private final int INDEX_ROW = 4;
+	private final int INDEX_PLACE = 5;
+	private final int INDEX_PRICE = 6;
+	private final int INDEX_STATUS = 7;
+	
 	@Override
 	public void addBookingDB(List<String> params, User user) throws BookingException {
 		// TODO Auto-generated method stub
@@ -39,11 +52,9 @@ public class BookingDBImpl extends AbstractManagerDB implements IBookingDAO {
 		ResultSet resultSet = null;
 		try {
 			connection = getConnection();
-			psAddBooking = connection.prepareStatement(
-					"Insert into orders (id_user, id_play, sector, row, place, price, status) values (?,?,?,?,?,?,?)");
-			psSelect = connection.prepareStatement(SELECT_USER_ID);
-			psSelectOrder = connection.prepareStatement(
-					"Select idOrder from orders where id_play = (?) && sector = (?) && row = (?) && place = (?)");
+			psAddBooking = connection.prepareStatement(ConstantsSQL.SQL_INSERT_BOOKING);
+			psSelect = connection.prepareStatement(ConstantsSQL.SQL_SELECT_USER_ID);
+			psSelectOrder = connection.prepareStatement(ConstantsSQL.SQL_SELECT_ID_BOOKING);
 			String userLogin = user.getLogin();
 			int idUser = getId(userLogin, psSelect);
 			int idPlay = Integer.parseInt(params.get(0));
@@ -51,24 +62,24 @@ public class BookingDBImpl extends AbstractManagerDB implements IBookingDAO {
 			int row = Integer.parseInt(params.get(2));
 			int place = Integer.parseInt(params.get(3));
 			int price = Integer.parseInt(params.get(4));
-			String status = "isBooked";
-			psSelectOrder.setInt(1, idPlay);
-			psSelectOrder.setString(2, sector);
-			psSelectOrder.setInt(3, row);
-			psSelectOrder.setInt(4, place);
-			psAddBooking.setInt(1, idUser);
-			psAddBooking.setInt(2, idPlay);
-			psAddBooking.setString(3, sector);
-			psAddBooking.setInt(4, row);
-			psAddBooking.setInt(5, place);
-			psAddBooking.setInt(6, price);
-			psAddBooking.setString(7, status);
+			String status = Constants.IS_BOOKED;
+			psSelectOrder.setInt(ID_PLAY_INDEX, idPlay);
+			psSelectOrder.setString(SECTOR_INDEX, sector);
+			psSelectOrder.setInt(ROW_INDEX, row);
+			psSelectOrder.setInt(PLACE_INDEX, place);
+			psAddBooking.setInt(INDEX_ID_USER, idUser);
+			psAddBooking.setInt(INDEX_ID_PLAY, idPlay);
+			psAddBooking.setString(INDEX_SECTOR, sector);
+			psAddBooking.setInt(INDEX_ROW, row);
+			psAddBooking.setInt(INDEX_PLACE, place);
+			psAddBooking.setInt(INDEX_PRICE, price);
+			psAddBooking.setString(INDEX_STATUS, status);
 			synchronized (LOCK) {
 				resultSet = psSelectOrder.executeQuery();
 				if (!resultSet.first()) {
 					psAddBooking.executeUpdate();
 				} else {
-					throw new BookingException("This play is brone. Try again.");
+					throw new BookingException(Constants.BOOKING_ERROR);
 				}
 			}
 		} catch (NamingException | SQLException e) {
@@ -89,7 +100,7 @@ public class BookingDBImpl extends AbstractManagerDB implements IBookingDAO {
 		try {
 			Map<Integer, Booking> bookings = new HashMap<>();
 			connection = getConnection();
-			psSelectBooking = connection.prepareStatement("Select orders.idOrder, users.login, orders.id_play, orders.sector, orders.row, orders.place, orders.price, orders.status from users, orders where users.idUser = orders.id_user");
+			psSelectBooking = connection.prepareStatement(ConstantsSQL.SQL_SELECT_BOOKINGS);
 			resultSet = psSelectBooking.executeQuery();
 			while (resultSet.next()) {
 				int idBooking = resultSet.getInt(1);
@@ -169,7 +180,7 @@ public class BookingDBImpl extends AbstractManagerDB implements IBookingDAO {
 		PreparedStatement psUpdateStatus = null;
 		try {
 			connection = getConnection();
-			psUpdateStatus = connection.prepareStatement(" update orders set status = 'isBought' where  idOrder = (?)");
+			psUpdateStatus = connection.prepareStatement(ConstantsSQL.SQL_CHANGE_STATUS);
 			psUpdateStatus.setInt(1, idBooking);
 			psUpdateStatus.executeUpdate();	
 		} catch (SQLException | NamingException e) {

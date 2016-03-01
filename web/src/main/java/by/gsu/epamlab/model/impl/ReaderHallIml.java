@@ -10,6 +10,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 import by.gsu.epamlab.model.beans.Booking;
+import by.gsu.epamlab.model.constants.Constants;
 import by.gsu.epamlab.model.exceptions.HallException;
 import by.gsu.epamlab.model.ifaces.IHallDAO;
 import by.gsu.epamlab.model.xml.HallHundler;
@@ -20,6 +21,11 @@ import by.gsu.epamlab.model.xml.HallHundler;
  */
 public class ReaderHallIml implements IHallDAO {
 
+	private final int ROWS_INDEX = 0;
+	private final int PLACES_INDEX = 1;
+	private final int PRICE_INDEX = 2;
+	
+	
 	@Override
 	public Map<String, int[]> getHall(String filePath) throws HallException {
 		HallHundler hallHundler = new HallHundler();
@@ -32,29 +38,26 @@ public class ReaderHallIml implements IHallDAO {
 			throw new HallException(e.getMessage());
 		}
 	}
-	
+
 	@Override
-	public Map<String, Booking[][]> getBookingHall (Map<String, int[]> hall, Map<Integer, Booking> bookings) {
+	public Map<String, Booking[][]> getBookingHall(Map<String, int[]> hall, Map<Integer, Booking> bookings) {
 		Map<String, Booking[][]> bookingHall = new HashMap<>();
-		for(Map.Entry<String, int[]> sector : hall.entrySet()) {
-			Booking [] [] books = new Booking [sector.getValue()[0]] [sector.getValue()[1]];
-			for (int row = 0; row<sector.getValue()[0]; row++) {
-				for (int place = 0; place <sector.getValue()[1]; place++) {
-					Booking booking = new Booking(sector.getKey(), row+1, place+1, sector.getValue()[2], "free");
-					if(bookings.containsValue(booking)) {
-						booking.setStatus("brone");
+		for (Map.Entry<String, int[]> sector : hall.entrySet()) {
+			Booking[][] books = new Booking[sector.getValue()[ROWS_INDEX]][sector.getValue()[PLACES_INDEX]];
+			for (int row = 0; row < sector.getValue()[ROWS_INDEX]; row++) {
+				for (int place = 0; place < sector.getValue()[PLACES_INDEX]; place++) {
+					Booking booking = new Booking(sector.getKey(), row + 1, place + 1, sector.getValue()[PRICE_INDEX],
+							Constants.FREE);
+					if (bookings.containsValue(booking)) {
+						booking.setStatus(Constants.BRONE);
 					}
 					books[row][place] = booking;
 				}
 			}
 			bookingHall.put(sector.getKey(), books);
 		}
-		
-		return bookingHall;	
-	}
-	
-	
 
-	
-	
+		return bookingHall;
+	}
+
 }

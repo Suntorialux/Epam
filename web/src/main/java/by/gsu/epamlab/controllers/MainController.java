@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import by.gsu.epamlab.model.beans.Constants;
+
 import by.gsu.epamlab.model.beans.Play;
-import by.gsu.epamlab.model.exceptions.UserException;
+import by.gsu.epamlab.model.constants.Constants;
+import by.gsu.epamlab.model.exceptions.PlayException;
 import by.gsu.epamlab.model.factories.PlayFactory;
 import by.gsu.epamlab.model.ifaces.IPlayDAO;
 
@@ -22,7 +23,7 @@ import by.gsu.epamlab.model.ifaces.IPlayDAO;
  * Servlet implementation class MainController
  */
 
-@WebServlet(urlPatterns = "/main")
+@WebServlet(urlPatterns = {"/main"})
 public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,11 +37,11 @@ public class MainController extends HttpServlet {
 
 		IPlayDAO playDAO = PlayFactory.getClassFromFactory();
 		ServletContext context = getServletContext();
-		String filePath = context.getRealPath("/WEB-INF/classes/" + Constants.PLAY_LIST_XML);
+		String filePath = context.getRealPath(Constants.RESOURSE_PATH + Constants.PLAY_LIST_XML);
 		try {
 			List<Play> playlist = playDAO.getPlaysFromXML(filePath);
 			playDAO.addPlaysDB(playlist);
-		} catch (UserException e) {
+		} catch (PlayException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -57,10 +58,10 @@ public class MainController extends HttpServlet {
 		try {
 			Map<Integer, Play> playlist = playDAO.getPlaysFromDB();
 			HttpSession session = request.getSession();
-			session.setAttribute("playlist", playlist);
+			session.setAttribute(Constants.PLAYLIST, playlist);
 			jump(Constants.FOLDER_VIEWS + Constants.PAGE_MAIN, request, response);
 			
-		} catch (UserException e) {
+		} catch (PlayException e) {
 			// TODO Auto-generated catch block
 			jumpError(e.getMessage(), request, response);
 		}

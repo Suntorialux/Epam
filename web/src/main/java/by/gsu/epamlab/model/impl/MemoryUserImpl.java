@@ -6,9 +6,9 @@ package by.gsu.epamlab.model.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import by.gsu.epamlab.model.beans.Constants;
 import by.gsu.epamlab.model.beans.Role;
 import by.gsu.epamlab.model.beans.User;
+import by.gsu.epamlab.model.constants.Constants;
 import by.gsu.epamlab.model.exceptions.UserException;
 import by.gsu.epamlab.model.ifaces.IUserDAO;
 

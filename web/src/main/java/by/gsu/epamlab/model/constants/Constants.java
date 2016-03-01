@@ -1,7 +1,7 @@
 /**
  * 
  */
-package by.gsu.epamlab.model.beans;
+package by.gsu.epamlab.model.constants;
 
 import java.text.SimpleDateFormat;
 
@@ -18,8 +18,7 @@ public class Constants {
 
 	public static final String LOGIN_OR_PASSWORD_ABSENT_ERROR = "Login or password absent error";
 	public static final String LOGIN_EMPTY_ERROR = "Login is empty error";
-
-	
+	public static final String BOOKING_ERROR = "This place is brone. Try again.";
 	public static final String SEPARATOR = "_";
 	public static final String DEVELOPER = "Developed by Andrei Yahorau";
 	public static final String MAIL_DEVELOPER = "suntorialux@gmail.com";
@@ -39,6 +38,19 @@ public class Constants {
 	public static final String BOOKING = "booking";
 	public static final String BOOKINGS = "bookings";
 	public static final String LOGINS = "logins";
+	public static final String ALL = "all";
+	public static final String STATUS = "status";
+	public static final String CHANGE_STATUS = "change on isBought";
+	public static final String DELETE = "delete";
+	public static final String OPERATION = "operation";
+	public static final String ID_BOOKING = "idBooking";
+	public static final String PRINT = "print";
+	public static final String DELIMITR = ";";
+	public static final String NEW_LINE = "\n";
+	public static final String IS_BOOKED = "isBooked";
+	public static final String FREE = "free";
+	public static final String BRONE = "brone";
+	
 	
 	
 	
@@ -54,5 +66,9 @@ public class Constants {
 	public static final String PAGE_BOOKING = "/booking.jsp";
 	public static final String PAGE_BOOKING_INFO = "/bookingInfo.jsp";
 	public static final String PAGE_COURIER = "/courier.jsp";
+	public static final String PAGE_MY_BOOKINGS = "/myBookings.jsp";
+	public static final String PAGE_ORDER = "/order.jsp";
+	public static final String PAGE_INFO_ORDER = "/orderInfo.jsp";
+	public static final String MAIN = "/main";
 
 }

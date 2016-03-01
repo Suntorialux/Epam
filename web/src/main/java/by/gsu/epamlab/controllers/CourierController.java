@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import by.gsu.epamlab.model.beans.Booking;
-import by.gsu.epamlab.model.beans.Constants;
+import by.gsu.epamlab.model.constants.Constants;
 import by.gsu.epamlab.model.exceptions.BookingException;
 import by.gsu.epamlab.model.factories.BookingFactory;
 import by.gsu.epamlab.model.ifaces.IBookingDAO;
@@ -20,24 +20,24 @@ import by.gsu.epamlab.model.ifaces.IBookingDAO;
 /**
  * Servlet implementation class CourierController
  */
-@WebServlet(urlPatterns="/courier")
+@WebServlet(urlPatterns={"/courier"})
 public class CourierController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private final int INDEX_ALL = 1;
+	private final int INDEX_PLAY = 2;
+	private final int INDEX_USER = 3;
+	private final int INDEX_STATUS = 4;
+	
+	
+	
 	private Map<Integer, Booking> bookings = new HashMap<>();
 	private int flag;
 	private String login;
 	private Integer id;
 	private String status;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public CourierController() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -63,58 +63,58 @@ public class CourierController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String operation = request.getParameter("operation");
+		String operation = request.getParameter(Constants.OPERATION);
 		IBookingDAO bookingDAO = BookingFactory.getClassFromFactory();
 		try {
 			switch (operation) {
-			case "all": {
+			case Constants.ALL: {
 				bookings = bookingDAO.getBookingsDB();
-				flag = 1;
+				flag = INDEX_ALL;
 				break;
 			}
 			case Constants.PLAY: {
 				int idPlay = Integer.parseInt(request.getParameter(Constants.ID_PLAY));
 				bookings = bookingDAO.getBookingsDB(idPlay);
-				flag = 2;
+				flag = INDEX_PLAY;
 				id = idPlay;
 				break;
 			}
 			case Constants.USER: {
 				String userLogin = request.getParameter("userLogin");
 				bookings = bookingDAO.getBookingsDB(userLogin);
-				flag = 3;
+				flag = INDEX_USER;
 				login = userLogin;
 				break;
 			}
-			case "status": {
-				String statusBook = request.getParameter("status");
+			case Constants.STATUS: {
+				String statusBook = request.getParameter(Constants.STATUS);
 				bookings = bookingDAO.getBookingsByStatus(statusBook);
-				flag = 4;
+				flag = INDEX_STATUS;
 				status = statusBook;
 				break;
 			}
-			case "change on isBought": {
-				int idBooking = Integer.parseInt(request.getParameter("idBooking"));
+			case Constants.CHANGE_STATUS: {
+				int idBooking = Integer.parseInt(request.getParameter(Constants.ID_BOOKING));
 				bookingDAO.changeStatusBooking(idBooking);
 				setBookings(bookingDAO);
 				break;
 			}
-			case "delete": {
-				int idBooking = Integer.parseInt(request.getParameter("idBooking"));
+			case Constants.DELETE: {
+				int idBooking = Integer.parseInt(request.getParameter(Constants.ID_BOOKING));
 				bookingDAO.deleteBooking(idBooking);
 				setBookings(bookingDAO);
 				break;
 			}
-			case "print": {
+			case Constants.PRINT: {
 				response.setContentType("text/plain");
 				response.setHeader("Content-Disposition","attachment;filename=bookings.csv");
 				PrintWriter printWriter = response.getWriter();
 				for(Map.Entry<Integer, Booking> entry : bookings.entrySet()) {
-					printWriter.write(""+entry.getKey()+";"+entry.getValue().toString()+"\n");
+					printWriter.write(Constants.EMPTY+entry.getKey()+Constants.DELIMITR+entry.getValue().toString()+Constants.NEW_LINE);
 					printWriter.flush();					
 				}			
 				printWriter.close();
-				break;
+				return;
 			}
 
 			}
@@ -152,7 +152,7 @@ public class CourierController extends HttpServlet {
 	protected void jump(String url, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-		rd.include(request, response);
+		rd.forward(request, response);
 
 		
 	}
