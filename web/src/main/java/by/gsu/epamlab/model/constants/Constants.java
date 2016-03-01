@@ -51,10 +51,6 @@ public class Constants {
 	public static final String FREE = "free";
 	public static final String BRONE = "brone";
 	
-	
-	
-	
-	
 	public static final String RESOURSE_PATH = "WEB-INF/classes/";
 	public static final String THEATER_HALL_XML = "theaterHall.xml";
 	public static final String PLAY_LIST_XML = "playlist.xml";
